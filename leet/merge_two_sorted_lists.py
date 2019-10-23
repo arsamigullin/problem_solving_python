@@ -4,7 +4,7 @@ class ListNode:
         self.val = x
         self.next = None
 
-def mergeTwoLists(l1: ListNode, l2: ListNode) -> ListNode:
+def mergeTwoLists(l1, l2):
     merged = None
     first = l1
     second = l2

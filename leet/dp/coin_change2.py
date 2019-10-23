@@ -8,7 +8,9 @@ def solution(amount, coins):
                 d[m] += d[m - c]
     return -1 if d[amount] == 0 else d[amount]
 
-# this is correct because each iteration adds number of way the amount can be represented by
+# this is correct because each iteration adds number of ways the amount can be represented by
+#You are given coins of different denominations and a total amount of money.
+# Write a function to compute the number of combinations that make up that amount. You may assume that you have infinite number of each kind of coin.
 def solution2(amount, coins):
     if amount == 0 and coins is None:
         return 1
@@ -20,4 +22,4 @@ def solution2(amount, coins):
     return dp[amount]
 
 if __name__ == "__main__":
-    print(solution(5,[1,2,5]))
+    print(solution2(5,[1,2,5]))
