@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44fb5dd1-fc9d-4bbe-acd4-e9a5fb7f91d3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/leet/dp/arithmetic_slices.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leet/dp/minimum_sum_ACCII_from_two_sub_str.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leet/dp/minimum_sum_ACCII_from_two_sub_str.py" beforeDir="false" afterPath="$PROJECT_DIR$/leet/dp/minimum_sum_ACCII_from_two_sub_str.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -311,13 +310,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/leet/dp/minimum_sum_ACCII_from_two_sub_str.py</url>
-          <line>51</line>
+          <line>31</line>
           <option name="timeStamp" value="153" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/leet/dp/minimum_sum_ACCII_from_two_sub_str.py</url>
-          <line>46</line>
-          <option name="timeStamp" value="158" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
