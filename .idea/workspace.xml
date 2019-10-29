@@ -2,21 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44fb5dd1-fc9d-4bbe-acd4-e9a5fb7f91d3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/leet/dp/longest_common_subsequence.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leet/dp/minimum_books_on_shelf.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leet/dp/minimum_cost_for_tickets.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/problem_solving.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/problem_solving.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leet/dp/arithmetic_slices.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leet/dp/minimum_sum_ACCII_from_two_sub_str.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leet/coin_change.py" beforeDir="false" afterPath="$PROJECT_DIR$/leet/dp/coin_change.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leet/coin_change2.py" beforeDir="false" afterPath="$PROJECT_DIR$/leet/dp/coin_change2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leet/contigious_array.py" beforeDir="false" afterPath="$PROJECT_DIR$/leet/dp/contigious_array.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leet/contigious_array2.py" beforeDir="false" afterPath="$PROJECT_DIR$/leet/dp/contigious_array2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leet/count_and_say.py" beforeDir="false" afterPath="$PROJECT_DIR$/leet/count_and_say.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leet/count_palindromic_substring.py" beforeDir="false" afterPath="$PROJECT_DIR$/leet/dp/count_palindromic_substrings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leet/max_palindromic_substrings.py" beforeDir="false" afterPath="$PROJECT_DIR$/leet/dp/max_palindromic_substrings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leet/merge_two_sorted_lists.py" beforeDir="false" afterPath="$PROJECT_DIR$/leet/merge_two_sorted_lists.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leet/roman_to_ingeter.py" beforeDir="false" afterPath="$PROJECT_DIR$/leet/roman_to_ingeter.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -71,20 +59,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.minimum_books_on_shelf">
-    <configuration name="coin_change" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.minimum_sum_ACCII_from_two_sub_str">
+    <configuration name="arithmetic_slices" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="problem_solving" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:\Users\v-alsami\AppData\Local\Programs\Python\Python37-32\python.exe" />
+      <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/leet/dp" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/leet/dp/coin_change.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/leet/dp/arithmetic_slices.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -156,19 +144,19 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="minimum_cost_for_tickets" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="minimum_sum_ACCII_from_two_sub_str" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="problem_solving" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:\Users\v-alsami\AppData\Local\Programs\Python\Python37-32\python.exe" />
+      <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/leet/dp" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/leet/dp/minimum_cost_for_tickets.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/leet/dp/minimum_sum_ACCII_from_two_sub_str.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -179,11 +167,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.minimum_sum_ACCII_from_two_sub_str" />
+        <item itemvalue="Python.arithmetic_slices" />
         <item itemvalue="Python.minimum_books_on_shelf" />
         <item itemvalue="Python.coin_change2" />
         <item itemvalue="Python.longest_common_subsequence" />
-        <item itemvalue="Python.minimum_cost_for_tickets" />
-        <item itemvalue="Python.coin_change" />
       </list>
     </recent_temporary>
   </component>
@@ -310,6 +298,26 @@
           <url>file://$PROJECT_DIR$/leet/dp/coin_change2.py</url>
           <line>14</line>
           <option name="timeStamp" value="134" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/leet/dp/arithmetic_slices.py</url>
+          <line>5</line>
+          <option name="timeStamp" value="135" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/leet/dp/arithmetic_slices.py</url>
+          <line>39</line>
+          <option name="timeStamp" value="142" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/leet/dp/minimum_sum_ACCII_from_two_sub_str.py</url>
+          <line>51</line>
+          <option name="timeStamp" value="153" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/leet/dp/minimum_sum_ACCII_from_two_sub_str.py</url>
+          <line>46</line>
+          <option name="timeStamp" value="158" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
