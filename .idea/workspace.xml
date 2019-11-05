@@ -4,6 +4,7 @@
     <list default="true" id="44fb5dd1-fc9d-4bbe-acd4-e9a5fb7f91d3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/leet/dp/minimum_sum_ACCII_from_two_sub_str.py" beforeDir="false" afterPath="$PROJECT_DIR$/leet/dp/minimum_sum_ACCII_from_two_sub_str.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leet/dp/minimum_sum_ACCII_from_two_sub_str2.py" beforeDir="false" afterPath="$PROJECT_DIR$/leet/dp/minimum_sum_ACCII_from_two_sub_str2.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -101,7 +102,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="longest_common_subsequence" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="df" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="problem_solving" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -113,7 +114,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/leet/dp/longest_common_subsequence.py" />
+      <option name="SCRIPT_NAME" value="E:\projects\problem_solving_python\leet\dp\df.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -167,10 +168,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.minimum_sum_ACCII_from_two_sub_str" />
+        <item itemvalue="Python.df" />
         <item itemvalue="Python.arithmetic_slices" />
         <item itemvalue="Python.minimum_books_on_shelf" />
         <item itemvalue="Python.coin_change2" />
-        <item itemvalue="Python.longest_common_subsequence" />
       </list>
     </recent_temporary>
   </component>
@@ -308,11 +309,6 @@
           <line>39</line>
           <option name="timeStamp" value="142" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/leet/dp/minimum_sum_ACCII_from_two_sub_str.py</url>
-          <line>31</line>
-          <option name="timeStamp" value="153" />
-        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -331,6 +327,8 @@
         <watch expression="i" language="Python" />
         <watch expression="right - i" language="Python" />
         <watch expression="Z[2 * center - i]" language="Python" />
+        <watch expression="dp[i + 1][j] + ord(s1[i])" language="Python" />
+        <watch expression="dp[i][j + 1] + ord(s2[j])" language="Python" />
       </configuration>
     </watches-manager>
   </component>

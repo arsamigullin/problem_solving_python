@@ -6,11 +6,17 @@ def minimumDeleteSum(s1, s2):
     for j in range(len(s2) - 1, -1, -1):
         dp[len(s1)][j] = dp[len(s1)][j + 1] + ord(s2[j])
 
+
+    # here each cell stores the minimum total amount of chars we can delete from both strings to get subsequences from
+    # both strings
+    #for example, delete and leet
     for i in range(len(s1) - 1, -1, -1):
         for j in range(len(s2) - 1, -1, -1):
             if s1[i] == s2[j]:
                 dp[i][j] = dp[i + 1][j + 1]
             else:
+                # here we take minimum sum of chars. In other words if chars from both strings are not equal we
+                # finding minimum sum of chars that can be deleted from both of strings to get subsequences
                 dp[i][j] = min(dp[i + 1][j] + ord(s1[i]),
                                dp[i][j + 1] + ord(s2[j]))
 
