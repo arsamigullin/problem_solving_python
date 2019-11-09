@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44fb5dd1-fc9d-4bbe-acd4-e9a5fb7f91d3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/leet/dp/best_time_to_buy_sell_stock_with_fee.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leet/dp/longest_arithmetic_sequence.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leet/dp/longest_string_chain.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leet/dp/longest_arithmetic_sequence.py" beforeDir="false" afterPath="$PROJECT_DIR$/leet/dp/longest_arithmetic_sequence.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,28 +59,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.longest_arithmetic_sequence">
-    <configuration name="arithmetic_slices" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="problem_solving" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/leet/dp" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/leet/dp/arithmetic_slices.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.longest_string_chain">
     <configuration name="best_time_to_buy_sell_stock_with_fee" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="problem_solving" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -144,6 +123,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="longest_string_chain" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="problem_solving" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/leet/dp" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/leet/dp/longest_string_chain.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="minimum_sum_ACCII_from_two_sub_str" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="problem_solving" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -167,11 +167,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.longest_string_chain" />
         <item itemvalue="Python.longest_arithmetic_sequence" />
         <item itemvalue="Python.best_time_to_buy_sell_stock_with_fee" />
         <item itemvalue="Python.minimum_sum_ACCII_from_two_sub_str" />
         <item itemvalue="Python.df" />
-        <item itemvalue="Python.arithmetic_slices" />
       </list>
     </recent_temporary>
   </component>
@@ -316,8 +316,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/leet/dp/longest_arithmetic_sequence.py</url>
-          <line>68</line>
+          <line>70</line>
           <option name="timeStamp" value="233" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/leet/dp/longest_string_chain.py</url>
+          <line>3</line>
+          <option name="timeStamp" value="240" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -332,6 +337,7 @@
       <configuration name="PythonConfigurationType">
         <watch expression="A[j]" language="Python" />
         <watch expression="A[i]" language="Python" />
+        <watch expression="tot" />
       </configuration>
     </watches-manager>
   </component>

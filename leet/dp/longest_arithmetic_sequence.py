@@ -1,3 +1,4 @@
+#this is wrong
 def solution(A):
     n = len(A)
 
@@ -23,7 +24,7 @@ def solution(A):
     print(res)
     return res
 
-
+#this is wrong
 def solution2(A):
     n = len(A)
     d = dict()
@@ -61,6 +62,7 @@ def solution2(A):
     return tot
 
 import collections
+#this is correct
 def solution3(A):
     n = len(A)
     dp = [collections.defaultdict(int) for _ in range(n)]
