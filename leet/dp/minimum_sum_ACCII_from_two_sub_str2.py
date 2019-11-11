@@ -1,7 +1,7 @@
 
 # this solution is not working but has some interesting technique
 class Solution:
-    def minimumDeleteSum(self, s1: str, s2: str) -> int:
+    def minimumDeleteSum(self, s1, s2):
         lookup = self.LCSLength(s1, s2)
         n = len(s1)
         m = len(s2)
