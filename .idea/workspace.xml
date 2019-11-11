@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="44fb5dd1-fc9d-4bbe-acd4-e9a5fb7f91d3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leet/dp/longest_string_chain.py" beforeDir="false" afterPath="$PROJECT_DIR$/leet/dp/longest_string_chain.py" afterDir="false" />
-    </list>
+    <list default="true" id="44fb5dd1-fc9d-4bbe-acd4-e9a5fb7f91d3" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -317,11 +314,6 @@
           <url>file://$PROJECT_DIR$/leet/dp/longest_arithmetic_sequence.py</url>
           <line>70</line>
           <option name="timeStamp" value="233" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/leet/dp/longest_string_chain.py</url>
-          <line>27</line>
-          <option name="timeStamp" value="244" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
