@@ -21,5 +21,23 @@ def romanToInt(s):
 
     return total
 
+def romanToIntRevisited(s):
+    d = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000, 'IV': 4, 'XL': 40, 'CD': 400, 'IX': 9,
+         'XC': 90, 'CM': 900}
+    i = 0
+    num = 0
+    n = len(s)
+    while i < n:
+        if s[i] in ['I', 'X', 'C']:
+            if i < n - 1:
+                r = s[i] + s[i + 1]
+                if r in d:
+                    num += d[r]
+                    i += 2
+                    continue
+        num += d[s[i]]
+        i += 1
+    return num
+
 if __name__ == '__main__':
     print(romanToInt("III"))

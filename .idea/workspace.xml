@@ -2,13 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44fb5dd1-fc9d-4bbe-acd4-e9a5fb7f91d3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/leet/dp/count_numbers_with_unique_digits.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leet/dp/integer_break.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leet/dp/longes_palindromic_subsequence.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leet/dp/maximum_length_of_repeated_subarray.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leet/dp/number_of_dice_rolls_with_target_sum.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leet/dp/unique_binary_search_trees.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leet/dp/largest_sum_of_averages.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leet/dp/longest_fibonnacci_subsequence.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leet/facebook/3sum.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leet/facebook/longes_substring_without_repetition.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leet/linked_list/remove_nth_item_from_linked_list_end.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/problem_solving.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/problem_solving.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leet/roman_to_ingeter.py" beforeDir="false" afterPath="$PROJECT_DIR$/leet/roman_to_ingeter.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -63,7 +65,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.count_numbers_with_unique_digits">
+  <component name="RunManager" selected="Python.3sum">
+    <configuration name="3sum" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="problem_solving" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/leet/facebook" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/leet/facebook/3sum.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="count_numbers_with_unique_digits" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="problem_solving" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -85,7 +108,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="integer_break" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="largest_sum_of_averages" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="problem_solving" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -97,7 +120,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/leet/dp/integer_break.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/leet/dp/largest_sum_of_averages.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -106,7 +129,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="maximum_length_of_repeated_subarray" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="longes_substring_without_repetition" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="problem_solving" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -114,11 +137,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/leet/dp" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/leet/facebook" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/leet/dp/maximum_length_of_repeated_subarray.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/leet/facebook/longes_substring_without_repetition.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -127,7 +150,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="number_of_dice_rolls_with_target_sum" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="longest_fibonnacci_subsequence" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="problem_solving" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -139,28 +162,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/leet/dp/number_of_dice_rolls_with_target_sum.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="unique_binary_search_trees" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="problem_solving" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/leet/dp" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/leet/dp/unique_binary_search_trees.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/leet/dp/longest_fibonnacci_subsequence.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -171,11 +173,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.3sum" />
+        <item itemvalue="Python.longes_substring_without_repetition" />
+        <item itemvalue="Python.largest_sum_of_averages" />
+        <item itemvalue="Python.longest_fibonnacci_subsequence" />
         <item itemvalue="Python.count_numbers_with_unique_digits" />
-        <item itemvalue="Python.unique_binary_search_trees" />
-        <item itemvalue="Python.number_of_dice_rolls_with_target_sum" />
-        <item itemvalue="Python.maximum_length_of_repeated_subarray" />
-        <item itemvalue="Python.integer_break" />
       </list>
     </recent_temporary>
   </component>
@@ -348,6 +350,26 @@
           <line>18</line>
           <option name="timeStamp" value="261" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/leet/dp/longest_fibonnacci_subsequence.py</url>
+          <line>5</line>
+          <option name="timeStamp" value="262" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/leet/facebook/longes_substring_without_repetition.py</url>
+          <line>22</line>
+          <option name="timeStamp" value="275" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/leet/facebook/longes_substring_without_repetition.py</url>
+          <line>36</line>
+          <option name="timeStamp" value="276" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/leet/facebook/3sum.py</url>
+          <line>4</line>
+          <option name="timeStamp" value="281" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -363,6 +385,8 @@
         <watch expression="dp[k - j][i - 1]" language="Python" />
         <watch expression="k-j" language="Python" />
         <watch expression="i-1" language="Python" />
+        <watch expression="longest" />
+        <watch expression="average(i, j)" language="Python" />
       </configuration>
     </watches-manager>
   </component>
