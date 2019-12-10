@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44fb5dd1-fc9d-4bbe-acd4-e9a5fb7f91d3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/leet/dp/largest_sum_of_averages.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leet/dp/longest_fibonnacci_subsequence.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leet/facebook/3sum.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leet/facebook/longes_substring_without_repetition.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leet/linked_list/remove_nth_item_from_linked_list_end.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/problem_solving.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/problem_solving.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leet/facebook/add_binary.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leet/facebook/merge_sorted_array.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leet/facebook/minimum_window_substring.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leet/roman_to_ingeter.py" beforeDir="false" afterPath="$PROJECT_DIR$/leet/roman_to_ingeter.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +60,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.3sum">
+  <component name="RunManager" selected="Python.add_binary">
     <configuration name="3sum" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="problem_solving" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -87,7 +82,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="count_numbers_with_unique_digits" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="add_binary" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="problem_solving" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -95,11 +90,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/leet/dp" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/leet/facebook" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/leet/dp/count_numbers_with_unique_digits.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/leet/facebook/add_binary.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -150,7 +145,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="longest_fibonnacci_subsequence" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="minimum_window_substring" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="problem_solving" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -158,11 +153,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/leet/dp" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/leet/facebook" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/leet/dp/longest_fibonnacci_subsequence.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/leet/facebook/minimum_window_substring.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -173,11 +168,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.add_binary" />
+        <item itemvalue="Python.minimum_window_substring" />
         <item itemvalue="Python.3sum" />
         <item itemvalue="Python.longes_substring_without_repetition" />
         <item itemvalue="Python.largest_sum_of_averages" />
-        <item itemvalue="Python.longest_fibonnacci_subsequence" />
-        <item itemvalue="Python.count_numbers_with_unique_digits" />
       </list>
     </recent_temporary>
   </component>
@@ -370,6 +365,11 @@
           <line>4</line>
           <option name="timeStamp" value="281" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/leet/facebook/add_binary.py</url>
+          <line>27</line>
+          <option name="timeStamp" value="295" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -381,11 +381,6 @@
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="dp[k][i]" language="Python" />
-        <watch expression="dp[k - j][i - 1]" language="Python" />
-        <watch expression="k-j" language="Python" />
-        <watch expression="i-1" language="Python" />
-        <watch expression="longest" />
         <watch expression="average(i, j)" language="Python" />
       </configuration>
     </watches-manager>
