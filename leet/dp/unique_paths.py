@@ -3,7 +3,7 @@ def solution(m,n):
     # dp = [[0]*m]*n
     #because dp[0][2]=3
     # [[0, 0, 3], [0, 0, 3], [0, 0, 3], [0, 0, 3]]
-    dp = [[0] * m for _ in range(n)]
+    dp = [[0] * m for _ in range(n)] # this is correct one
     for i in range(n):
         dp[i][0] = 1
     for i in range(m):

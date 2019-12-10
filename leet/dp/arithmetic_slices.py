@@ -1,3 +1,5 @@
+
+#wrong solution
 def solution(arr):
     n = len(arr)
     d = dict()
@@ -20,6 +22,7 @@ def solution(arr):
 
     return find_slice(1, arr[1] - arr[0])
 
+#wrong solution
 def solution2(arr):
     n = len(arr)
     def find_slice(i, diff):
@@ -35,6 +38,7 @@ def solution2(arr):
 
     return find_slice(1, arr[1] - arr[0])
 
+#correct solution
 def solution3(arr):
 
     if len(arr) <=3:
@@ -51,7 +55,16 @@ def solution3(arr):
             add_to_cnt = 1
     return count
 
-
+def longestArithSeqLength(self, A):
+    n = len(A)
+    dp = [collections.defaultdict(int) for _ in range(n)]
+    res = 0
+    for i in range(1, n):
+        for j in range(0, i):
+            diff = A[i] - A[j]
+            dp[i][diff] = dp[j][diff] + 1
+            res = max(res, dp[i][diff])
+    return res + 1
 
 if __name__ == "__main__":
     print(solution3([1,2,3,8,9,10]))
