@@ -19,7 +19,7 @@ def solution(a,b):
     return res_bin[::-1] # do not forget to reverse
 
 #shortest solution
-def addBinary(self, a, b) -> str:
+def add_binary2(self, a, b):
     return '{0:b}'.format(int(a, 2) + int(b, 2))
 
 
@@ -54,7 +54,7 @@ def bit_by_bit_computation(a, b):
 #Current carry is left-shifted AND of x and y: carry = (x & y) << 1.
 #Job is done, prepare the next loop: x = answer, y = carry.
 #Return x in the binary form.
-def addBinary(a, b) -> str:
+def add_binary(a, b):
     x, y = int(a, 2), int(b, 2)
     while y:
         x, y = x ^ y, (x & y) << 1
