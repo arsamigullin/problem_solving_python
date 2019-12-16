@@ -1,3 +1,5 @@
+#161 https://leetcode.com/problems/one-edit-distance/
+
 class Solution:
     def isOneEditDistance(self, s: str, t: str) -> bool:
         ns, nt = len(s), len(t)
@@ -33,6 +35,7 @@ class Solution:
 
         # if s/t shorter than t/s there could be a situations where latest item is not covered since
         # i/j reached length of s/t
+        # for example s=ab t=abs
         if diff_count == 0:
             diff_count = abs(ns - nt)
 
