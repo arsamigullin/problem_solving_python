@@ -31,6 +31,9 @@ class Solution1:
 
         return root
 
+# when having such kind of task notice the condition
+# "The digits are stored in reverse order and each of their nodes contain a single digit."
+#  Having digits in reverse order is advantage, we do not need to reverse linked list
 class Solution:
     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
         head = l3 = ListNode(0)
@@ -42,9 +45,24 @@ class Solution:
             if l2:
                 carry += l2.val
                 l2 = l2.next
+            # at this point carry is sum of values of l1 and l2
+            # the calculation below needed to cover results that greater than 10
+            # let say result is 16, then val for to store gonna be 16%10=6
+            # and carry will  be 16//10 = 1
+            # carry will be used in the next round
             l3.val = carry % 10
             carry = carry // 10
+
             if l1 or l2 or carry:
                 l3.next = ListNode(0)
                 l3 = l3.next
         return head
+if __name__ == "__main__":
+    s = Solution()
+    l1 = ListNode(2)
+    l1.next = ListNode(4)
+    l1.next.next = ListNode(3)
+    l2 = ListNode(5)
+    l2.next = ListNode(6)
+    l2.next.next = ListNode(4)
+    s.addTwoNumbers(l1, l2)
