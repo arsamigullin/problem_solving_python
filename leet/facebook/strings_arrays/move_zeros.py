@@ -32,23 +32,15 @@ class Solution1:
 
 class Solution:
     def moveZeroes(self, nums):
-        # count zeros
-        zero_cnt = 0
-        for i in range(len(nums)):
-            if nums[i] == 0:
-                zero_cnt += 1
         i = 0
         j = 0
         while i < len(nums):
             if nums[i] == 0:
                 i+=1
                 continue
-            nums[j] = nums[i]
+            nums[j], nums[i] = nums[i], nums[j]
             j+=1
             i+=1
-        while j<len(nums):
-            nums[j] = 0
-            j+=1
         return nums
 
 
