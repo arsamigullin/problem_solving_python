@@ -1,7 +1,8 @@
 
-# the best way to understand the this solution is to use some examples
-# Before, let's mention that we have marker v. It will assign unique number to each of the node and regardless completeness
-# it will always have the same values regardless of tree completness, for example
+# the best way to understand this solution is to use some examples
+# Before, let's mention that we have marker v. It will assign unique number
+# to each of the node and regardless completeness
+# it will always have the same values regardless of tree completeness, for example
 # tree
 #     1         1
 #    / \       /
@@ -15,8 +16,10 @@
 # 1-1, 2-2, 5-5
 
 # the only thing that will be changed when traversing the tree will be the stack length
-# if we have a perfect tree OR if all the leaves are as left as possible the len of stack will equal v from the latest node pasted to the stack
-# But if we have gaps in the lowest level meaning the leaves are not as left as possible the length of stack will be less that v from lates node
+# if we have a perfect tree OR if all the leaves are as left as possible the len
+# of stack will equal v from the latest node pasted to the stack
+# But if we have gaps in the lowest level meaning the leaves are not as left
+# as possible the length of stack will be less that v from lates node
 class Solution(object):
     def isCompleteTree(self, root):
         nodes = [(root, 1)] #stack
@@ -25,6 +28,9 @@ class Solution(object):
             node, v = nodes[i]
             i += 1
             if node:
+                # Note how we assign order number
+                # this is correct because it will cover LEFT and RIGHT nodes
+                # Note we also adding None nodes here with an appropriate numbers
                 nodes.append((node.left, 2 * v))
                 nodes.append((node.right, 2 * v + 1))
 
