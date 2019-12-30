@@ -2,7 +2,7 @@ class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
-        self.right = right
+        self.right =  right
 
 
 l = [1, 2, 3, 5, 7, 9, 6, None, 8, 9, None]
