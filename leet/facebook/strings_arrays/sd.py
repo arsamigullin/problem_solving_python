@@ -44,3 +44,4 @@ class Solution:
             elif s2_map[l] == s1_map[l] - 1:
                 count-=1
         return count == 26
+

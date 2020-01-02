@@ -1,5 +1,8 @@
 # incorrect
 import collections
+import operator
+
+
 def longestArithSeqLength(A):
     n = len(A)
     dp1 = [collections.defaultdict(int) for _ in range(n)]

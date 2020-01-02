@@ -15,7 +15,8 @@ class Solution:
                     count +=1
         return count
     # here we just using cumulative _sum starting from 0
-    # the idea is if the sum up to two different indices is the same,
+    # the idea is if the sum up
+    # upto two indices is the same, the sum of the elements lying in between those indices is zero.
     # for example [2,3,-3,1,2], sum up to index 1 is 5 and sum up to index 4 is 5 also,
     # so the sum of subarray from index 2 to index 4 is -3 + 1 + 2 =0
     # The same idea with k. If difference between sums up to two different indices is k,
@@ -36,7 +37,9 @@ class Solution:
 
 
 if __name__ == "__main__":
+
     s = Solution()
+    #s.subarraySum([2,3,-3,1,2],5)
     s.subarraySum([1,1,1], 2)
     s.subarraySum([-1,-1,1],2)
     s.subarraySum([1,2,3],3)
