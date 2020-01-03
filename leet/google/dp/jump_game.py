@@ -54,3 +54,15 @@ class Solution:
 
 # Accepted
 # Greedy
+# let's consider an example [2,3,1,1,4]
+# we start from the last index and move back to the first index
+# the last position is gonna be the last index
+# if the current index plus its value is greater than last pos assign las position the current index
+# i+nums[i] >= lastpos means we can reach lastpos
+class Solution:
+    def canJump(self, nums: list) -> bool:
+        lastpos = len(nums) - 1
+        for i in range (len(nums) - 1, -1, -1):
+            if i+nums[i] >= lastpos:
+                lastpos = i
+        return lastpos == 0
