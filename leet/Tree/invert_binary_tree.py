@@ -1,4 +1,4 @@
-from trees_and_graphs.dfs import TreeNode
+from techniques.trees_and_graphs.dfs import TreeNode
 
 
 class Solution:

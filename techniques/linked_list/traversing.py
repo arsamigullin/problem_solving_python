@@ -1,4 +1,4 @@
-from linked_list.list_node import ListNode
+from techniques.linked_list.list_node import ListNode
 
 def traverse(node):
     current = node

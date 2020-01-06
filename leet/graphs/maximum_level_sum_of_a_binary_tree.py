@@ -1,6 +1,6 @@
 import collections
 
-from trees_and_graphs.dfs import TreeNode
+from techniques.trees_and_graphs.dfs import TreeNode
 #https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/
 # we use BFS
 # we do not maintain a dictionary, instead we maintain local variable to store the sum at a particular level

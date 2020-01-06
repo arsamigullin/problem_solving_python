@@ -1,6 +1,6 @@
 import collections
 
-from trees_and_graphs.dfs import TreeNode
+from techniques.trees_and_graphs.dfs import TreeNode
 #https://leetcode.com/problems/binary-tree-vertical-order-traversal/
 # Algo
 # 1. Usign BFS we assign idx starting from root. Root will always have 0
