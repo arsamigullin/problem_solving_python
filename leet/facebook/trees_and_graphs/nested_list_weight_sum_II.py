@@ -62,6 +62,7 @@ class SolutionMy:
 # Note we do not reset leve_sum after adding up to the total_sum
 class Solution:
     def depthSumInverse(self, nestedList: List[NestedInteger]) -> int:
+        # this works because
         total_sum = level_sum = 0
         while nestedList:
             nxt_level_list = []
