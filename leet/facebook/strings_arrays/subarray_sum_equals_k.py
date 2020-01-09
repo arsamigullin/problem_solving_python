@@ -39,6 +39,7 @@ class Solution:
 if __name__ == "__main__":
 
     s = Solution()
+    s.subarraySum([1,-3, 8, -3],5)
     s.subarraySum([2,3,-3,1,2],5)
     s.subarraySum([1,1,1], 2)
     s.subarraySum([-1,-1,1],2)
