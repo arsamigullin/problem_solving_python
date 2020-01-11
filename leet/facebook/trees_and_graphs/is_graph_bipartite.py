@@ -19,6 +19,9 @@ class Solution:
             if node not in color:
                 color[node] = 0
                 stack = [node]
+                # it is important to maintain stack within the parent
+                # if we had the stack out of loop we would end up with always True
+                # whenever we've met None graph
                 while stack:
                     n = stack.pop()
                     for child in graph[n]:
