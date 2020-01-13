@@ -18,29 +18,23 @@ class Solution:
         return A
 
 
-class Solution1:
+class Solution:
     def findAnagrams(self, s: str, p: str) -> list:
         if len(p) > len(s):
             return []
-        st = 'qwertyuiopasdfghjklzxcvbnm'
-        dic = {}
-        word = {}
-        n = len(p)
-        for w1 in st:
-            dic[w1] = 0
-            word[w1] = 0
-        for w2 in p:
-            dic[w2] += 1
-        for i in range(n):
-            word[s[i]] +=1
+        map_s = [0] * 26
+        map_p = [0] *26
+        for i in range(len(p)):
+            map_s[ord(s[i]) - 97]+=1
+            map_p[ord(p[i]) - 97]+=1
         c = []
-        if word == dic:
+        if map_s == map_p:
             c.append(0)
-        for j in range(n, len(s)):
-            word[s[j]] +=1
-            word[s[j-n]] -=1
-            if word == dic:
-                c.append(j-n+1)
+        for j in range(len(p), len(s)):
+            map_s[ord(s[j]) - 97] +=1
+            map_s[ord(s[j-len(p)]) - 97] -=1
+            if map_s == map_p:
+                c.append(j-len(p)+1)
         return c
 
 

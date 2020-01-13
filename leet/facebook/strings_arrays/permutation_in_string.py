@@ -46,6 +46,26 @@ class Solution:
                 count-=1
         return count == 26
 
+# this solution is faster
+class Solution:
+    def checkInclusion(self, p: str, s: str) -> list:
+        if len(p) > len(s):
+            return []
+        map_s = [0] * 26
+        map_p = [0] *26
+        for i in range(len(p)):
+            map_s[ord(s[i]) - 97]+=1
+            map_p[ord(p[i]) - 97]+=1
+        c = []
+        if map_s == map_p:
+            return True
+        for j in range(len(p), len(s)):
+            map_s[ord(s[j]) - 97] +=1
+            map_s[ord(s[j-len(p)]) - 97] -=1
+            if map_s == map_p:
+                return True
+        return False
+
 if __name__ == "__main__":
     s = Solution()
     s.checkInclusion("ab", "cbabab")

@@ -23,7 +23,7 @@ class Solution:
                 return True
         return False
 
-# this is using DFS approach.
+# 2. this is using DFS approach.
 # in considers array to be a graph
 # let's consider example [1,3,5,5,8]
 # the sum is 22 and half is 11. We want to find if we have elements that compose 11
