@@ -1,3 +1,7 @@
+# Important! We use DFS here.
+# the condition of correct parenthesis is lef_count==right_count
+# we will remove all the chars (and will have rem_count being max)
+# then
 class Solution(object):
 
     def __init__(self):
@@ -76,3 +80,6 @@ class Solution(object):
         # Recursive call
         self.remaining(s, 0, 0, 0, [], 0)
         return list(self.valid_expressions)
+if __name__ == "__main__":
+    s = Solution()
+    s.removeInvalidParentheses("()())()")

@@ -35,7 +35,22 @@ class Solution(object):
                 nodes.append((node.right, 2 * v + 1))
 
         return nodes[-1][1] == len(nodes)
-
+import collections
+class Solution:
+    def isCompleteTree(self, root) -> bool:
+        q = collections.deque([(root, 0)])
+        count = 0
+        max_order = 0
+        while q:
+            node, order = q.popleft()
+            max_order = max(max_order, order)
+            if node:
+                count+=1
+                if node.left:
+                    q.append((node.left, 2*order + 1))
+                if node.right:
+                    q.append((node.right, 2*order + 2))
+        return max_order == count - 1
 
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
