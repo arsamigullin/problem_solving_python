@@ -32,3 +32,25 @@ bin(1029)
 # '0b10000000101'
 1029 >> 1 # the result is 514
 # this is because the binary string 10000000101
+
+# to skip current element when traversing we do
+a = [1,2,3]
+for i in range(len(a)):
+    res = a[:i] + a[i + 1]
+# this
+for i in range(len(a))[::-1]:
+    pass
+# is same as
+for i in range(len(a)-1, -1, -1):
+    pass
+
+# Permutations
+#### n permutations from n objects ####
+#"A permutation is a (possible) rearrangement of objects." (Levin, 2016)
+# To get count of possible permutations we use multiplicative principle
+# Example [a,b,c]. a has 3 choices, b has 2 choices and c has 1 choice
+# count = 3 * 2 * 1 = 6
+# permutation of n distinct elements is n!
+#### k permutations from n objects ####
+# the number of k permutations of n elements is
+# P(n,k) = n!/(n-k)!
