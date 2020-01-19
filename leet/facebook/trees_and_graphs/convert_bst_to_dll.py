@@ -103,7 +103,45 @@ class SolutionDFSStack:
                 print(node.val)
 
 
+class SolutionAttempt:
+    def __init__(self):
+        self.first = None
+
+    def treeToDoublyList(self, root: 'Node') -> 'Node':
+        head = root
+
+        def find(node):
+            if node is None:
+                return None
+            l = find(node.left)
+
+            if l is None:
+                if self.first is None:
+                    self.first = node
+            else:
+                print(f"l {l.val}")
+                l.rigth = node
+                node.left = l
+            print(f"node {node.val}")
+            r = find(node.right)
+            if r is not None:
+                print(f"r {r.val}")
+                r.left = node
+                node.right = r
+            if r:
+                return r
+            else:
+                return node
+
+        last = find(head)
+        print(f"last {last.val}")
+        print(f"first {self.first.val}")
+        self.first.left = last
+        last.right = self.first
+        return self.first
 
 if __name__ == "__main__":
+    s = SolutionAttempt()
+    s.treeToDoublyList(root)
     s= SolutionDFSStack()
     s.treeToDoublyList(root)

@@ -9,9 +9,6 @@ class Solution:
                     return False
             if j == len(p):
                 return False
-            #elif i == len(st) or j == len(pat):
-            #   return False
-
             if st[i] == pat[j]:
                 return find(i + 1, j + 1, st, pat, cnt + 1)
             elif pat[j] == '*':
