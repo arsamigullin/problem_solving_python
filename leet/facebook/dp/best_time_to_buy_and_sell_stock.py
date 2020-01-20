@@ -1,3 +1,7 @@
+#
+# assign buy to be max and profit to be 0
+# on each element assume you sold at this value
+# evaluate max_profit(must be greater than latest val) and next buy(must be less than curr val)
 class Solution:
     def maxProfit(self, prices: list) -> int:
         buy = float('inf')
