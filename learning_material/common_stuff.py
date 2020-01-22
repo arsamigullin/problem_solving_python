@@ -33,6 +33,9 @@ bin(1029)
 1029 >> 1 # the result is 514
 # this is because the binary string 10000000101
 
+# conversion from binary to decimal
+# int(b, 2)
+
 # to skip current element when traversing we do
 a = [1,2,3]
 for i in range(len(a)):

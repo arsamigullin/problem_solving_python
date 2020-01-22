@@ -1,7 +1,8 @@
 # Algo
 # this is dp approach
 # initially dp is filled with False except the first elemet
-# then we use a well-known approach that starts from the middle
+# then we use a well-known approach that checks every index from the beginning till the middle
+
 
 class Solution:
     def wordBreak(self, s: str, wordDict: list) -> bool:
