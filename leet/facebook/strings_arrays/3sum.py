@@ -29,16 +29,14 @@ def threeSum(nums):
     return s
 
 # this runs much faster (300ms)
-def threeSum(self, nums):
+def threeSum(nums):
     """
     :type nums: List[int]
     :rtype: List[List[int]]
     """
     dic = {}
     for ele in nums:
-        if ele not in dic:
-            dic[ele] = 0
-        dic[ele] += 1
+        dic[ele] = dic.get(ele, 0) + 1
 
     if 0 in dic and dic[0] > 2:
         rst = [[0, 0, 0]]
@@ -62,6 +60,90 @@ def threeSum(self, nums):
     return rst
 
 
+class Solution:
+    def threeSum(self, nums):
+        visited = set()
+        res = []
+        for i in range(len(nums) - 2):
+            target = 0 - nums[i]
+            d = {}
+            for j in range(i + 1, len(nums)):
+
+                if (min(nums[i], nums[j]), max(nums[i], nums[j])) in visited:
+                    continue
+                diff = target - nums[j]
+                if diff in d:
+                    visited.add((min(nums[i], nums[j]), max(nums[i], nums[j])))
+                    res.append([nums[i], diff, nums[j]])
+                d[nums[j]] = j
+        return res
+
+class SolutionPointers:
+    def threeSum(self, nums):
+        nums.sort()
+        res = set()
+        for i in range(len(nums)):
+            target = 0 - nums[i]
+            l = i + 1
+            r = len(nums) - 1
+            while l<r:
+                lrsum = nums[l] + nums[r]
+                if lrsum == target:
+                    res.add((nums[i], nums[l], nums[r]))
+                elif lrsum > target:
+                    r-=1
+                else:
+                    l+=1
+        return res
+
+
+class SolutionPointersDic:
+    def threeSum(self, nums):
+        nums.sort()
+        dic = {}
+        for ele in nums:
+            dic[ele] = dic.get(ele, 0) + 1
+        res = set()
+        keys = list(dic.keys())
+        for i, k in enumerate(keys):
+            if dic[k] >= 2 and len(nums)>2:
+                target = 0 - k * 2
+                if target in dic:
+                    if target == k:
+                        if dic[k]>=3:
+                            res.add((k, k, target))
+                    else:
+                        res.add((k, k, target))
+            target = 0 - k
+            l = i + 1
+            r = len(keys) - 1
+            while l < r:
+                if dic[keys[l]] >= 2:
+                    if target == keys[l] * 2:
+                        res.add((keys[l], keys[l], k))
+                if dic[keys[r]] >= 2:
+                    if target == keys[r] * 2:
+                        res.add((keys[r], keys[r], k))
+                lrsum = keys[l] + keys[r]
+                if lrsum == target:
+                    res.add((keys[i], keys[l], keys[r]))
+                    r-=1
+                    l+=1
+                elif lrsum > target:
+                    r -= 1
+                else:
+                    l += 1
+
+        return res
+
+
+
+
 if __name__ == "__main__":
+    s= SolutionPointersDic()
+    s.threeSum([-4,-2,1,-5,-4,-4,4,-2,0,4,0,-2,3,1,-5,0])
+    print(s.threeSum([0,0]))
+    print(s.threeSum([-1, -1, 0, 1, 2, -1, -4]))
     #threeSum([0,1,-1])
-    print(threeSum([-1, -1, 0, 1, 2, -1, -4]))
+    #s.threeSum([-1,0,1,2,-1,-4])
+    #print(threeSum([-1, -1, 0, 1, 2, -1, -4]))

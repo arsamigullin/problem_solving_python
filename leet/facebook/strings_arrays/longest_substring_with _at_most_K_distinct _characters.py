@@ -1,5 +1,8 @@
 # https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/
 # window technique
+# What does it mean "at most two disctinct characters"
+# "aaaeee" - this string has 2 distinct characters
+# "aaet" - this string has 3 distinct characters
 
 #Now one could write down the algortihm.
 

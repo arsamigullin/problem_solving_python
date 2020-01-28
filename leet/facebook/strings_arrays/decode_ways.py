@@ -6,6 +6,10 @@
 # when looking back on 1 char we check if it is > 0
 # when looking back on chars we check if the number is >10 and <26 to avoid '07'
 
+
+# Note: dp is initialized with len(s)+1 length
+# this gives us the possibility to handle the very latest element of an array
+
 class SolutionDp:
     def numDecodings(self, s: str) -> int:
 

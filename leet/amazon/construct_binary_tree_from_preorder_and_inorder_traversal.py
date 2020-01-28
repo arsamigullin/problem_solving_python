@@ -9,8 +9,8 @@ import collections
 # Observations
 # Inorder traversal splits the the array on two halves
 # for example
-# inorder [9,3,15,20,7],
-# preorder [9,15,7,20,3]. The root is 3
+# inorder [9,3,15,20,7], the root is 3
+# preorder = [3,9,20,15,7]. The root is 3
 # 3 splits inorder on two halves
 # before start we mapping inorder to the dict where key is val and value is index
 # On each iteration we poppingLEFT from postorder and create a root
