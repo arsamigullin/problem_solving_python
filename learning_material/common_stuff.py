@@ -57,6 +57,8 @@ for i in range(len(a)-1, -1, -1):
 #### k permutations from n objects ####
 # the number of k permutations of n elements is
 # P(n,k) = n!/(n-k)!
+#### combinations of k unique elements from n objects ####
+# C(n,k) = n!/(n-k)!k! - this is also binomial coefficient
 
 # suppose we have 2 dimensional array
 B = [[7, 2, 3],[4, 5, 6],[0, 0, 1]]
@@ -65,3 +67,7 @@ B = [[7, 2, 3],[4, 5, 6],[0, 0, 1]]
 enumerate(zip(B))
 # to get col and an array at this col we do
 enumerate(zip(*B))
+
+
+
+

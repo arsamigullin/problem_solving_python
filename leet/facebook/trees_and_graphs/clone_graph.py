@@ -6,22 +6,29 @@ class Node:
         self.neighbors = neighbors
 #
 from collections import deque
+
+# Algo
+# Using DFS we popleft the node
+# and we create a new node with the the same value and we put in onto dict with key = curr_node.val if it is not there
+# we traverse over the neighbors of the current node and we create new instances of the neighbors and put them to the
+# the dictionary if they are not in the dictionary
+# IMPORTANT: we append queue with the only neighbors that are not in dictionary
 class Solution:
     def cloneGraph(self, node: 'Node') -> 'Node':
         #print(node)
         d={}
         queue = deque([node])
         while len(queue) > 0:
-            nd = queue.popleft()
-            if nd:
-                if nd.val not in d:
-                    d[nd.val] = Node(nd.val, [])
-                tmp = d[nd.val]
-                for nb in nd.neighbors:
-                    if nb.val not in d:
-                        d[nb.val] = Node(nb.val, [])
-                        queue.append(nb)
-                    tmp.neighbors.append(d[nb.val])
+            curr_node = queue.popleft()
+            if curr_node:
+                if curr_node.val not in d:
+                    d[curr_node.val] = Node(curr_node.val, [])
+                new_parent = d[curr_node.val]
+                for nei in curr_node.neighbors:
+                    if nei.val not in d:
+                        d[nei.val] = Node(nei.val, [])
+                        queue.append(nei)
+                    new_parent.neighbors.append(d[nei.val])
         return d[node.val]
 
 n1 = Node(1, [])

@@ -72,7 +72,7 @@ class Trie:
 
 
 # this solution is much faster but underneath it uses dict
-class Trie:
+class TrieDict:
 
     def __init__(self):
         """
@@ -89,7 +89,16 @@ class Trie:
             if c not in currNode:
                 currNode[c] = dict()
             currNode = currNode[c]
+        # this placeholder denotes the end of a string
+        # consider these two  words abcc and abccd
+        # after inserting the words to the trie we have
+        # {'a': {'b': {'c': {'c': {'#': '#'}}}}}
+        # {'a': {'b': {'c': {'c': {'#': '#', 'd': {'#': '#'}}}}}}
+        # when searching the word after reaching the latest letter in word
+        # we also check if the '#' among children of the latest letter
+        # so the '#' allows us to say if the whole word (not prefix) is in the Trie
         currNode['#'] = '#'
+        print(self.root)
 
     def search(self, word: str) -> bool:
         """
@@ -112,3 +121,8 @@ class Trie:
                 return False
             currNode = currNode[c]
         return True
+
+if __name__ == "__main__":
+    s = TrieDict()
+    s.insert("abcc")
+    s.insert("abccd")

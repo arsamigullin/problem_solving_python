@@ -17,7 +17,7 @@ def nextPermutation(nums):
 
     if i < 0:
         nums.reverse()
-        return
+        return False
     #2
     j = len(nums) - 1
     while j >= 0 and nums[j] <= nums[i]:
@@ -34,7 +34,9 @@ def nextPermutation(nums):
         nums[start], nums[end] = nums[end], nums[start]
         start += 1
         end -= 1
+    return True
 
 if __name__ == "__main__":
+    nextPermutation([4, 9, 5, 3, 1])
     nextPermutation([5, 1, 1])
     nextPermutation([4,9,5])
