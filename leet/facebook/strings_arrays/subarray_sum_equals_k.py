@@ -1,5 +1,7 @@
 
 # https://leetcode.com/problems/subarray-sum-equals-k/
+
+# the same technique is applied here subarray_sum_equals_k.py
 from collections import defaultdict
 class Solution:
     # prefix sum approach O(n^2)
@@ -22,6 +24,8 @@ class Solution:
     # The same idea with k. If difference between sums up to two different indices is k,
     # the we can subtract k from sum up some index and try to find difference in hash map.
     # if we found the second sum that means we found that subarray
+    
+    # the same technique is applied here path_sum_III.py
     def subarraySum(self, nums, k):
         d = defaultdict(int)
         d[0]=1

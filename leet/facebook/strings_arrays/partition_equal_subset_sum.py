@@ -6,7 +6,7 @@
 # let's consider example [1,5,5,11]
 # the sum of the arr is 22, we create array of len 23
 # in this array 1 means the sum (sum is index in this array) is found in this array
-# This is well-known approach where we start from the middle and sum all the elements from the start with the middle
+
 class Solution:
     def canPartition(self, nums: list) -> bool:
         numSum = sum(nums)
@@ -19,9 +19,25 @@ class Solution:
             for i in range(numSum, -1, -1):
                 if dp[i]:
                     dp[num + i] = 1 # mark the found sum sum
-            if dp[int(numSum / 2)] == 1: # once we found the middle return True
+            if dp[numSum//2] == 1: # once we found the middle return True
                 return True
         return False
+# the same as above
+class Solution:
+    def canPartition(self, nums: list) -> bool:
+        numSum = sum(nums)
+        if numSum % 2 != 0:
+            return False
+        target = numSum//2
+        dp = [0] * (target + 1)
+        dp[0] = 1 # this is to include number itself
+        
+        for num in nums:
+            for i in range(target, num-1, -1):
+                dp[i] += dp[i-num]
+                if dp[target]>0:
+                    return True
+        return dp[target] > 0
 
 # 2. this is using DFS approach.
 # in considers array to be a graph
@@ -33,6 +49,8 @@ class Solution:
 # so next time we do not need to calculate 5 again, we will just return False
 # When reaching 3 we see that the difference is 0 (which means we that we have in the array numbers that compose target
 # 11) we return True, since we initialized memo with {0:True}
+
+# the goal is to find the target once
 class SolutionMemo:
     def canPartition(self, nums: list) -> bool:
         s, n, memo = sum(nums), len(nums), {0: True}
@@ -45,8 +63,10 @@ class SolutionMemo:
                     for j in range(i, n):
                         if dfs(j+1, x-nums[j]):
                             memo[x] = True
+                            # that is why break is here
                             break
             return memo[x]
+            #s>>1 is the same as s//2
         return dfs(0, s >> 1)
 
 
@@ -70,5 +90,5 @@ if __name__ == "__main__":
     #s.canPartition([1,5,5,11])
     s = SolutionMemo()
     s.canPartition([1,3,5,5,8])
-    s = Solution()
-    s.canPartition([1,5,5,11])
+    #s = Solution()
+    #s.canPartition([5,5,11,1])

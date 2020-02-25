@@ -138,6 +138,7 @@ dmypy.json
 **/.idea/sqlDataSources.xml
 **/.idea/dynamic.xml
 **/.idea/uiDesigner.xml
+**/.vscode
 
 ## File-based project format:
 *.iws
