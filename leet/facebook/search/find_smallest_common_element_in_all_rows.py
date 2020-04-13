@@ -1,3 +1,9 @@
+# https://leetcode.com/problems/find-smallest-common-element-in-all-rows/submissions/
+
+# We need to find the smalles common to each array item
+# we take the first array and do binary search in each array of each item from the first array
+# since items in sorted order the first found common item will be the minimal
+
 import typing
 List = typing.List
 
@@ -8,23 +14,24 @@ class Solution:
         def binary_search(arr, target):
             s = 0
             e = len(arr) - 1
-            while s < e:
-                mid = e-(e-s)//2
+            while s <= e:
+                #mid = s+(e-s)//2 #this works as well as the command right below
+                mid = e - (e-s)//2
                 if arr[mid] == target:
                     return True
                 elif arr[mid] > target:
                     e = mid - 1
-                elif arr[mid] < target:
+                else:
                     s = mid + 1
             return False
-        for target in mat[0]:
+        for t in mat[0]:
             is_common = True
             for i in range(1,len(mat)):
-                if not binary_search(mat[i],target):
+                if not binary_search(mat[i],t):
                     is_common = False
                     break
             if is_common:
-                return target
+                return t
         return -1
 if __name__ == "__main__":
     s = Solution()

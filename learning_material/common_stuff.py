@@ -26,6 +26,7 @@ bin(12)
 # x >> y - Returns x with the bits shifted to the right by y places. This is the same as dividing x//2**y
 # x << y  - Returns x with the bits shifted to the left by y places (and new bits on the right-hand-side are zeros).
 # This is the same as multiplying x by 2**y
+#
 
 # let's suppose we want to shift the bits to the right by 1
 bin(1029)
@@ -35,6 +36,21 @@ bin(1029)
 
 # conversion from binary to decimal
 # int(b, 2)
+
+#  n & (-n) is a way to keep the rightmost 1-bit and to set all the other bits to 0.
+# 7 & (-7) = 7 & (invert all bits of 7 + 1)= 0000111 & (1111000 + 1) = 0000111 & 1111001 = 0000001
+# 7 !=1
+# 16 & (-16) = 16 & (invert all bits of 16 + 1) = 00010000 & (11101111 + 1) = 00010000 & 11110000 = 00010000
+# 16 == 16
+
+
+#  x & (x - 1) is a way to set the rightmost 1-bit to zero.
+# To subtract 1 means to change the rightmost 1-bit to 0 and to set all the lower bits to 1.
+# if x & (x - 1) == 0 the number is power of two
+# 4 & (4-1) = 00100 & (00100 - 1) = 00100 & 00011 = 0
+# 4 is power of 2
+
+#
 
 # to skip current element when traversing we do
 a = [1,2,3]
@@ -62,11 +78,10 @@ for i in range(len(a)-1, -1, -1):
 
 # suppose we have 2 dimensional array
 B = [[7, 2, 3],[4, 5, 6],[0, 0, 1]]
-# to get row and an array at this row we do
-# note : this we return tuple (index, ([array],)
-enumerate(zip(B))
-# to get col and an array at this col we do
-enumerate(zip(*B))
+# gets array of rows :
+zip(B)
+# gets array of cols
+zip(*B)
 
 
 

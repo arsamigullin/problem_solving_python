@@ -44,7 +44,7 @@ class Heap:
 
 
     def heapsort(self):
-        # O(nlgn)
+        # O(n)
         self.build_max_heap()
         #O(nlgn)
         for i in range(len(self.A)-1, 0, -1):

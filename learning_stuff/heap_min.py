@@ -1,3 +1,4 @@
+# O(lgn)
 def max_heap(A, parent, heapsize, key=None):
     cmp_func = lambda item: item if key is None else key
     l = 2 * parent + 1
@@ -10,7 +11,7 @@ def max_heap(A, parent, heapsize, key=None):
     if smallest!=parent:
         A[parent], A[smallest] = A[smallest], A[parent]
         max_heap(A, smallest, heapsize)
-
+# O(n)
 def heapify(A, key=None):
     if not A:
         raise ValueError("input array must not be empty")

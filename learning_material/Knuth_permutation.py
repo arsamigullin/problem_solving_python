@@ -9,7 +9,7 @@ class KnuthPermutation:
 
         if i < 0:
             arr.reverse()
-            #return False
+            return False
         # from the end we search the first num that is greater than num[i]
         j = len(arr) - 1
         while j > i and arr[j]<arr[i]:
@@ -26,9 +26,15 @@ class KnuthPermutation:
 
         return True
 
+
+
+
 if __name__ == "__main__":
     s = KnuthPermutation()
     #s.permute([4, 9, 5, 3, 1])
-    arr = [1,2,3]
-    while s.permute(arr):
+    import math
+    arr = [3,2,1]
+    n = math.factorial(len(arr))
+    for i in range(n):
+        s.permute(arr)
         print(arr)

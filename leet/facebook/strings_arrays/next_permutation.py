@@ -37,6 +37,8 @@ def nextPermutation(nums):
     return True
 
 if __name__ == "__main__":
+    nextPermutation([3,2,1])
+    nextPermutation([1,2,3])
     nextPermutation([4, 9, 5, 3, 1])
     nextPermutation([5, 1, 1])
     nextPermutation([4,9,5])

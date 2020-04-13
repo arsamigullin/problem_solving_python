@@ -9,7 +9,7 @@ def partitiondesc(A,s,e):
     x = A[e] #  pivot element around which to partition the subarray
     i = s - 1 # start element, it can be negative
     for j in range(s, e):
-        # once the current element is less or equal pivot
+        # once the current element is greater or equal pivot
         # we swap values between i and j indexes
         # so under i index we have value that less or equal than pivot
         # i is just pointing where we will insert the current item that is less or equal pivot

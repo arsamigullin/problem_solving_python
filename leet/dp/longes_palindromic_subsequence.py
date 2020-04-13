@@ -8,10 +8,14 @@ def solution(s):
         if s[i] == s[j]:
             return find(i+1, j-1) + 2
         key = str(i)+"|"+str(j)
+        #print(key)
         if key not in d:
             d[key] = max(find(i+1,j), find(i,j-1))
         return d[key]
-    return find(0, len(s) - 1)
+    find(0, len(s) - 1)
+    print(d)
+
 
 if __name__ == "__main__":
-    print(solution("bbbab"))
+    print(solution("abcdeca"))
+    #print(solution("fcgihcgeadfehgiabegbiahbeadbiafgcfchbcacedbificicihibaeehbffeidiaiighceegbfdggggcfaiibefbgeegbcgeadcfdfegfghebcfceiabiagehhibiheddbcgdebdcfegaiahibcfhheggbheebfdahgcfcahafecfehgcgdabbghddeadecidicchfgicbdbecibddfcgbiadiffcifiggigdeedbiiihfgehhdegcaffaggiidiifgfigfiaiicadceefbhicfhbcachacaeiefdcchegfbifhaeafdehicfgbecahidgdagigbhiffhcccdhfdbd"))

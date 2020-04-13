@@ -49,4 +49,15 @@ class Solution:
                 return True
         return False
 
+from collections import *
+import  itertools
+class Solution(object):
+
+    def __init__(self):
+        self.chars = itertools.chain.from_iterable(iter(lambda buf=[0]*4: buf[:read4(buf)], []))
+        print(self.chars)
+
+    def read(self, buf, n):
+        return len([buf.__setitem__(*x) for x in zip(range(n), self.chars)])
+
 

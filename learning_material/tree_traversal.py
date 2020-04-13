@@ -12,24 +12,98 @@ def compose_tree(l, i):
     root.left = compose_tree(l, 2 * i + 1,)
     root.right = compose_tree(l, 2 * i + 2)
     return root
+
+##########recursive#############
 inbucket = []
 def inorder(root):
     if root:
         inorder(root.left)
         inbucket.append(root.val)
         inorder(root.right)
+
+prebucket = []
+def preorder(root):
+    if root:
+        prebucket.append(root.val)
+        preorder(root.left)
+        preorder(root.right)
+
+
 postbucket = []
 def postorder(root):
     if root:
-
         postorder(root.left)
         postorder(root.right)
         postbucket.append(root.val)
+
+##########iterative###############
+
+dfsIterativePreOrderBucket = []
+def dfsIterativePreorder(root):
+    stack = []
+    node = root
+    while stack or node is not None:
+        if node is None:
+            node = stack.pop()
+            node = node.right
+        else:
+            dfsIterativePreOrderBucket.append(node.val)
+            stack.append(node)
+            node = node.left
+
+def dfsIterativeAnotherOptionPreorder(root):
+    node = root
+    stack = [node]
+
+    while stack:
+        if node is None:
+            node = stack.pop()
+            node = node.right
+        else:
+            dfsIterativePreOrderBucket.append(node.val)
+            stack.append(node)
+            node = node.left
+
+dfsIterativeInorderBucket = []
+def dfsIterativeInorder(root):
+        stack = []
+        node = root
+        while stack or node is not None:
+            if node is None:
+                node = stack.pop()
+                dfsIterativeInorderBucket.append(node.val)
+                node = node.right
+            else:
+                stack.append(node)
+                node = node.left
+
+
+
+dfsIterativePostOrderBucket = []
+def dfsIterativePostorder(root):
+    stack = [root]
+    while stack:
+        node = stack.pop()
+        dfsIterativePostOrderBucket.append(node.val)
+        if node.left:
+            stack.append(node.left)
+        if node.right:
+            stack.append(node.right)
+
+
 if __name__ == "__main__":
     node = compose_tree([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31], 0)
     #node = compose_tree([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, ], 0)
+    preorder(node)
+    print(f"preorder {prebucket}")
     inorder(node)
     print(f"inorder {inbucket}")
     postorder(node)
-    print(f"postorder {postbucket}")
+    print(f"postord {postbucket}")
+    dfsIterativeInorder(node)
+    print(f"inoIter {dfsIterativeInorderBucket}")
+    dfsIterativePreorder(node)
+    print(f"preIter {dfsIterativePreOrderBucket}")
+    dfsIterativePostorder(node)
+    print(f"posIter {list(reversed(dfsIterativePostOrderBucket))}")
 

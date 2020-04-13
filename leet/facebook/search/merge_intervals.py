@@ -1,3 +1,10 @@
+# this problem
+#https://leetcode.com/problems/merge-intervals/
+
+
+# similar problem insert_interval.py
+# https://leetcode.com/problems/insert-interval/
+
 # Algo
 # 1. Sort by first start time of intervals
 # 2. if end of current intervals is greater or equal the start of the next interval

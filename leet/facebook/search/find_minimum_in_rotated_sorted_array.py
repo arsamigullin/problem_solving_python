@@ -16,17 +16,18 @@
 # 3. Otherwise mid before the pivot point, so the start will be s= mid + 1
 import typing
 List = typing.List
+
 class Solution:
     def findMin(self, nums: List[int]) -> int:
         s = 0 
         e = len(nums) - 1
 
-        while s <= e:
-            mid = e - (e-s)//2
-            if nums[s] < nums[mid] > nums[e]:
-                s = mid + 1 
+        while s < e:
+            mid = s + (e-s)//2
+            if nums[mid] < nums[e]:
+                e = mid
             else:
-                e = mid - 1
+                s = mid + 1
         return nums[s]
 
 

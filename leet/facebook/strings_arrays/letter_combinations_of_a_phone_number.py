@@ -53,6 +53,19 @@ class Solution:
             backtrack("", digits)
         return output
 
+class Solution:
+    def letterCombinations(self, digits: str) -> List[str]:
+        if not digits:
+            return []
+        d = {'1':"", '2':"abc", '3':"def", '4':"ghi", '5':"jkl", '6':"mno", '7':"pqrs", '8':"tuv", '9':"wxyz", '0':""}
+        dp = [[] for _ in range(len(digits)+1)]
+        dp[0].append('')
+        for i in range(len(digits)):
+            num = d[digits[i]]
+            for s in dp[i]:
+                for c in num:
+                    dp[i+1].append(s+c)
+        return dp[len(digits)]
 
 # using itertools
 # this is most fast solution 
