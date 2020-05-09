@@ -1,0 +1,1 @@
+#select ROUND(COALESCE((select count(*) from (select count(accepter_id) from  request_accepted group by requester_id, accepter_id) t)/(select count(*) from (select sender_id, send_to_id, count(*) from friend_request group by sender_id, send_to_id) as t),0),2) as accept_rate

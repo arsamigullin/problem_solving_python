@@ -83,3 +83,9 @@ class Solution:
             return levels[node]
         dfs(1,1,-1)
         return res
+
+if __name__ == '__main__':
+    s = Solution()
+    s.findRedundantConnection([[1,2],[2,3],[3,4],[1,4],[1,5]])
+
+

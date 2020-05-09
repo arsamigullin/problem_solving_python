@@ -83,6 +83,37 @@ zip(B)
 # gets array of cols
 zip(*B)
 
+# convert int to str of fixed length (size 4)
+def int_to_str(num):
+    sb = [chr(num >> (i * 8) & 0xff) for i in range(4)]
+    sb.reverse()
+    return ''.join(sb)
+
+# this function is counterpart of the one that is right above
+# i.e. it converts string into back into int
+def str_to_int(val):
+    res = 0
+    for ch in val:
+        res = res * 256 + ord(ch)
+    return res
+
+
+#         This must be remembered
+#         Given position of 1-dimensional array i, to get the position of 2-dimensional array we do the following
+#         arr[i//column_count][i%column_count]
+
+if __name__ == '__main__':
+
+    # this is how we find first two min values
+    # having only one iteration
+    first = second = 0
+    for i in range(10):
+        if first_min is None or i < first:
+            second_min = first_min
+            first_min = i
+        elif second_min is None or i < second:
+            second_min = i
+    print(first,second)
 
 
 

@@ -84,5 +84,5 @@ res = ~x = -6
 # 4 & (4-1) = 00100 & (00100 - 1) = 00100 & 00011 = 0
 # 4 is power of 2
 
-#
+# flipping the bit can be done by the approaches presented in 476_Number_Complement
 

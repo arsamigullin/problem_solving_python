@@ -90,6 +90,17 @@ def dfsIterativePostorder(root):
         if node.right:
             stack.append(node.right)
 
+# sometimes it is much better to use simple implementation
+        while stack or node:
+            node, curnum = stack.pop()
+            if node is not None:
+                if node.left is None and node.right is None:
+                    curnum = curnum * 10+node.val
+                    val += curnum
+                else:
+                    stack.append(node.left)
+                    stack.append(node.right)
+        return sum(nums)
 
 if __name__ == "__main__":
     node = compose_tree([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31], 0)

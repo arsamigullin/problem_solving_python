@@ -18,7 +18,7 @@ class Solution:
         Given position of 1-dimensional array i, to get the position of 2-dimensional array we do the following
         arr[i//column_count][i%column_count]
 
-        The rest pare of the code is regular Binary search
+        The rest part of the code is regular Binary search
         '''
         if not matrix:
             return False

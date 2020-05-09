@@ -1,6 +1,10 @@
 # https://leetcode.com/problems/product-of-array-except-self/
 
 # with division
+import math
+from typing import List
+
+
 class MySolution:
     def productExceptSelf(self, nums):
         # pref products technique
@@ -63,7 +67,52 @@ class Solution2:
 
         return answer
 
+class Solution4:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        nonzeroprod = 1
+        zerocnt = 0
+        for n in nums:
+            if n != 0:
+                nonzeroprod*=n
+            elif n == 0:
+                zerocnt +=1
+
+        res = [0] * len(nums)
+        for i, num in enumerate(nums):
+            if num == 0 and zerocnt == 1:
+                    res[i] = nonzeroprod
+            elif zerocnt==0:
+                    sign = 1 if (nonzeroprod > 0 and num > 0) or (nonzeroprod<0 and num<0) else -1
+                    res[i] = sign * int(round(math.exp(math.log(abs(nonzeroprod)) - math.log(abs(num)))))
+        return res
+
+
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        res = [0] * len(nums)
+        nonzeroprod = 1
+        zerocnt = 0
+        for n in nums:
+            if n != 0:
+                nonzeroprod *= n
+            elif n == 0:
+                zerocnt += 1
+
+        for i, n in enumerate(nums):
+            if n == 0 and zerocnt == 1:
+                res[i] = nonzeroprod
+            elif zerocnt == 0:
+                nzpd = nonzeroprod
+                nzpd = abs(nzpd)
+                absn = abs(n)
+                for x in range(32)[::-1]:
+                    if (nzpd >> x) - absn >= 0:
+                        res[i] += 1 << x
+                        nzpd -= absn << x
+                sign = 1 if (nonzeroprod > 0 and n > 0) or (nonzeroprod < 0 and n < 0) else -1
+                res[i] *= sign
+        return res
 
 if __name__ == "__main__":
-    s = Solution2()
-    s.productExceptSelf([1, 2, 3, 4])
+    s = Solution4()
+    s.productExceptSelf([1, 2, 3])

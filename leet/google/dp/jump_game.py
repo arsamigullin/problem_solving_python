@@ -28,9 +28,9 @@ class Solution:
             max_distance_to_jump_from_cur_index = cur_index + nums[cur_index]
             for i in range(cur_index + 1, max_distance_to_jump_from_cur_index + 1):
                 if canjmp(i, nums):
-                    memo[i] = 'G'
+                    memo[cur_index] = 'G'
                     return True
-            memo[i] = 'B'
+            memo[cur_index] = 'B'
             return False
         return canjmp(0, nums)
 

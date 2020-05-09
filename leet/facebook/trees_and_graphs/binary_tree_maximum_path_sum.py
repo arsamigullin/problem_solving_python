@@ -43,3 +43,23 @@ class Solution:
         max_sum = float('-inf')
         max_gain(root)
         return max_sum
+
+
+class Solution:
+    def maxPathSum(self, root) -> int:
+        max_val = float('-inf')
+
+        def dfs(node):
+            nonlocal max_val
+            if not node:
+                return float('-inf')
+            max_val = max(max_val, node.val)
+            l = dfs(node.left)
+            r = dfs(node.right)
+            max_val = max(max_val, l + node.val)
+            max_val = max(max_val, r + node.val)
+            max_val = max(max_val, l + node.val + r)
+            return max(node.val + r, node.val + l, node.val)
+
+        dfs(root)
+        return max_val
