@@ -1,4 +1,6 @@
 # O(n)
+# greedy
+
 class Solution(object):
     '''
     the idea is to replace the smallest number from the left side with greatest value from the right side

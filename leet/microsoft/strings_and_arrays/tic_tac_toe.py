@@ -1,6 +1,6 @@
 # similar problem
 # https://leetcode.com/problems/design-tic-tac-toe/
-# 348. Design Tic-Tac-Toe
+# 348. design Tic-Tac-Toe
 
 # https://leetcode.com/problems/valid-tic-tac-toe-state/
 # 794. Valid Tic-Tac-Toe State

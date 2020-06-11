@@ -35,7 +35,20 @@ class Solution:
         return expected_sum - actual_sum
 
 
-class Solution:
+class SolutionBS:
+    def missingNumber(self, nums: List[int]) -> int:
+        nums.sort()
+        lo = 0
+        hi = len(nums)
+        while lo < hi:
+            mid = (lo+hi)//2
+            if nums[mid] == mid:
+                lo = mid + 1
+            else:
+                hi = mid
+        return lo
+
+class SolutionXOR:
     '''
     Because we know that nums contains nn numbers and that it is missing exactly one number on the range
     [0..n-1][0..n−1], we know that nn definitely replaces the missing number in nums.
@@ -56,3 +69,7 @@ class Solution:
         for number in range(n):
             if number not in num_set:
                 return number
+
+if __name__ == '__main__':
+    s = SolutionXOR()
+    s.missingNumber([0,2,3])

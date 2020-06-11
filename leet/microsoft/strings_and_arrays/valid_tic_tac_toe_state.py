@@ -4,7 +4,7 @@ from typing import List
 
 # similar problem
 # https://leetcode.com/problems/design-tic-tac-toe/
-# 348. Design Tic-Tac-Toe
+# 348. design Tic-Tac-Toe
 
 class Solution:
     def validTicTacToe(self, board: List[str]) -> bool:

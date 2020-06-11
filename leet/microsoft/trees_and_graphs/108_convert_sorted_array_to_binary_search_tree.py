@@ -1,4 +1,12 @@
 # Definition for a binary tree node.
+# similar
+# bst
+# 1382. Balance a Binary Search Tree
+# 108. Convert Sorted Array to Binary Search Tree
+# 449. Serialize and Deserialize BST
+# # 889. Construct Binary Tree from Preorder and Postorder Traversal
+# # 106. Construct Binary Tree from Inorder and Postorder Traversal
+# # 105. Construct Binary Tree from Preorder and Inorder Traversal
 class TreeNode:
     def __init__(self, x):
         self.val = x

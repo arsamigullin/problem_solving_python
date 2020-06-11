@@ -1,6 +1,6 @@
 import re
 import operator
-
+# similar 894
 # Divide and conquer
 class Solution:
     def diffWaysToCompute(self, input):

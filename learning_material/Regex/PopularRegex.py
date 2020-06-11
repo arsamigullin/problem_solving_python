@@ -1,0 +1,1 @@
+#([a-z])\1 to find concecutive duplicate letters of length 2

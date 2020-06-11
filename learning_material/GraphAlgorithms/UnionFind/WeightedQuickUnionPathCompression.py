@@ -1,3 +1,8 @@
+# usually fits for the situation where we must preprocess edges (for example by weight)
+# and then build graph on the fly
+# if no such actions needed it is better to use connected components algorithm
+# to determine if two vertices are at the same component for constant time
+
 # detecting cycle with Union Find
 from typing import List
 

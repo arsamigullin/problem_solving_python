@@ -1,5 +1,13 @@
-def solution_bottom_up(p):
+def cut_rod(prices,n):
+    if n == 1:
+        return 0
+    q = -1
+    for i in range(1, n):
+        q = max(q, prices[i] + cut_rod(prices, n - i))
+    print(q)
+    return q
 
+def solution_bottom_up(p):
     n = len(p)
     revenue = [0] * (n+1)
     for j in range(n):
@@ -27,5 +35,7 @@ def solution_bottom_up_with_first_cut(p):
     return revenue[n]
 
 if __name__ == "__main__":
-    #solution_bottom_up([1,6,8,9,10,17,17,20,24,30])
-    solution_bottom_up_with_first_cut([1,5,8,9,10,17,17,20,24,30])
+    prs = [0, 1,5,8,9,10,17,17,20,24,30]
+    print(cut_rod(prs, len(prs)))
+    print(solution_bottom_up_with_first_cut(prs))
+    print(solution_bottom_up(prs))

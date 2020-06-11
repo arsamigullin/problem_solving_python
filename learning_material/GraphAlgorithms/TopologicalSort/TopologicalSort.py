@@ -4,6 +4,8 @@
 # 3 return the linked list of vertices
 
 
+# NOTE: this algo does not detect the cycle
+
 # Python program to print topological sorting of a DAG
 from collections import defaultdict
 

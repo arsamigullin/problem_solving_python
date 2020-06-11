@@ -37,6 +37,9 @@ class Solution:
             if idx >= len(preorder):
                 return None
             val = preorder[idx]
+            # once condition of binary search tree is vialated
+            # that means we have to stop here since the value under
+            # preorder[idx] should be place in other place
             if lo > val or hi < val:
                 return None
             idx += 1

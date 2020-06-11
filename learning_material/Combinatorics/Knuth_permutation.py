@@ -1,3 +1,5 @@
+# this is permutation n of n
+
 class KnuthPermutation:
     def permute(self, arr):
         if not arr:
@@ -38,3 +40,10 @@ if __name__ == "__main__":
     for i in range(n):
         s.permute(arr)
         print(arr)
+
+    # [1, 2, 3]
+    # [1, 3, 2]
+    # [2, 1, 3]
+    # [2, 3, 1]
+    # [3, 1, 2]
+    # [3, 2, 1]

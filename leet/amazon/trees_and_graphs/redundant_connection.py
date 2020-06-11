@@ -2,6 +2,46 @@
 # https://leetcode.com/problems/redundant-connection/
 import  typing
 List = typing.List
+
+# union-find approach
+class Solution:
+    def findRedundantConnection(self, edges: List[List[int]]) -> List[int]:
+        parent = {}
+        size = {}
+
+        def find(p):
+            parent.setdefault(p, p)
+            size.setdefault(p, 1)
+            root = p
+            while root != parent[root]:
+                root = parent[root]
+            while p != root:
+                newp = parent[p]
+                parent[p] = root
+                p = newp
+            return root
+
+        def union(p, q):
+            rootP = find(p)
+            rootQ = find(q)
+            if rootP == rootQ:
+                return
+
+            if size[rootP] > size[rootQ]:
+                parent[rootQ] = rootP
+                size[rootP] += size[rootQ]
+            else:
+                parent[rootP] = rootQ
+                size[rootQ] += size[rootP]
+
+        for u, v in edges:
+            if find(u) != find(v):
+                union(u, v)
+            else:
+                return u, v
+        return []
+
+
 class SolutionMy:
     # The idea is to find the cycle in graph
     # and once we found the cycle we go back comparing the edge index

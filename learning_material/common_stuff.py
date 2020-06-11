@@ -63,18 +63,7 @@ for i in range(len(a))[::-1]:
 for i in range(len(a)-1, -1, -1):
     pass
 
-# Permutations
-#### n permutations from n objects ####
-#"A permutation is a (possible) rearrangement of objects." (Levin, 2016)
-# To get count of possible permutations we use multiplicative principle
-# Example [a,b,c]. a has 3 choices, b has 2 choices and c has 1 choice
-# count = 3 * 2 * 1 = 6
-# permutation of n distinct elements is n!
-#### k permutations from n objects ####
-# the number of k permutations of n elements is
-# P(n,k) = n!/(n-k)!
-#### combinations of k unique elements from n objects ####
-# C(n,k) = n!/(n-k)!k! - this is also binomial coefficient
+
 
 # suppose we have 2 dimensional array
 B = [[7, 2, 3],[4, 5, 6],[0, 0, 1]]

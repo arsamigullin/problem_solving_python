@@ -16,9 +16,20 @@ def solution2(amount, coins):
         return 1
     dp = [0] * (amount + 1)
     dp[0] = 1
+    '''
+    consider example 5,  [1,2,5]
+    dp = [1,0,0,0,0,0]
+    we iterate over coins first
+    and then we find the ways to represent each denomination till 5 using only the current coin
+    the ways for future coin will be add up to the ways of previous coins
+    
+    '''
+
     for coin in coins:
-        for i in range(coin, amount + 1):
-            dp[i] += dp[i - coin]
+        # here we define
+        for target in range(coin, amount + 1):
+            # how many ways the target can be represented by given coin
+            dp[target] += dp[target - coin]
     return dp[amount]
 
 if __name__ == "__main__":

@@ -26,6 +26,35 @@ class Solution:
     we have four nodes here 0,1,2,3
 
     '''
+    # bfs
+    class Solution:
+        def possibleBipartition(self, N: int, dislikes: List[List[int]]) -> bool:
+            if not dislikes:
+                return True
+            color = [N] * (N + 1)
+
+            graph = collections.defaultdict(list)
+            for u, v in dislikes:
+                graph[u].append(v)
+                graph[v].append(u)
+
+            for u in graph:
+                if color[u] != N:
+                    continue
+                q = collections.deque([(u, 0)])
+                while q:
+                    node, clr = q.popleft()
+                    if color[node] == N:
+                        color[node] = clr
+                    elif color[node] == clr:
+                        continue
+                    else:
+                        return False
+                    for child in graph[node]:
+                        if color[child] == N:
+                            q.append((child, clr ^ 1, node))
+            return True
+
     def possibleBipartition(self, N: int, dislikes: List[List[int]]) -> bool:
         if not dislikes:
             return True

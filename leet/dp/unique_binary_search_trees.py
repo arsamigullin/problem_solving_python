@@ -1,5 +1,9 @@
 # this problem
 # https://leetcode.com/problems/unique-binary-search-trees/
+# dynamic programming
+# binary search trees
+
+
 class SolutionMy:
     '''
     the idea is to pick the root (i) and multiply combinations on the left subtree and

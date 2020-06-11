@@ -10,7 +10,7 @@ class Solution:
         return slot == 0
 
 
-class Solution1: b
+class Solution1:
     def isValidSerialization(self, preorder: str) -> bool:
         i = 0
         preorder = preorder.split(',')

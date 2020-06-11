@@ -28,11 +28,28 @@ class Solution:
                 if len(c) == 1:
                     yield c[0]
                 else:
-                    yield helper(c)
+                    yield from helper(c)
         r = itertools.chain.from_iterable(iter(helper(a)))
         print([v for v in r])
         print(r)
 
 
+def readfile():
+    with open("test.txt") as f:
+        yield f.readline()
+
+
+def read_in_chunks(file_object, chunk_size=1):
+    """Lazy function (generator) to read a file piece by piece.
+    Default chunk size: 1k."""
+    while True:
+        data = file_object.read(chunk_size)
+        if not data:
+            break
+        yield data
+
 if __name__ == "__main__":
-    s = Solution()
+
+    with open("test.txt") as f:
+        for piece in read_in_chunks(f):
+            print(piece)

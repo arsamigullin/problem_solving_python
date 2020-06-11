@@ -47,6 +47,22 @@ class Solution:
                 return root.val
             root = root.right # the next iteration will collect all the left children of the root.right node
 
+class Solution:
+    def kthSmallest(self, root: TreeNode, k: int) -> int:
+
+        stack = []
+        node = root
+        while stack or node:
+            if node is None:
+                node = stack.pop()
+                k-=1
+                if k == 0:
+                    return node.val
+                node = node.right
+            else:
+                stack.append(node)
+                node = node.left
+
 
 class Solution:
     def kthSmallest(self, root, k):

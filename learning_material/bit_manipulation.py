@@ -86,3 +86,14 @@ res = ~x = -6
 
 # flipping the bit can be done by the approaches presented in 476_Number_Complement
 
+# this is how we count bits on each number
+#338. Counting Bits
+class Solution:
+    def countBits(self, num: int) -> list:
+        dp = [0] * (num + 1)
+        for i in range(1, num + 1):
+            if i%2 == 0:
+                dp[i] = dp[i//2]
+            else:
+                dp[i] = dp[i//2] + 1
+        return dp
