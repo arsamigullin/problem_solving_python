@@ -1,5 +1,6 @@
 from typing import List
-
+# Similar
+# 1044. Longest Duplicate Substring
 
 class Solution:
     '''

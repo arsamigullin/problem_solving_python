@@ -40,7 +40,16 @@ def solutionOn(A):
         max_slice = max(max_slice, max_ending)
     return max_ending
 
+
+def solutionUniversal(A):
+    max_ending = max_slice = A[0]
+    for a in A:
+        max_ending = max(a, max_ending + a)
+        max_slice = max(max_slice, max_ending)
+    return max_ending
+
 if __name__ == "__main__":
+    print(solutionUniversal([-3, 5, 5]))
     #print(solutionOn([5, -7, 3, 5, -2, 4, -1]))
     #print(solutionOn2([5, -7, 3, 5, -2, 4, -1]))
     #print(solutionOn2_with_pref_sums([5, -7, 3, 5, -2, 4, -1]))

@@ -35,7 +35,8 @@ if __name__ == "__main__":
     s = KnuthPermutation()
     #s.permute([4, 9, 5, 3, 1])
     import math
-    arr = [3,2,1]
+    #arr = [3,2,1]
+    arr = [-6,184,10]
     n = math.factorial(len(arr))
     for i in range(n):
         s.permute(arr)

@@ -78,6 +78,7 @@ class Solution:
                 d[nums[j]] = j
         return res
 
+# O(n**2)
 class SolutionPointers:
     def threeSum(self, nums):
         nums.sort()
@@ -90,6 +91,8 @@ class SolutionPointers:
                 lrsum = nums[l] + nums[r]
                 if lrsum == target:
                     res.add((nums[i], nums[l], nums[r]))
+                    r-=1
+                    l+=1
                 elif lrsum > target:
                     r-=1
                 else:

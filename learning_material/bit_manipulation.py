@@ -35,10 +35,33 @@ x & x - 1 == 0
 x = 5
 res = x^x # res is 0
 
+# ~ just does inverting of each bits (one's complement)
+# which is the same as ~x = -(x+1)
 # complement of x
 # Returns the complement of x - the number you get by switching each 1 for a 0 and each 0 for a 1. This is the same as -x - 1
 x = 5
 res = ~x = -6
+#---------- Two's complement is about representation negative numbers--------
+# According to Nisan & Schocken, the two's complement number can be gotten base on this formula (2005):
+# 2**n-1 (where n is total bit)
+# As a rule, when the 2’s complement method is applied to n-bit numbers, x+(-x) always sums to 2**n - a property that gives the method its name.
+# for example, if we have 4 bits system then
+# for number 2 the number -3 is two's complement number
+# (2**4) - 2 = 16 - 2 = 14
+# which is in binary representation is 1110
+# according to the table below 1101 also corresponds to -2
+
+# positive   negative
+# 0 0000
+# 1 0001      1111 -1
+# 2 0010      1110 -2
+# 3 0011      1101 -3
+# 4 0100      1100 -4
+# 5 0101      1011 -5
+# 6 0110      1010 -6
+# 7 0111      1001 -7
+# 8 1000      1000 -8
+
 
 # xor
 #A connective in logic known as the "exclusive or," or exclusive disjunction. It yields true if exactly one (but not both) of two conditions is true

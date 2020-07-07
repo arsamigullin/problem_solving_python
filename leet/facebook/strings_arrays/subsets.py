@@ -4,9 +4,11 @@
 # 2. return it and add to the list with current item (!IMPORTANT)
 # 3. then the returned set we merging with current item
 # 4. at the end do not forget to append []
+import itertools
+
+
 class MySolution:
     def subsets(self, nums: list) -> list:
-
         def find(nums, i):
             if i >= len(nums):
                 return []
@@ -38,3 +40,7 @@ def subsets(self, nums):
 def subsets(self, nums):
     return [[nums[i] for i in range(len(nums)) if mask >> i & 1]
             for mask in range(2 ** len(nums))]
+
+if __name__ == '__main__':
+    s = MySolution()
+    s.subsets([1,2,2])

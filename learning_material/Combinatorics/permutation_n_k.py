@@ -34,6 +34,25 @@ def product(*args, repeat=1):
 
 
 if __name__ == '__main__':
+    from itertools import product
+    for a, b, c in product(range(2), repeat=3):
+        print(f"{a} {b} {c} {(not a and b and c) or (a and not b and c)}")
+
+    print('third')
+    for a, b, c in product(range(2), repeat=3):
+        print(f"{a} {b} {c} {int((not a and b and c) or (a and not b and c) or (a and b and not c) or (not a and not b and not c))}")
+
+    print('fourth')
+    for a, b, c in product(range(2), repeat=3):
+        nor = not((not a and b and c) or (a and not b and c) or (a and b and not c) or (not a and not b and not c))
+        nand1 = not (nor and nor)
+        nand2 = not (nand1 and nand1)
+        nand3 = (not nand2 or not nand2)
+        print(f"{a} {b} {c} {int(nand3)}")
+
+
+
+
     # for p in product(range(2), repeat=3):
     #     print(p)
 
@@ -69,3 +88,5 @@ if __name__ == '__main__':
     # (2, 1, 3)
     # (1, 3, 2)
     # (1, 2, 3)
+
+

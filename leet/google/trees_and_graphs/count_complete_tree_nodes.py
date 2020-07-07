@@ -31,9 +31,9 @@ class SolutionFast:
             lh = get_height(node.left)
             rh = get_height(node.right)
             if lh == rh:
-                return pow(2, lh) + helper(node.right)
+                return 2**lh + helper(node.right)
             else:
-                return pow(2, rh) + helper(node.left)
+                return 2**rh + helper(node.left)
 
         return helper(root)
 
