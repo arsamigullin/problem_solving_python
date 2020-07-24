@@ -1,6 +1,6 @@
 import collections
 
-from leet.can_make_palindrome_from_substring import List
+from leet.BitManipulations.can_make_palindrome_from_substring import List
 
 
 class Solution:

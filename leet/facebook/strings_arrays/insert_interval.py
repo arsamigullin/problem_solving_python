@@ -5,6 +5,8 @@
 #https://leetcode.com/problems/merge-intervals/
 
 # The best solution
+from typing import List
+
 
 class Solution:
     '''

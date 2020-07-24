@@ -36,7 +36,9 @@ if __name__ == "__main__":
     #s.permute([4, 9, 5, 3, 1])
     import math
     #arr = [3,2,1]
-    arr = [-6,184,10]
+    #arr = [-6,184,10]
+    arr = [1,9,4,6,7]
+    s.permute(arr)
     n = math.factorial(len(arr))
     for i in range(n):
         s.permute(arr)

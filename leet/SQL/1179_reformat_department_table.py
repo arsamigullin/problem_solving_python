@@ -1,3 +1,5 @@
+# columns to rows
+
 # Write your MySQL query statement below
 #SELECT id, revenue as Jan_Revenue from Department where month='Jan'
 

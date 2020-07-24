@@ -102,6 +102,29 @@ def dfsIterativePostorder(root):
                     stack.append(node.right)
         return sum(nums)
 
+
+class Solution:
+    def getLonelyNodes(self, root: TreeNode) -> List[int]:
+
+        out = []
+
+        stack = [root]
+
+        while stack:
+            cur = stack.pop()
+            if cur.left and cur.right:
+                stack.append(cur.left)
+                stack.append(cur.right)
+            elif cur.right:
+                out.append(cur.right.val)
+                stack.append(cur.right)
+            elif cur.left:
+                out.append(cur.left.val)
+                stack.append(cur.left)
+
+        return out
+
+
 if __name__ == "__main__":
     node = compose_tree([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31], 0)
     #node = compose_tree([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, ], 0)
