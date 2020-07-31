@@ -120,3 +120,6 @@ class Solution:
             else:
                 dp[i] = dp[i//2] + 1
         return dp
+
+
+# 190. Reverse Bits
