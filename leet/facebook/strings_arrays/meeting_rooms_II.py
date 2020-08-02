@@ -18,9 +18,12 @@ class Solution(object):
         ep = 0
         room_cnt = 0
         while sp < len(start_timing):
+            # if this condition true
+            # that means we can use the room was used before (because it is free now)
             if start_timing[sp] >= end_timing[ep]:
                 room_cnt -= 1
                 ep+=1
+            # otherwise we want to increase count of used rooms
             room_cnt += 1
             sp+=1
         return room_cnt
