@@ -17,3 +17,14 @@ class Solution:
             c[ch]-=1
             if c[ch] == 0:
                 c.pop(ch)
+
+
+class Solution:
+    def findTheDifference(self, s: str, t: str) -> str:
+        if not s: return t
+        xor = ord(s[0])
+        for i in range(1, len(s)):
+            xor ^= ord(s[i])
+        for j in range(len(t)):
+            xor ^= ord(t[j])
+        return chr(xor)

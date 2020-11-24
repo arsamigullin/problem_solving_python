@@ -7,8 +7,10 @@
 # 2. we sort the map so the task with greater count will be at 25 index
 # 3. while the latest item is not 0 we decrease by 1 the n consecutive elements of the map starting from the end
 # 4. we sort map again to obtain the tasks with the most count
+from typing import List
 
-class Solution:
+
+class Solution1:
     def leastInterval(self, tasks: list, n: int) -> int:
         tasks_map = [0] * 26
         total = 0
@@ -43,6 +45,27 @@ class SolutionShort:
         return max(len(tasks), ans)
 
 
+class Solution:
+    def leastInterval(self, tasks: List[str], n: int) -> int:
+        m = [0] * 26
+        for t in tasks:
+            m[ord(t) - 65] += 1
+
+        m.sort()
+        total = 0
+        while m[25] != 0:
+            for i in range(n+1):
+                if m[25] == 0: break
+                if i < 26 and m[25 - i]:
+                    m[25-i] -= 1
+                total += 1
+            m.sort()
+        return total
+
+
 if __name__ == "__main__":
-    s=SolutionShort()
+    s=Solution()
+    s.leastInterval(["A","A","A","A","A","A","B","C","D","E","F","G"],2)
+    s.leastInterval(["A","A","A","B","B","B", "C","C","C", "D", "D", "E"],2)
+
     s.leastInterval(["A","A","A","B","B","B"],2)

@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Solution:
     def permuteUnique(self, nums: list):
         res = []
@@ -25,6 +28,30 @@ class SolutionShort:
                      for p in perms
                      for i in range((p + [n]).index(n) + 1)]
         return perms
+
+
+class Solution4:
+    def permuteUnique(self, nums: List[int]) -> List[List[int]]:
+
+        n = len(nums)
+        res = []
+
+        def helper(j, comb):
+            if len(comb) >= n:
+                res.append(comb[:])
+                return
+            visited = set()
+            for i in range(j, n):
+                if nums[i] not in visited:
+                    comb.append(nums[i])
+                    helper(i + 1, comb)
+                    comb.pop()
+                    visited.add(nums[i])
+
+        helper(0, [])
+        return res
+
+
 if __name__ == "__main__":
-    s = Solution()
-    s.permuteUnique([1,1,2])
+    s = Solution4()
+    s.permuteUnique([1,2,3])

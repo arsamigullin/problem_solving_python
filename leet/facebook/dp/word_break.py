@@ -32,6 +32,7 @@ class SolutionDFS:
         l = len(s)
         d = [False] * l
         di = sorted(wordDict, key = len)
+
         def _wordBreak(start):
             if d[start]:
                 return False
@@ -48,6 +49,29 @@ class SolutionDFS:
 
         return _wordBreak(0)
 
+# The same as above but more clean solution
+class SolutionDFS1:
+
+    def wordBreak(self, s, wordDict):
+        wordDict.sort(key=len)
+        # we have dp to keep track on visited start position
+        # once the word s reached the length
+        dp = [None] * len(s)
+        def helper(start):
+            if dp[start] is None:
+                for w in wordDict:
+                    next_start = start + len(w)
+                    if s.startswith(w, start):
+                        if next_start == len(s) or helper(next_start):
+                            dp[start] = True
+                            break
+                else:
+                    dp[start] = False
+            return dp[start]
+        return helper(0)
+
+
+
 if __name__ == "__main__":
-    s = SolutionDFS()
+    s = SolutionDFS1()
     s.wordBreak("catsandog", ["cats", "dog", "sand", "and", "cat"])

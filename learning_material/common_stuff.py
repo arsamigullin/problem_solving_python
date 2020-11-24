@@ -86,11 +86,24 @@ def str_to_int(val):
         res = res * 256 + ord(ch)
     return res
 
+# n*(n+1)/2 - this is the formula of sum of numbers from 0 to n
+
 
 #         This must be remembered
 #         Given position of 1-dimensional array i, to get the position of 2-dimensional array we do the following
 #         arr[i//column_count][i%column_count]
 
+#generating pyramid
+A = [[0] * k for k in range(1, 102)]
+
+# finding cycle in linked list
+head =  None # some head
+slow = fast = head
+while fast and fast.next:
+    fast = fast.next.next
+    slow = slow.next
+    if slow == fast:
+        print('cycle found')
 if __name__ == '__main__':
 
     # this is how we find first two min values

@@ -9,6 +9,11 @@ if __name__ == "__main__":
 for i in range(1, 32):
     print(f"{i}>>1 = {i >> 1}")
 
+# checks if the num is a power of 4?
+# the first option
+# return num > 0 and num & (num - 1) == 0 and num % 3 == 1
+# the second option
+# return num > 0 and log2(num) % 2 == 0
 
 # Check if the number is a power of 2?
 x = 4

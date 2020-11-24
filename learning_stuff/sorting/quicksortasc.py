@@ -1,8 +1,8 @@
-def quicksortasc(A, s, e):
+def quicksort(A, s, e):
     if s<e:
         q = partitionasc(A, s, e)
-        quicksortasc(A, s, q-1)
-        quicksortasc(A, q+1, e)
+        quicksort(A, s, q-1)
+        quicksort(A, q+1, e)
 
 
 def partitionasc(A,s,e):
@@ -12,7 +12,7 @@ def partitionasc(A,s,e):
         # once the current element is less or equal pivot
         # we swap values between i and j indexes
         # so under i index we have value that less or equal than pivot
-        # i is just pointing where we will insert the current item that is less or equal pivot
+        # i is just pointing to where we will insert the current item that is less or equal pivot
         if A[j] <= x:
             i+=1
             A[j], A[i] = A[i], A[j]
@@ -21,5 +21,5 @@ def partitionasc(A,s,e):
 
 if __name__ == "__main__":
     A = [2,8,7,1,3,6,4]
-    quicksortasc(A, 0, len(A)-1)
+    quicksort(A, 0, len(A)-1)
     print(A)

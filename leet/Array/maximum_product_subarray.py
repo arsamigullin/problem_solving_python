@@ -21,7 +21,7 @@ class Solution:
 
 
 
-class Solution(object):
+class Solution2(object):
     def maxProduct(self, nums):
         """
         :type nums: List[int]
@@ -36,7 +36,7 @@ class Solution(object):
         return max(max_dp)
 
 
-class Solution:
+class Solution3:
     # @param A, a list of integers
     # @return an integer
     def maxProduct(self, A):
@@ -53,4 +53,5 @@ class Solution:
 
 if __name__ == "__main__":
     s = Solution()
+    s.maxProduct([-2,4,-5])
     s.maxProduct([1, 3, -3, -12])

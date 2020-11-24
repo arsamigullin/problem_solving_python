@@ -15,5 +15,5 @@ class Solution:
 
 if __name__ == '__main__':
     s = Solution()
-    print(s.backtracking("ABCDE", 3))
+    print(s.backtracking("ABC", 3))
 

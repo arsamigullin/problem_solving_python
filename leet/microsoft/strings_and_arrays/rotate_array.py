@@ -56,6 +56,33 @@ class Solution:
             # start with the next index
             i += 1
 
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        n = len(nums)
+        k = k%n
+        val = nums[0]
+        start = 0
+        i = k
+        for _ in range(n):
+            # if the pointer returns to the place it started
+            # we do not need to do a swap
+            # we just assign the value
+            if i == start:
+                nums[i] = val
+                # and increment i not to loop over the nums
+                i+=1
+                start = i
+                # this is to avoid indexoutofrange
+                val = nums[i%n]
+            else:
+                # do just a swap
+                nums[i], val = val, nums[i]
+            i=(k+i)%n
+        return nums
+
 if __name__ == "__main__":
     s = Solution()
     s.rotate([1,2,3,4,5,6,7],2)

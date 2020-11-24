@@ -75,9 +75,32 @@ class Solution:
             cnter[idx][num] += sum(cnter[idx - 1][pre] for pre in cnter[idx - 1] if pre < num)
         return sum(cnter[len(lis) - 1].values())
 
+
+class SolutionDP:
+
+    def findNumberOfLIS(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
+        n = len(nums)
+        counts = [1] * n  # countcounts of the subs
+        lens = [0] * n  # lenght of the subs
+
+        for i in range(n):
+            for j in range(i):
+                if nums[i] > nums[j]:
+                    if lens[j] >= lens[i]:
+                        lens[i] = lens[j] + 1
+                        counts[i] = counts[j]
+                    elif lens[j] + 1 == lens[i]:
+                        counts[i] += counts[j]
+        longest = max(lens)
+        return sum(c for i, c in enumerate(counts) if lens[i] == longest)
+
 if __name__ == '__main__':
-    s = Solution()
+    s = SolutionDP()
     s.findNumberOfLIS([1,3,5,4,7])
+    s.findNumberOfLIS([1, 3, 4, 4, 7])
+    s.findNumberOfLIS([1, 3, 5,4, 4, 7])
     s.findNumberOfLIS([1,1,2,2,2,2,3,5,5,5])
     s.findNumberOfLIS([1,2,3,5,5,5])
     s.findNumberOfLIS([2,2,2,2,2])

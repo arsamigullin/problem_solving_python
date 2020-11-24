@@ -42,14 +42,14 @@ dfsIterativePreOrderBucket = []
 def dfsIterativePreorder(root):
     stack = []
     node = root
-    while stack or node is not None:
-        if node is None:
-            node = stack.pop()
-            node = node.right
-        else:
+    while stack or node:
+        if node:
             dfsIterativePreOrderBucket.append(node.val)
             stack.append(node)
             node = node.left
+        else:
+            node = stack.pop()
+            node = node.right
 
 def dfsIterativeAnotherOptionPreorder(root):
     node = root
@@ -69,13 +69,13 @@ def dfsIterativeInorder(root):
         stack = []
         node = root
         while stack or node is not None:
-            if node is None:
+            if node:
+                stack.append(node)
+                node = node.left
+            else:
                 node = stack.pop()
                 dfsIterativeInorderBucket.append(node.val)
                 node = node.right
-            else:
-                stack.append(node)
-                node = node.left
 
 
 
@@ -141,3 +141,20 @@ if __name__ == "__main__":
     dfsIterativePostorder(node)
     print(f"posIter {list(reversed(dfsIterativePostOrderBucket))}")
 
+
+from collections import deque # deque is double ended queue in Python, it supports queue operations
+def bfs_using_queue(root):
+    queue= deque([root])
+    while queue:
+        # dequeue and item from the front of the queue
+        #
+        node = queue.popleft()
+        print(node.val)
+        # if left node of the tree is not None
+        if node.left:
+            # append it to the queue
+            queue.append(node.left)
+        # if right node of the tree is not None
+        if node.right:
+            # append it to the queue
+            queue.append(node.right)

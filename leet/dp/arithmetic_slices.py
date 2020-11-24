@@ -1,3 +1,18 @@
+import collections
+from typing import List
+
+
+class Solution:
+    def numberOfArithmeticSlices(self, A: List[int]) -> int:
+        n = len(A)
+        dp = [0] * n
+        res = 0
+        for i in range(2, n):
+            if A[i] - A[i - 1] == A[i - 1] - A[i - 2]:
+                dp[i] = dp[i - 1] + 1
+                res += dp[i]
+        return res
+
 
 #wrong solution
 def solution(arr):
@@ -67,6 +82,8 @@ def longestArithSeqLength(self, A):
     return res + 1
 
 if __name__ == "__main__":
+    s = Solution()
+    s.numberOfArithmeticSlices([1,2,3,4,5])
     print(solution3([1,2,3,8,9,10]))
 # 3 - 1
 # 4 - 3

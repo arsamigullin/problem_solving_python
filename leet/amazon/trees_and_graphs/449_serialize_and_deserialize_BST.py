@@ -22,8 +22,8 @@ class Codec:
 
         def helper(node):
             if node:
-                helper(node.left)
                 preorder.append(str(node.val))
+                helper(node.left)
                 helper(node.right)
 
         helper(root)
@@ -143,3 +143,56 @@ class Codec:
             return root
 
         return helper()
+
+
+class Codec1:
+
+    def serialize(self, root):
+        """Encodes a tree to a single string.
+
+        :type root: TreeNode
+        :rtype: str
+        """
+        if not root:
+            return ""
+        preorder = []
+
+        def helper(node):
+            if not node:
+                preorder.append('#')
+                return
+            preorder.append(str(node.val))
+            helper(node.left)
+            helper(node.right)
+
+        helper(root)
+        return '|'.join(preorder)
+
+    def deserialize(self, data):
+        """Decodes your encoded data to tree.
+
+        :type data: str
+        :rtype: TreeNode
+        """
+        print(data)
+        if not data:
+            return
+        preorder = data.split('|')
+        i = 0
+
+        def helper():
+            nonlocal i
+            if preorder[i] == '#':
+                return None
+            node = TreeNode(int(preorder[i]))
+            i += 1
+            node.left = helper()
+            i += 1
+            node.right = helper()
+            return node
+
+        return helper()
+
+if __name__ == '__main__':
+    c = Codec1()
+    c.deserialize()

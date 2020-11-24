@@ -27,6 +27,26 @@ class Solution1:
             m = max(m, a + b)
         return m
 
+# this solution will not work because
+# it does not track the position of the max profit when going forward and backward
+import collections
+class Solution2:
+    def maxProfit(self, prices: list) -> int:
+        b = prices[0]
+        profit = 0
+        for i in range(len(prices)):
+            profit = max(prices[i] - b, profit)
+            b = min(b, prices[i])
+
+
+        s = prices[-1]
+        pr = 0
+        for i in range(len(prices) - 1, -1 ,-1):
+            pr = max(s - prices[i], pr)
+            s = max(s, prices[i])
+
+        return profit + pr
+
 class Solution:
     def maxProfit(self, prices: list) -> int:
 
@@ -43,7 +63,7 @@ class Solution:
 
 
 if __name__ == "__main__":
-    s = Solution()
+    s = Solution1()
     s.maxProfit([3,3,5,0,0,3,1,4])
 
     #print(s.maxProfit([5,2,3,0,3,5,6,8,1,5]))

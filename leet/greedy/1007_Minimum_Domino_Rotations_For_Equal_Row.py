@@ -1,7 +1,7 @@
 from typing import List
 
 
-class Solution:
+class Solution1:
     def minDominoRotations(self, A: List[int], B: List[int]) -> int:
         numsA = set(A)
         numsB = set(B)
@@ -34,7 +34,7 @@ class Solution:
             return max(resA, resB)
 
 
-class Solution:
+class Solution2:
     def minDominoRotations(self, A: List[int], B: List[int]) -> int:
         for x in [A[0], B[0]]:
             if all(x in d for d in zip(A,B)):
@@ -76,3 +76,48 @@ class Solution:
             # If one could make all elements in A or B equal to B[0]
         else:
             return check(B[0])
+
+
+class Solution:
+    def minDominoRotations(self, A: List[int], B: List[int]) -> int:
+        '''
+        we want either A be consisting from the same element
+        or B
+        to achieve that we start from A[0] and count rotations we would make in A and B
+        then we would start from B[0] and count rotations we would make in A and B
+        '''
+
+        def helper(x):
+            cntA = 0
+            cntB = 0
+            for a, b in zip(A, B):
+                if a != x and b != x:
+                    return -1
+                elif a != x:
+                    cntA += 1
+                elif b != x:
+                    cntB += 1
+            return min(cntA, cntB)
+
+        rotations = helper(A[0])
+        if rotations != -1 or A[0] == B[0]:
+            return rotations
+        else:
+            return helper(B[0])
+
+        # another option for the end
+        # rotA = helper(A[0])
+        # rotB = helper(B[0])
+        # if rotA == rotB and rotB == -1:
+        #     return -1
+        # elif rotA == -1:
+        #     return rotB
+        # elif rotB == -1:
+        #     return rotA
+        # else:
+        #     return min(rotA, rotB)
+
+
+if __name__ == '__main__':
+    s = Solution()
+    s.minDominoRotations([2,1,2,4,2,2], [5,2,6,2,3,2])

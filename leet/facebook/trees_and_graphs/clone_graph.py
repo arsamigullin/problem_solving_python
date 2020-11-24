@@ -31,6 +31,42 @@ class Solution:
                     new_parent.neighbors.append(d[nei.val])
         return d[node.val]
 
+
+class Solution:
+    def cloneGraph(self, node: 'Node') -> 'Node':
+        if not node:
+            return node
+        visited = {}
+        def dfs(node):
+            copyNode = Node(node.val)
+            visited[node] = copyNode
+            for child in node.neighbors:
+                if child in visited:
+                    copyNode.neighbors.append(visited[child])
+                else:
+                    copyNode.neighbors.append(dfs(child))
+            return copyNode
+        return dfs(node)
+
+
+class Solution:
+    def cloneGraph(self, node: 'Node') -> 'Node':
+        if not node:
+            return
+        d = {}
+
+        def helper(node):
+            if node.val in d:
+                return d[node.val]
+            nodeCopy = Node(node.val)
+            d[node.val] = nodeCopy
+            for nei in node.neighbors:
+                nodeCopy.neighbors.append(helper(nei))
+            return nodeCopy
+
+        return helper(node)
+
+
 n1 = Node(1, [])
 n2 = Node(2, [])
 n3 = Node(3, [])

@@ -1,5 +1,13 @@
 # this is permutation n of n
 
+'''
+Accordint to Steven Khalim
+1. The total count of permutations of an array with unique elements is math.factorial(len(arr))
+2. If elements not unique the formula is
+    n! / (n1! * n2! ... ni!)
+    where ni is count of unique elements
+'''
+
 class KnuthPermutation:
     def permute(self, arr):
         if not arr:
@@ -35,9 +43,9 @@ if __name__ == "__main__":
     s = KnuthPermutation()
     #s.permute([4, 9, 5, 3, 1])
     import math
-    #arr = [3,2,1]
+    arr = [0,1,2,3,4,5,6,7]
     #arr = [-6,184,10]
-    arr = [1,9,4,6,7]
+    #arr = [1,9,4,6,7]
     s.permute(arr)
     n = math.factorial(len(arr))
     for i in range(n):

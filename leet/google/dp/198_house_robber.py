@@ -1,7 +1,7 @@
 from typing import List
 
 # O(n2)
-class Solution:
+class Solution1:
     def rob(self, nums: List[int]) -> int:
         if not nums:
             return 0
@@ -19,7 +19,7 @@ class Solution:
 # O(n)
 
 
-class Solution:
+class Solution2:
     '''
     prevMax will be pointing to the a[i-2]
     curMax will be pointing to the a[i-1]
@@ -49,7 +49,7 @@ class Solution:
         return curMax
 
 # O(n)
-class Solution(object):
+class Solution3(object):
     def rob(self, nums):
         """
         :type nums: List[int]
@@ -67,3 +67,7 @@ class Solution(object):
             total = max(total, d[i])
 
         return total
+
+if __name__ == '__main__':
+    s = Solution2()
+    s.rob([3,2,4,5,8])

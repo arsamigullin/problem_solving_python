@@ -42,5 +42,5 @@ def subsets(self, nums):
             for mask in range(2 ** len(nums))]
 
 if __name__ == '__main__':
-    s = MySolution()
+    s = Solution()
     s.subsets([1,2,2])

@@ -4,7 +4,7 @@ class TreeNode:
         self.val = x
         self.left = None
         self.right = None
-
+# this tightly coupled with Solution2 of 198_House_Robber.py
 class Solution:
     def rob(self, root: TreeNode) -> int:
         if not root:
