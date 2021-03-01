@@ -16,6 +16,9 @@ class Solution1:
         dp[0] = 1 # this is to include number itself
 
         for num in nums:
+            # for each number from range numSum .. 0
+            # we check if dp[i] has been marked as 1
+            # that means some of the number in nums sums up to i
             for i in range(numSum, -1, -1):
                 if dp[i]:
                     dp[num + i] = 1 # mark the found sum sum
@@ -88,6 +91,8 @@ class SolutionBits:
 if __name__ == "__main__":
     #s = SolutionBits()
     #s.canPartition([1,5,5,11])
+    s = Solution1()
+    s.canPartition([1,5,5,11])
     s = SolutionMemo()
     s.canPartition([1,3,5,5,8])
     s = Solution2()

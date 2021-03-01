@@ -38,7 +38,7 @@ class Solution:
 
         cost = 0
         for u, v, c in edges:
-            # if the edge we want to add will  not create a cycle
+            # if the edge we want to add will not create a cycle
             if find(u) != find(v):
                 # add it
                 union(u, v)
