@@ -60,10 +60,10 @@ def binary_search_nearest_largest(guess):
     hi = len(nums) - 1
     while lo < hi:
         mid = (lo + hi) // 2
-        if  guess > nums[mid]:
-            lo = mid + 1
-        else:
+        if  guess <= nums[mid]:
             hi = mid
+        else:
+            lo = mid + 1
     return lo
 
 def binary_search_nearest_smallest(guess):
@@ -71,10 +71,10 @@ def binary_search_nearest_smallest(guess):
     hi = len(nums) - 1
     while lo < hi:
         mid = (lo + hi) // 2
-        if guess >= nums[mid]:
-            lo = mid
-        else:
+        if guess < nums[mid]:
             hi = mid - 1
+        else:
+            lo = mid
     return lo
 
 # def binary_search_nearest_smallest(guess):

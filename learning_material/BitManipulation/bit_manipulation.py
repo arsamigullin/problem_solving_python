@@ -49,7 +49,8 @@ res = ~x = -6
 #---------- Two's complement is about representation negative numbers--------
 # According to Nisan & Schocken, the two's complement number can be gotten base on this formula (2005):
 # 2**n-1 (where n is total bit)
-# As a rule, when the 2’s complement method is applied to n-bit numbers, x+(-x) always sums to 2**n - a property that gives the method its name.
+# As a rule, when the 2’s complement method is applied to n-bit numbers, x+(-x) always sums to 2**n - a property that
+# gives the method its name.
 # for example, if we have 4 bits system then
 # for number 2 the number -3 is two's complement number
 # (2**4) - 2 = 16 - 2 = 14

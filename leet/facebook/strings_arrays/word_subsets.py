@@ -1,5 +1,6 @@
 # this problem
 # https://leetcode.com/problems/word-subsets/
+import collections
 import typing
 List = typing.List
 class Solution:
@@ -29,6 +30,27 @@ class Solution:
                 d[c] = d.get(c,0) + 1
             if all([k in d and db[k]<=d[k] for k in db]):
                 res.append(a)
+        return res
+
+
+class Solution:
+    def wordSubsets(self, A: List[str], B: List[str]) -> List[str]:
+        dictsA = [collections.Counter(a) for a in A]
+        dictB = collections.defaultdict(int)
+
+        for b in B:
+            bc = collections.Counter(b)
+            for key in bc:
+                dictB[key] = max(dictB[key], bc[key])
+        res = []
+        for i, da in enumerate(dictsA):
+            isUniversal = True
+            for kb in dictB.keys():
+                if not (kb in da and dictB[kb] <= da[kb]):
+                    isUniversal = False
+                    break
+            if isUniversal:
+                res.append(A[i])
         return res
 
 if __name__ == "__main__":

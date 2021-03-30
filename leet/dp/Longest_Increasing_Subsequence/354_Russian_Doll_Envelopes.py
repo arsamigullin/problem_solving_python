@@ -3,27 +3,35 @@ from typing import List
 
 class Solution:
     def maxEnvelopes(self, envelopes: List[List[int]]) -> int:
-        if not envelopes:
-            return 0
-        n = len(envelopes)
-        dp = [[0,0]] * n
+
+        # the key trick here is to sort the list also by -x[1]
+        # x[0] - width, x[1] - height
+        # Say we have this example [[1, 3], [1, 4], [2, 3], [1, 5]]
+        # sorting only by width gives the height in the following order 3,4,5,3
+        # LIS algo will find 3,4,5 as the longest subsequence
+        # and it seems like we 3 fits 4, 4 fits 5 but we cannot do that because their width are the same (1)
+        # sorting also by -x[1] gives us 5,4,3,3. The LIS here is only one which is the correct answer
         envelopes.sort(key=lambda x: (x[0], -x[1]))
-        l = 0
-        for i in range(n):
-            fw, fh = envelopes[i]
+        n = len(envelopes)
+        dp = [0] * n
+        end = 0
+        # this is standard LIS with O(nlgn) complexity
+        for _, e in envelopes:
+            # regular binary search (bisect_left)
             lo = 0
-            hi = l
+            hi = end
             while lo < hi:
                 mid = lo + (hi - lo) // 2
-                sw, sh = dp[mid]
-                if fw > sw and fh > sh:
+                if e > dp[mid]:
                     lo = mid + 1
                 else:
                     hi = mid
-            dp[lo] = envelopes[i]
-            if lo == l:
-                l += 1
-        return l
+
+            dp[lo] = e
+            if lo == end:
+                end += 1
+
+        return end
 
 if __name__ == '__main__':
 

@@ -14,9 +14,9 @@ class Solution:
     that means it is not possible
     so, root of subtree must be equal of jth voyage item
 
-    if the left ite is not equal to the jth voyage item that means
+    if the left node is not equal to the jth voyage item that means
     we can try to swap left and right child by calling helper with right node passed first
-    (kind if imitation of swapping)
+    (kind of imitation of swapping)
 
     if left is equal to the current ith voyage item
     we do regular dfs with left child first
