@@ -78,7 +78,7 @@ class SolutionFast:
                         #If any of our children were found to be part of a lower-level group, then we are part of that group as well!
             return levels[node]    #At this point, groupLevels[node] represents the lowest level group that this node was found to be connected to
         
-        dfs(3, 0, -1)
+        dfs(0, 0, -1)
         return critical
 
 if __name__ == "__main__":

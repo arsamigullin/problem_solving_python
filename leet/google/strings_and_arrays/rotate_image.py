@@ -44,11 +44,19 @@ class Solution:
         Do not return anything, modify matrix in-place instead.
         """
         n = len(matrix)
+        # this operation is called transpose
         for i in range(n):
             for j in range(i + 1, n):
                 temp = matrix[i][j]
                 matrix[i][j] = matrix[j][i]
                 matrix[j][i] = temp
+
+        # at this point the array looks like
+        # [[1, 4, 7],
+        # [2, 5, 8],
+        # [3, 6, 9]]
+
+        # now we just reverse each row
         for i in range(n):
             matrix[i].reverse()
 

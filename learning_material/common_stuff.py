@@ -93,6 +93,11 @@ def str_to_int(val):
 #         Given position of 1-dimensional array i, to get the position of 2-dimensional array we do the following
 #         arr[i//column_count][i%column_count]
 
+# From 2D to 1D:
+# https://stackoverflow.com/questions/16790584/converting-index-of-one-dimensional-array-into-two-dimensional-array-i-e-row-a
+# index = x + (y * width) from top to the bottom
+# index = y + (x * height) from left to right
+
 #generating pyramid
 A = [[0] * k for k in range(1, 102)]
 
@@ -104,6 +109,15 @@ while fast and fast.next:
     slow = slow.next
     if slow == fast:
         print('cycle found')
+
+matrix = [[1,2,3,][1,2,3]]
+dp = [[0] * (len(matrix[0]) + 1) for _ in range(len(matrix) + 1)]
+for i in range(len(matrix)):
+    for j in range(len(matrix[0])):
+        # this is the formula for prefix sum of 2D array
+        # left element + top element + prev item from orig matrix - diagonal element
+        dp[i + 1][j + 1] = dp[i + 1][j] + dp[i][j + 1] + matrix[i][j] - dp[i][j]
+
 if __name__ == '__main__':
 
     # this is how we find first two min values
