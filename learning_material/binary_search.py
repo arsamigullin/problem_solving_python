@@ -2,7 +2,7 @@ import bisect
 
 nums = [2,3,4,4,4,7,9]
 #nums = [1,2,3,4]
-
+# NOTE: bisect right and bisect left are different only in the >=
 #     The return value i is such that all e in a[:i] have e <= x, and all e in
 #     a[i:] have e > x.
 def bisect_right(x):

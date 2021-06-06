@@ -1,3 +1,4 @@
+import collections
 from typing import List
 
 
@@ -46,7 +47,48 @@ class Solution:
 
         return jumps
 
+
+class SolutionS:
+    def jump(self, nums: List[int]) -> int:
+            jumps = 0
+            current_jump_end = 0
+            farthest = 0
+            for i in range(len(nums) - 1):
+                # we continuously find the how far we can reach in the current jump
+                farthest = max(farthest, i + nums[i])
+                # if we have come to the end of the current jump,
+                # we need to make another jump
+                # here we can imagine that the previous jump was made to the spot
+                # where we've found the furthest distance
+                # Meaning if i == current_jump_end this does not mean we actually landed at current_jump_end
+                # Rather, we imagine that we have landed at the spot with farthest distance
+                if i == current_jump_end:
+                    jumps += 1
+                    current_jump_end = farthest
+            return jumps
+
+# this solution is not effective with
+# test cases like this
+# [1,100000,100000,100000,100000,100000,100000,100000,100000,100000,100000,100000,100000,100000,100000,100000,100000,100000,100000,100000,100000,100000,100000,100000,100000,100000,100000,100000,100000,1]
+# cause we iterate over 1 to nums[i]
+class SolutionMy:
+    def jump(self, nums: List[int]) -> int:
+        n = len(nums)
+        dp = collections.defaultdict(int)
+
+        def helper(i):
+            if i >= n - 1:
+                return 0
+            if i not in dp:
+                dp[i] = float('inf')
+                for j in range(1, nums[i] + 1):
+                    dp[i] = min(helper(i + j) + 1, dp[i])
+            return dp[i]
+
+        return helper(0)
+
 if __name__ == '__main__':
-    s = Solution()
+    s = SolutionS()
+    s.jump([2,5,3,5,6,7])
     s.jump([2,3,1,1,4])
 

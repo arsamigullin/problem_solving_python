@@ -1,3 +1,4 @@
+import collections
 from typing import List
 
 
@@ -112,4 +113,39 @@ class SolutionMy:
         helper(0)
         return res
 
+
+class SolutionT:
+    def solveNQueens(self, n: int) -> List[List[str]]:
+
+        board = [['.'] * n for _ in range(n)]
+        rows = [0] * n
+        cols = [0] * n
+        diag = collections.defaultdict(int)
+        op_diag = collections.defaultdict(int)
+        res = []
+
+        def helper(i):
+            if i >= n:
+                res.append([''.join(b) for b in board])
+                return
+            for j in range(n):
+                if rows[i] == 0 and cols[j] == 0 and diag[j - i] == 0 and op_diag[j + i] == 0:
+                    rows[i] = 1
+                    cols[j] = 1
+                    diag[j - i] = 1
+                    op_diag[j + i] = 1
+                    board[i][j] = 'Q'
+                    helper(i + 1)
+                    board[i][j] = '.'
+                    rows[i] = 0
+                    cols[j] = 0
+                    diag[j - i] = 0
+                    op_diag[j + i] = 0
+
+        helper(0)
+        return res
+
+if __name__ == '__main__':
+    s = SolutionT()
+    s.solveNQueens(4)
 

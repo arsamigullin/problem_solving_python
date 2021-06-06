@@ -74,9 +74,12 @@ class TicTacToeShort:
                 1: Player 1 wins.
                 2: Player 2 wins.
         """
+        # alternatively we can do m = 1 if player == 1 else -1
         m = player * 2 - 3 # for different player this will have different sign
         # if all items of row of tic tac toe grid have the same value [0,1] [0,2] [0,3], ... [0,n]
         # self.row[row] will be equal n
+        # for example the moves of the first player is [0,3] [1,3], [2,3], [3,3] and self.n = 4
+        # the self.cols array is [0,0,0,4], since m*self.n in self.cols that means this player wins
         self.row[row] += m
         # if col of tic tac toe grid have the same value
         # self.col[col] will be equal n
