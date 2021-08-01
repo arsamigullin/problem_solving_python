@@ -34,6 +34,7 @@ class Solution:
             index = idx_map[val]
 
             # build right subtree
+            # Important! we constantly popping from postorder since the roots are stored on the righ side
             root.right = helper(index + 1, in_right)
             # build left subtree
             root.left = helper(in_left, index - 1)

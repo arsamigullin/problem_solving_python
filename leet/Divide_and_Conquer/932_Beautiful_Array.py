@@ -14,3 +14,7 @@ class Solution:
             return memo[n]
 
         return helper(N)
+
+if __name__ == '__main__':
+    s = Solution()
+    s.beautifulArray(5)

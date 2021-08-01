@@ -7,10 +7,14 @@
 # NOTE: this algo does not detect the cycle
 
 # Python program to print topological sorting of a DAG
+import collections
 from collections import defaultdict
 
 
 # Class to represent a graph
+from typing import List
+
+
 class Graph:
     def __init__(self, vertices):
         self.graph = defaultdict(list)  # dictionary containing adjacency List
@@ -20,8 +24,7 @@ class Graph:
     def addEdge(self, u, v):
         self.graph[u].append(v)
 
-        # A recursive function used by topologicalSort
-
+    # A recursive function used by topologicalSort
     def topologicalSortUtil(self, v, visited, stack):
 
         # Mark the current node as visited.
@@ -29,11 +32,10 @@ class Graph:
 
         # Recur for all the vertices adjacent to this vertex
         for i in self.graph[v]:
-            if visited[i] == False:
+            if not visited[i]:
                 self.topologicalSortUtil(i, visited, stack)
-
-                # Push current vertex to stack which stores result
-        stack.insert(0, v)
+        # Push current vertex to stack which stores result
+        stack.append(v)
 
         # The function to do Topological Sort. It uses recursive
 
@@ -46,7 +48,7 @@ class Graph:
         # Call the recursive helper function to store Topological
         # Sort starting from all vertices one by one
         for i in range(self.V):
-            if visited[i] == False:
+            if not visited[i]:
                 self.topologicalSortUtil(i, visited, stack)
 
                 # Print contents of the stack
@@ -64,3 +66,41 @@ g.addEdge(3, 1);
 print
 "Following is a Topological Sort of the given graph"
 g.topologicalSort()
+
+
+
+# check on https://leetcode.com/problems/course-schedule/
+class Solution:
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+
+        graph = collections.defaultdict(list)
+
+        for u, v in prerequisites:
+            graph[v].append(u)
+            if u not in graph:
+                graph[u] = []
+
+        result = []
+        UNVISITED, EXPLORED, VISITED = 0, 1, 2
+        visited = [0] * numCourses
+        result = []
+
+        def topsort(course):
+            if visited[course] == UNVISITED:
+                visited[course] = EXPLORED
+                for ch in graph[course]:
+                    if not topsort(ch):
+                        return False
+                visited[course] = VISITED
+                result.append(course)
+                return True
+            else:
+                return visited[course] == VISITED
+
+        for node in graph.keys():
+            if visited[node] == UNVISITED:
+                if not topsort(node):
+                    return False
+
+        print(result)
+        return True

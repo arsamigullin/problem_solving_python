@@ -1,4 +1,5 @@
 # Definition for a binary tree node.
+import  bisect
 class TreeNode:
     def __init__(self, x):
         self.val = x
@@ -167,6 +168,35 @@ class Solution:
         # Traverse the tree
         recurse_tree(root)
         return self.ans
+
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+
+        lca = None
+
+        def helper(node):
+            if not node:
+                return (False, False)
+            nonlocal lca
+            p_found_left, q_found_left = helper(node.left)
+            p_found_right, q_found_right = helper(node.right)
+            p_found = p_found_left or p_found_right or node == p
+            q_found = q_found_left or q_found_right or node == q
+            if p_found and q_found:
+                lca = node
+                return False, False
+            return p_found, q_found
+
+        helper(root)
+        return lca
 
 if __name__ == "__main__":
     root = compose_tree([3, 5, 1, 6, 2, 0, 8, None, None, 7, 4], 0)

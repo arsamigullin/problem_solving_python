@@ -13,10 +13,9 @@ import collections
 # preorder = [3,9,20,15,7]. The root is 3
 # 3 splits inorder on two halves
 # before start we mapping inorder to the dict where key is val and value is index
-# On each iteration we poppingLEFT from postorder and create a root
+# On each iteration we poppingLEFT from preorder and create a root
 # IMPORTANT
-# since in the preorder the left nodes comes close to the root (1)
-# we start form the node from its LEFT child
+# Important! we constantly popping from preorder since the roots are stored on the left side
 class Solution:
     def buildTree(self, preorder: list, inorder: list) -> TreeNode:
         preorderq = collections.deque(preorder)

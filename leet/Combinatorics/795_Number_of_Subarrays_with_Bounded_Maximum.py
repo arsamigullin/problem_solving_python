@@ -1,6 +1,20 @@
 from typing import List
 
 
+class Solution1:
+    def numSubarrayBoundedMax(self, nums: List[int], left: int, right: int) -> int:
+        def count(bound):
+            ans = 0
+            cur = 0
+            for a in nums:
+                cur = cur + 1 if a <= bound else 0
+                ans += cur
+            return ans
+        # the first call calcs all items that less or equal right. So we also have an answer for left doing this
+        # the second call counts arrays that have nums less than left bound, so we exclude the arrays that does
+        # not have left or right to be the maximum values
+        return count(right) - count(left - 1)
+
 class Solution:
     def numSubarrayBoundedMax(self, A: List[int], L: int, R: int) -> int:
         # Solution: https://leetcode.com/problems/number-of-subarrays-with-bounded-maximum/discuss/535154/CPP-O(N)-time-and-O(1)-space-with-explanation
@@ -10,13 +24,17 @@ class Solution:
         res = 0
 
         for i, element in enumerate(A):
+            # we out of bound
+            # reset everything
             if element > R:
                 start = i
                 count = 0
+            # We within [L,R]
             elif element >= L:
                 count = i - start
                 res += count
             else:
+                # element less than L
                 res += count
 
         return res
@@ -55,5 +73,5 @@ class Solution1:
 
 if __name__ == '__main__':
     s = Solution()
+    s.numSubarrayBoundedMax([2, 2, 1, 4, 3], 2, 3)
     s.numSubarrayBoundedMax([2, 1, 1, 1], 1, 2)
-    s.numSubarrayBoundedMax([2, 1, 4, 3], 2, 3)

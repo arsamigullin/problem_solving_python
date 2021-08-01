@@ -120,12 +120,20 @@ def search(guess):
             hi = mid
     return lo
 
+# nearest with bisect
+target = 1
+insert = bisect.bisect_left(nums, target)
+left_nearest = abs(nums[max(insert - 1, 0)])
+right_nearest = abs(nums[min(insert, len(nums) - 1)])
+
 
 if __name__ == '__main__':
 
     # this returns the index where it would inser the x value
     # nums = [2,3,4,4,4,7,9]
     #print(bisect_left_start(5, 3))  # 2
+    nums = [1,4]
+    print(binary_search_nearest_smallest(2))
 
     print(bisect_right(4)) #5
     print(bisect_left(4)) #2

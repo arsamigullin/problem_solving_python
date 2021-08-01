@@ -1,8 +1,9 @@
+import heapq
 class Heap:
     def __init__(self, A):
         self.length = len(A)
         # heapsize points to the latest element of the heap
-        self.heapsize = len(A) - 1
+        self.heapsize = len(A)
         self.A = A
 
     def left(self,i):
@@ -20,12 +21,12 @@ class Heap:
         l = self.left(i)
         r = self.right(i)
         # here we determine the largest element between parent and l
-        if l <= self.heapsize and self.A[l] > self.A[i]:
+        if l < self.heapsize and self.A[l] > self.A[i]:
             largest = l
         else:
             largest = i
         # here we determine largest element between largest (that was determined above) and right
-        if r <= self.heapsize and self.A[r] > self.A[largest]:
+        if r < self.heapsize and self.A[r] > self.A[largest]:
             largest = r
         # here we swap the largest element and parent so the parent element becomes larger
         if largest!=i:
@@ -34,7 +35,7 @@ class Heap:
             self.max_hepify(largest)
     #O(n)
     def build_max_heap(self):
-        for i in range(len(self.A)//2, -1, -1):
+        for i in range((len(self.A)//2)+1, -1, -1):
             self.max_hepify(i)
         print('done')
 
@@ -100,11 +101,80 @@ def heapSort(arr):
         heapify(arr, i, 0)
 
 
+class PQ:
+    def __init__(self, A):
+        self.A = A
+        self.n = len(self.A)
+
+    def heapify(self):
+        """Transform list into a heap, in-place, in O(len(x)) time."""
+        n = len(self.A)
+        # Transform bottom-up.  The largest index there's any point to looking at
+        # is the largest with a child index in-range, so must have 2*i + 1 < n,
+        # or i < (n-1)/2.  If n is even = 2*j, this is (2*j-1)/2 = j-1/2 so
+        # j-1 is the largest, which is n//2 - 1.  If n is odd = 2*j+1, this is
+        # (2*j+1-1)/2 = j so j-1 is the largest, and that's again n//2-1.
+        for i in reversed(range(n // 2)):
+            self._siftup(i)
+
+    def heappush(self, item):
+        """Push item onto heap, maintaining the heap invariant."""
+        self.A.append(item)
+        self._siftdown(0, self.n - 1)
+
+    def heappop(self):
+        """Pop the smallest item off the heap, maintaining the heap invariant."""
+        lastelt = self.A.pop()  # raises appropriate IndexError if heap is empty
+        if self.A:
+            returnitem = self.A[0]
+            self.A[0] = lastelt
+            self._siftup(self.A, 0)
+            return returnitem
+        return lastelt
+
+    def _siftup(self, pos):
+        endpos = len(self.A)
+        startpos = pos
+        newitem = self.A[pos]
+        # Bubble up the smaller child until hitting a leaf.
+        childpos = 2 * pos + 1  # leftmost child position
+        while childpos < endpos:
+            # Set childpos to index of smaller child.
+            rightpos = childpos + 1
+            if rightpos < endpos and self.A[childpos] >= self.A[rightpos]:
+                childpos = rightpos
+            # Move the smaller child up.
+            self.A[pos] = self.A[childpos]
+            pos = childpos
+            childpos = 2 * pos + 1
+        # The leaf at pos is empty now.  Put newitem there, and bubble it up
+        # to its final resting place (by sifting its parents down).
+        self.A[pos] = newitem
+        self._siftdown(startpos, pos)
+
+    def _siftdown(self, startpos, pos):
+        newitem = self.A[pos]
+        # Follow the path to the root, moving parents down until finding a place
+        # newitem fits.
+        while pos > startpos:
+            parentpos = (pos - 1) >> 1
+            parent = self.A[parentpos]
+            if newitem < parent:
+                self.A[pos] = parent
+                pos = parentpos
+                continue
+            break
+        self.A[pos] = newitem
+
 if __name__ == "__main__":
-    #a = [4,1,3,2,16,9,10,14,8,7]
+    a = [4,1,3,2,16,9,10,14,8,7]
+    s = PQ(a)
+    s.heapify()
     #heapSort(a)
     #s = Heap([4,1,3,2,16,9,10,14,8,7])
-    s = Heap([8,6,4,3])
-    s.build_max_heap()
-    s.heapsort()
+    #s = Heap([8,6,4,3])
+    #s.build_max_heap()
+    #d = [-e for e in a]
+    heapq.heapify(a)
+    #s.heapsort()
     print('done')

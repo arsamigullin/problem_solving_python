@@ -13,7 +13,7 @@ class TreeNode:
 from typing import List
 
 
-class Solution:
+class SolutionDfs:
     '''
     let's consider this binary tree
             8
@@ -77,3 +77,8 @@ class Solution:
             stack.append(child)
 
         return root
+
+
+if __name__ == '__main__':
+    s = SolutionDfs()
+    s.bstFromPreorder([8,5,1,7,10,12])

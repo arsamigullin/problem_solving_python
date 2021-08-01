@@ -144,3 +144,6 @@ if __name__ == '__main__':
     #             f.u(int(a[1]) + 1, int(a[2]))
     #
     # main()
+
+# ["NumArray","sumRange","update","sumRange","update","sumRange"]
+# [[[1,3,5]],[0,2],[1,2],[0,2],[0,5],[0,2]]

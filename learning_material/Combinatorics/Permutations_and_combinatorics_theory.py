@@ -23,3 +23,11 @@
 # {a; b; c; d} has six 2-combinations:
 # ab; ac; ad; bc; bd; cd
 # C(n,r) = n!/(r!(n-r)!)
+
+# The Product Rule
+# The Product Rule: If there are n(A) ways to do A
+# and n(B) ways to do B, then the number of ways to do
+# A and B is n(A) × n(B). This is true if the number of
+# ways of doing A and B are independent; the number of
+# choices for doing B is the same regardless of which choice
+# you made for A.

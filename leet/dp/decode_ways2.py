@@ -1,4 +1,4 @@
-class Solution:
+class SolutionDoesNotWork:
     def numDecodings(self, s: str) -> int:
         if not s or s[0] == '0':
             return 0
@@ -27,6 +27,40 @@ class Solution:
                 dp[i] += dp[i - 2]
 
         return dp[-1]%(10**9+7)
+
+
+class Solution:
+    def numDecodings(self, s: str) -> int:
+        n = len(s)
+        M = 10 ** 9 + 7
+        memo = [0] * n
+
+        def ways(s, i):
+            if i < 0:
+                return 1
+            if not memo[i]:
+                if s[i] == '*':
+                    res = 9 * ways(s, i - 1) % M
+                    if i > 0 and s[i - 1] == '1':
+                        res = (res + 9 * ways(s, i - 2)) % M
+                    elif i > 0 and s[i - 1] == '2':
+                        res = (res + 6 * ways(s, i - 2)) % M
+                    elif i > 0 and s[i - 1] == '*':
+                        res = (res + 15 * ways(s, i - 2)) % M
+                    memo[i] = res
+                else:
+                    res = 0 if s[i] == '0' else ways(s, i - 1)
+                    if i > 0 and s[i - 1] == '1':
+                        res = (res + ways(s, i - 2)) % M
+                    elif i > 0 and s[i - 1] == '2' and s[i] <= '6':
+                        res = (res + ways(s, i - 2)) % M
+                    elif i > 0 and s[i - 1] == '*':
+                        res = (res + (2 if s[i] <= '6' else 1) * ways(s, i - 2)) % M
+                    memo[i] = res
+            return memo[i]
+
+        return ways(s, n - 1)
+
 if __name__ == "__main__":
     s = Solution()
-    s.numDecodings("12*")
+    s.numDecodings("1111")

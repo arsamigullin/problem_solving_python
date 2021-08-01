@@ -121,6 +121,22 @@ class Solution:
 
         return res
 
+class Solution:
+    def maxRepOpt1(self, text: str) -> int:
+        text += ' '
+        mx, ct, l = 1, collections.Counter(text), len(text)
+        st = i = 0
+        while i < l:
+            if text[i] != text[st]:
+                j = i+1
+                while j < l and text[j] == text[st]: j+=1
+                count = j-st-1
+                if count < ct[text[st]]: count += 1
+                mx = max(mx, count)
+                st = i
+            i += 1
+        return mx
+
 if __name__ == '__main__':
     s = Solution()
     s.maxRepOpt1("abc")

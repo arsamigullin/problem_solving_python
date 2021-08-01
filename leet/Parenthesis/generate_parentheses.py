@@ -28,6 +28,28 @@ class Solution2(object):
                     ans.append(f'({left}){right}')
         return ans
 
+
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+        res = []
+
+        def helper(p, op, cl):
+            if len(p) == n * 2:
+                res.append(''.join(p))
+                return
+            if op < n:
+                p.append('(')
+                helper(p, op + 1, cl)
+                p.pop()
+            if cl < op:
+                p.append(')')
+                helper(p, op, cl + 1)
+                p.pop()
+
+        helper([], 0, 0)
+        return res
+
+
 if __name__ == "__main__":
     s = Solution2()
     s.generateParenthesis(3)

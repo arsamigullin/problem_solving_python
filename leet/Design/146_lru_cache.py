@@ -1,4 +1,7 @@
 import bisect
+import collections
+
+
 class LRUCache:
 
     def __init__(self, capacity: int):
@@ -70,19 +73,12 @@ class LRUCache:
 from collections import OrderedDict
 
 
-class LRUCache1(OrderedDict):
+class LRUCache(OrderedDict):
 
     def __init__(self, capacity):
-        """
-        :type capacity: int
-        """
         self.capacity = capacity
 
     def get(self, key):
-        """
-        :type key: int
-        :rtype: int
-        """
         if key not in self:
             return - 1
 
@@ -90,11 +86,6 @@ class LRUCache1(OrderedDict):
         return self[key]
 
     def put(self, key, value):
-        """
-        :type key: int
-        :type value: int
-        :rtype: void
-        """
         if key in self:
             self.move_to_end(key)
         self[key] = value
@@ -106,6 +97,65 @@ class LRUCache1(OrderedDict):
 # obj = LRUCache(capacity)
 # param_1 = obj.get(key)
 # obj.put(key,value)
+
+
+class DoublyLinkedList:
+    def __init__(self, key=0, val=0, nxt=None, prev=None):
+        self.nxt = nxt
+        self.prev = prev
+        self.val = val
+        self.key = key
+
+
+class LRUCache:
+
+    def __init__(self, capacity: int):
+        self.size = capacity
+        self.dummy = DoublyLinkedList()
+        self.last = self.dummy
+        self.d = collections.defaultdict(DoublyLinkedList)
+
+    def get(self, key: int) -> int:
+        if key in self.d:
+            node = self.d[key]
+            # we move to the end only if the key in self.d
+            self._move_to_end(node)
+            return node.val
+        else:
+            return -1
+
+    def put(self, key: int, value: int) -> None:
+        if key in self.d:
+            node = self.d[key]
+            node.val = value
+            self._move_to_end(node)
+        else:
+            node = DoublyLinkedList(key, value)
+            self.d[key] = node
+            self.last.nxt = node
+            node.prev = self.last
+            self.last = node
+        # after the dummy, there will be at least 2 more nodes
+        # because min capacity is 1
+        if len(self.d) > self.size:
+            node_to_del = self.d[self.dummy.nxt.key]
+            self.dummy.nxt = node_to_del.nxt
+            node_to_del.nxt.prev = self.dummy
+            self.d.pop(node_to_del.key)
+
+    def _move_to_end(self, node):
+        # if the node is already last
+        # do nothing
+        if node == self.last:
+            return
+        # remove from the current position
+        node.prev.nxt = node.nxt
+        node.nxt.prev = node.prev
+        # put to the end
+        self.last.nxt = node
+        node.prev = self.last
+        self.last = node
+        node.nxt = None
 
 
 if __name__ == '__main__':

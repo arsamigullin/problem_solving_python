@@ -49,7 +49,9 @@ def solutionUniversal(A):
     return max_ending
 
 if __name__ == "__main__":
+    solutionOn2_with_pref_sums([1,2,3])
     print(solutionUniversal([-3, 5, 5]))
+
     #print(solutionOn([5, -7, 3, 5, -2, 4, -1]))
     #print(solutionOn2([5, -7, 3, 5, -2, 4, -1]))
     #print(solutionOn2_with_pref_sums([5, -7, 3, 5, -2, 4, -1]))

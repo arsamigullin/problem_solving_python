@@ -157,6 +157,94 @@ class Solution3:
         dfs(0, [])
         return count
 
+# The Product Rule: If there are n(A) ways to do A
+# and n(B) ways to do B, then the number of ways to do
+# A and B is n(A) × n(B). This is true if the number of
+# ways of doing A and B are independent; the number of
+# choices for doing B is the same regardless of which choice
+# you made for A.
+
+class Solution8:
+    def numTeams(self, r: List[int]) -> int:
+
+        # this function counts items that are less r[i]
+        # if r is [1,2,1,5] and i is 3 (r[3]) the count is 3
+        # so the num 5 has 3 (1,2,1) items to the left that are less than 5
+        def count(r):
+            n = len(r)
+            asc = []
+            for i in range(n):
+                t = 0
+                for j in range(i):
+                    if r[i] > r[j]:
+                        t+=1
+                asc.append(t)
+
+            desc = []
+            for i in range(n):
+                t = 0
+                for j in range(i+1, n):
+                    if r[j]>r[i]:
+                        t+=1
+                desc.append(t)
+
+            return sum(a*b for a, b in zip(asc,desc))
+
+        return count(r) + count(r[::-1])
+
+# this is the optimized version of the Solution8
+class Solution:
+    def numTeams(self, A):
+        L = len(A)
+        result = 0
+        for j in range(1,L-1):
+            x, lo_L, lo_R, hi_L, hi_R = A[j], 0, 0, 0, 0
+            for i in range(j):
+                if A[i]<x:
+                    lo_L += 1
+                else:
+                    hi_L += 1
+            for k in range(j+1,L):
+                if A[k]<x:
+                    lo_R += 1
+                else:
+                    hi_R += 1
+            result += lo_L*hi_R + hi_L*lo_R
+        return result
+
+
+# Version A:  [Top Speed] O(n log n) solution using SortedLists to calculate our 4 counting variables in Log(n) time.
+from sortedcontainers import SortedList
+
+
+class Solution:
+    def count_low_high(self, sl, x):
+        # this finds index to insert x
+        # all items to the left are smaller than x
+        lo = sl.bisect_left(x)
+        # hence the items to the right are higher
+        hi = len(sl) - lo
+        return lo, hi
+
+    def numTeams(self, A):
+        result = 0
+        left = SortedList()
+        right = SortedList(A)
+        for x in A:
+            right.remove(x)
+            lo_L, hi_L = self.count_low_high(left, x)
+            lo_R, hi_R = self.count_low_high(right, x)
+            result += lo_L * hi_R + hi_L * lo_R
+            left.add(x)
+        return result
+
+
+
+
+
+
 if __name__ == '__main__':
+    s = Solution8()
+    s.numTeams([1,2,3,4])
     s = Solution1()
     s.numTeams([2,5,3,4,1])

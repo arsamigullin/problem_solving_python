@@ -82,3 +82,22 @@ class Solution:
         self.res = max(self.res, icr + dcr - 1)
 
         return (icr, dcr)
+
+
+class Solution:
+    def longestConsecutive(self, root: TreeNode) -> int:
+        res = 0
+
+        def dfs(node, par):
+            nonlocal res
+            if not node:
+                return 0, 0
+            inc = int(node.val + 1 == par)
+            dec = int(node.val - 1 == par)
+            linc, ldec = dfs(node.left, node.val)
+            rinc, rdec = dfs(node.right, node.val)
+            res = max(linc + rdec + 1, ldec + rinc + 1, res)
+            return 0 if inc == 0 else max(linc, rinc) + 1, 0 if dec == 0 else max(ldec, rdec) + 1
+
+        l, r = dfs(root, float('-inf'))
+        return max(res, l, r)

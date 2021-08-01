@@ -9,37 +9,38 @@ class ListNode:
 class Solution:
     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
 
-        def get_lenght(node):
-            n = node
-            length = 0
-            while n:
-                n = n.next
-                length += 1
-            return length
+        def reversell(head):
+            node = head
+            prev = None
+            while node:
+                nxt = node.next
+                node.next = prev
+                prev = node
+                node = nxt
+            return prev
 
-        len_1 = get_lenght(l1)
-        len_2 = get_lenght(l2)
+        l1 = reversell(l1)
+        l2 = reversell(l2)
 
-        def add(node1, node2, n1, n2):
-            if node1 is None and node2 is None:
-                return (None, 0)
-            if n1 == n2:
-                nextNode, rem = add(node1.next, node2.next, n1 - 1, n2 - 1)
-                total = node1.val + node2.val + rem
-            elif n1 > n2:
-                nextNode, rem = add(node1.next, node2, n1 - 1, n2)
-                total = node1.val + rem
-            else:
-                nextNode, rem = add(node1, node2.next, n1, n2 - 1)
-                total = node2.val + rem
-            d, r = divmod(total, 10)
-            curr = ListNode(r)
-            curr.next = nextNode
-            return (curr, d)
+        carry = 0
+        result = None
+        while l1 or l2 or carry > 0:
+            if l1:
+                carry += l1.val
+                l1 = l1.next
 
-        node, rem = add(l1, l2, len_1, len_2)
-        if rem > 0:
-            ans = ListNode(rem)
-            ans.next = node
-            return ans
-        return node
+            if l2:
+                carry += l2.val
+                l2 = l2.next
+
+            l3 = ListNode(carry % 10)
+            l3.next = result
+            result = l3
+            carry = carry // 10
+
+        if carry > 0:
+            l3 = ListNode(carry % 10)
+            l3.next = result
+            result = l3
+
+        return result

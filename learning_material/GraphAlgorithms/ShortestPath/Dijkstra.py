@@ -6,7 +6,6 @@ from typing import List
 # but this is much much faster
 class Solution:
     def findTheCity(self, n: int, edges: List[List[int]], distanceThreshold: int) -> int:
-
         cost = [[float('inf')] * n for _ in range(n)]
         graph = collections.defaultdict(list)
         for a, b, c in edges:
@@ -193,6 +192,47 @@ class Solution:
                     heappush(q, (-g[ni][nj], ni, nj))
                     g[ni][nj] = -1
         return res
+
+
+class Node:
+
+    def __init__(self, x, y, dist):
+        self.x = x
+        self.y = y
+        self.dist = dist
+
+    def __lt__(self, other):
+        return self.dist < other.dist
+
+
+class Solution:
+    def swimInWater(self, grid: List[List[int]]) -> int:
+        n = len(grid)
+        m = len(grid[0])
+        distance = [[float('inf')] * m for _ in range(n)]
+
+        def dijkstra():
+            dirs = [[0, 1], [0, -1], [1, 0], [-1, 0]]
+            heap = []
+            heapq.heappush(heap, Node(0, 0, grid[0][0]))
+            res = 0
+            while heap:
+                node = heapq.heappop(heap)
+                x = node.x
+                y = node.y
+                dist = node.dist
+                if x == n - 1 and y == m - 1:
+                    return max(res, dist)
+                res = max(res, dist)
+                for dx, dy in dirs:
+                    i, j = x + dx, y + dy
+                    if 0 <= i < n and 0 <= j < m and grid[i][j] > -1:
+                        heapq.heappush(heap, Node(i, j, grid[i][j]))
+                        grid[i][j] = -1
+            return res
+
+        return dijkstra()
+
 
 
 

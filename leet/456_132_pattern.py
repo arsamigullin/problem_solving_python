@@ -45,7 +45,7 @@ class SolutionInterval:
         return False
 
 # O(n)
-class Solution:
+class SolutionOn:
 
     def find132pattern(self, nums: List[int]) -> bool:
         n = len(nums)
@@ -97,5 +97,6 @@ class SolutionLog:
         return False
 
 if __name__ == '__main__':
-    s = SolutionLog()
+    s = SolutionOn()
+    s.find132pattern([3,1,4,2])
     s.find132pattern([5, 6, 4, 7, 3, 8, 2, 9])

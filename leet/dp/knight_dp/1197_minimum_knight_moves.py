@@ -14,6 +14,12 @@ class Solution:
     those cases we added to memo
     memo also stores the previous steps at each reached coordinate
     so we avoid a lot of calls
+    if the knight stays on (1,1) it requires 2 moves because (0,0) is the middle of the chess desk
+    so we have space to make the proper movements to reach out (0,0)
+    We claim that the target (x, y)(x,y), its horizontally, vertically, and diagonally symmetric
+    points (i.e. (x, -y), (-x, y), (-x, -y)(x,−y),(−x,y),(−x,−y)) share the same answer as the target point.
+    Note: one might argue that there is another base case to cover, which is x + y = 1, e.g. x=1, y=0.
+    This is not our base case though, because by taking one more step further, it will be reduced down to our base case 2), i.e. |x-1| + |y-2| = 2.
     '''
     def minKnightMoves(self, x, y):
         memo = {(0, 0): 0, (1, 1): 2, (1, 0): 3, (0, 1): 3}
