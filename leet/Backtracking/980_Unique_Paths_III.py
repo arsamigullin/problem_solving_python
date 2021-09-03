@@ -72,6 +72,42 @@ class Solution:
         helper(start[0], start[1], empty)
         return cnt
 
+# O(3^N)
+class Solution:
+    def uniquePathsIII(self, grid: List[List[int]]) -> int:
+        n, m = len(grid), len(grid[0])
+        start = 0
+        target = 0
+        non_obstacles = 0
+        for i in range(n):
+            for j in range(m):
+                if grid[i][j] == 0:
+                    non_obstacles += 1
+                elif grid[i][j] == 1:
+                    start = (i, j)
+                elif grid[i][j] == 2:
+                    target = (i, j)
+
+        count = 0
+
+        def backtrack(i, j, remains):
+            nonlocal count
+            if i == target[0] and j == target[1] and remains == 0:
+                count += 1
+                return
+            tmp = grid[i][j]
+            grid[i][j] = -3
+            for dx, dy in [(0, 1), (0, -1), (1, 0), (-1, 0)]:
+                x = dx + i
+                y = dy + j
+                if 0 <= x < n and 0 <= y < m and grid[x][y] >= 0:
+                    backtrack(x, y, remains - 1)
+            grid[i][j] = tmp
+
+        backtrack(start[0], start[1], non_obstacles + 1)
+        return count
+
+
 if __name__ == '__main__':
     s = Solution()
     s.uniquePathsIII([[1,0,0,0],[0,0,0,0],[0,0,0,2]])

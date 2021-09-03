@@ -20,6 +20,21 @@ class Solution:
         return sum(sieve[:-1])
 
 
+class Solution1:
+    def countPrimes(self, n: int) -> int:
+        if n < 2:
+            return 0
+
+        numbers = {}
+
+        for i in range(2, int(n ** 0.5) + 1):
+            if i not in numbers:
+                for j in range(i * i, n, i):
+                    numbers[j] = 1
+        # because 0 and 1 are not primes
+        return n - len(numbers) - 2
+
+
 if __name__ == '__main__':
-    s = Solution()
+    s = Solution1()
     s.countPrimes(100)

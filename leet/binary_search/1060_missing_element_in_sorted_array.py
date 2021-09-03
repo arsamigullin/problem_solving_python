@@ -1,7 +1,7 @@
 from typing import List
 # binary_search
 
-class Solution:
+class Solution1:
     def missingElement(self, nums: List[int], k: int) -> int:
 
         # this searches the guess in the original nums array
@@ -47,10 +47,18 @@ class Solution:
         return -1
 
 
-class Solution:
+class Solution2:
     def missingElement(self, nums: List[int], k: int) -> int:
 
         # how many missing numbers before nums[i]
+        # this formula is straightforward
+        # when doing nums[i] - nums[0] we define the delta between the first item and the item under i
+        # BUT some numbers could be existed between nums[0] and nums[i], and not to count them we subtract index
+        # [4,7,9,10]
+        # let's consider 9 with its index 2
+        # nums[2] - nums[0] - 2 = 9-4-2 = 3
+        # Doing 9-4-1 we would get the missing nums if 7 did not exist
+        # Since there is also 7 we must subtract the 9th index
         missing = lambda i: nums[i] - nums[0] - i
         n = len(nums)
         if k > missing(n - 1):
@@ -58,19 +66,19 @@ class Solution:
 
         lo = 0
         hi = n - 1
-
         while lo < hi:
             mid = lo + (hi - lo) // 2
-            # if the count of missing numbers before index mid is less than k
-            # we want to increase lower
             if k > missing(mid):
                 lo = mid + 1
             else:
                 hi = mid
+
         return nums[lo - 1] + k - missing(lo - 1)
 
 
-class Solution:
+
+
+class Solution3:
     def missingElement(self, nums: List[int], k: int) -> int:
         # Return how many numbers are missing until nums[idx]
         missing = lambda idx: nums[idx] - nums[0] - idx
@@ -90,3 +98,9 @@ class Solution:
         # kth missing number is greater than nums[idx - 1]
         # and less than nums[idx]
         return nums[idx - 1] + k - missing(idx - 1)
+
+if __name__ == '__main__':
+    arr = [4, 7, 9, 10]
+    k = 3
+    s = Solution2()
+    s.missingElement(arr, k)

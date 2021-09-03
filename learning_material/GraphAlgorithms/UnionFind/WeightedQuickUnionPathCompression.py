@@ -22,6 +22,8 @@ class Solution:
         # this represents the size of tree at ith node
         size = [1 for _ in range(n)]
 
+        # find return parent of the p
+        # it also updates the parent for all the intermediate nodes between p and root
         def find(p):
             root = p
             # first we want to find the root
@@ -35,7 +37,8 @@ class Solution:
                 p = newp
             return root
 
-
+        # union unites two components, represented by edge p and q (p as well as q could also be part of another
+        # component). After union, p and q are in the same component.
         def union(p, q):
             nonlocal n
             rootP = find(p)
@@ -62,3 +65,27 @@ class Solution:
                 union(u, v)
 
         return n == 1
+
+
+class DSU:
+    def __init__(self, N):
+        self.p = list(range(N))
+
+    def find(self, x):
+        if self.p[x] != x:
+            self.p[x] = self.find(self.p[x])
+        return self.p[x]
+
+    def union(self, x, y):
+        xr = self.find(x)
+        yr = self.find(y)
+        self.p[xr] = yr
+
+class Solution(object):
+    def removeStones(self, stones):
+        N = len(stones)
+        dsu = DSU(20000)
+        for x, y in stones:
+            dsu.union(x, y + 10000)
+
+        return N - len({dsu.find(x) for x, y in stones})

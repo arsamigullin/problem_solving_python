@@ -158,6 +158,60 @@ class LRUCache:
         node.nxt = None
 
 
+class ListNode:
+    def __init__(self, val, key, nxt=None, prev=None):
+        self.val = val
+        self.nxt = nxt
+        self.prev = prev
+        self.key = key
+
+
+class LRUCache:
+
+    def __init__(self, capacity: int):
+        self.d = {}
+        self.head = ListNode(-1, -1)
+        self.last = self.head
+        self.size = capacity
+
+    def get(self, key: int) -> int:
+        if key in self.d:
+            self._update(key, self.d[key].val)
+            return self.d[key].val
+        return -1
+
+    def put(self, key: int, value: int) -> None:
+        # evict the LRU only if it is greater than capacity AND the key not in the d
+        if len(self.d) >= self.size and key not in self.d:
+            to_evict = self.head.nxt
+            self.head.nxt = to_evict.nxt
+            if to_evict.nxt:
+                to_evict.nxt.prev = self.head
+            self.d.pop(to_evict.key)
+        self._update(key, value)
+
+    def _update(self, key, value):
+
+        if key in self.d:
+            self.d[key].val = value
+            # the current element is already the last one
+            if not self.d[key].nxt:
+                return
+            cur = self.d.pop(key)
+            prev_cur = cur.prev
+            nxt_cur = cur.nxt
+            prev_cur.nxt = nxt_cur
+            nxt_cur.prev = prev_cur
+        else:
+            cur = ListNode(value, key)
+
+        self.last.nxt = cur
+        cur.prev = self.last
+        cur.nxt = None
+        self.last = cur
+        self.d[key] = cur
+
+
 if __name__ == '__main__':
     #["LRUCache", "put", "get", "put", "get", "get"]
     #[[1], [2, 1], [2], [3, 2], [2], [3]]

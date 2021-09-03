@@ -3,6 +3,33 @@ from typing import List
 
 class Solution:
     def longestIncreasingPath(self, matrix: List[List[int]]) -> int:
+
+        n = len(matrix)
+        m = len(matrix[0])
+        memo = [[0] * m for _ in range(n)]
+        def dfs(i, j):
+            if memo[i][j] == 0:
+                cur_val = matrix[i][j]
+                count = 1
+                # the reason we do not detect cycle is this condition matrix[i][j] < matrix[x][y]
+                # if we came to 8 from 4, we never will go back to 4 since 8>4
+                # this helps us to avoid visited structure
+                for x, y in [[i + 1, j], [i - 1, j], [i, j + 1], [i, j - 1]]:
+                    if 0 <= x < n and 0 <= y < m and matrix[x][y] > cur_val:
+                        count = max(count, dfs(x, y) + 1)
+                memo[i][j] = count
+            return memo[i][j]
+
+        res = 0
+        for i in range(n):
+            for j in range(m):
+                res = max(res, dfs(i, j))
+
+        return res
+
+
+class Solution:
+    def longestIncreasingPath(self, matrix: List[List[int]]) -> int:
         if not matrix:
             return 0
         mem = [[0] * len(matrix[0]) for _ in range(len(matrix))]

@@ -6,9 +6,15 @@ class Solution:
         entries = {c: [s.index(c), s.rindex(c)+1] for c in set(s)}
         # find all the correct boundries
         pairs = []
-        for c in set(s):
-            l = i = entries[c][0]
-            r = j = entries[c][1]
+        for ch in set(s):
+            # initially we have these coordinates
+            l = i = entries[ch][0]
+            r = j = entries[ch][1]
+            # then here we check to see if there is char inside of [i:j] range that have even broader range
+            # for examaple s = "acaca" and ch now is 'c' and its range is [1,3]
+            # as we can see, between two 'c' there is 'a' with broader range [0,4]
+            # so we detected intersection and we update the initial variables (l,r) with i,j
+            # and because of that it will stop at some point because all the chars are already explored within [l:r] range
             while True:
                 t = set(s[i:j])
                 # this just extends the range if inside of l and r there are chars that have lower or greater l and r
@@ -32,6 +38,7 @@ class Solution:
 
 if __name__ == '__main__':
     s = Solution()
+    s.maxNumOfSubstrings("abab")
     s.maxNumOfSubstrings("adefaddaccc")
     s.maxNumOfSubstrings("abann")
     s.maxNumOfSubstrings("ababca")

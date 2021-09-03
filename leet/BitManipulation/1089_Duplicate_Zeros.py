@@ -1,5 +1,35 @@
+import collections
 from typing import List
 
+# O(n) O(1)
+class SolutionO1:
+    def duplicateZeros(self, arr: List[int]) -> None:
+        zeroes = arr.count(0)
+        n = len(arr)
+        for i in range(n-1, -1, -1):
+            if i + zeroes < n:
+                arr[i + zeroes] = arr[i]
+            if arr[i] == 0:
+                zeroes -= 1
+                if i + zeroes < n:
+                    arr[i + zeroes] = 0
+
+
+# O(n) O(n)
+class SolutionOn:
+    def duplicateZeros(self, arr: List[int]) -> None:
+        """
+        Do not return anything, modify arr in-place instead.
+        """
+        queue = collections.deque()
+        n = len(arr)
+        for i in range(n):
+            if arr[i]==0:
+                queue.append(arr[i])
+            if queue:
+                num = queue.popleft()
+                queue.append(arr[i])
+                arr[i] = num
 
 class SolutionMy:
     def duplicateZeros(self, arr: List[int]) -> None:
@@ -59,5 +89,5 @@ class Solution2:
 
 
 if __name__ == '__main__':
-    s = SolutionMy()
+    s = SolutionO1()
     s.duplicateZeros([1,0,2,3,0,4,5,0])

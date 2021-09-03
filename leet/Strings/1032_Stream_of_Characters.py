@@ -102,7 +102,9 @@ class StreamChecker:
 
 
 
-
+        # stream = a x y z
+        #z y x a
+        # words = ["abc", "xyz"] -> reverse ["cab","zyx"]
 
         # if letter in self.cur:
         #     self.cur = self.cur[letter]

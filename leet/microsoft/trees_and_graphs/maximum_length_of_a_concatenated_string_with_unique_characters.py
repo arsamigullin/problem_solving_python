@@ -1,5 +1,51 @@
 import typing
 List = typing.List
+
+# these two most popular
+class Solution:
+    def maxLength(self, arr: List[str]) -> int:
+        options = [set()]
+        # O(n * m * 2 ^ n)
+        arr = [set(word) for word in arr if len(word) == len(set(word))]
+        result = 0
+        # print(arr)
+        for word in arr:
+            for option in options:
+                composed_word = option | word
+                if len(composed_word) == len(word) + len(option):
+                    options.append(composed_word)
+                    result = max(result, len(composed_word))
+
+        return result
+# O(nm)+O(n*2^n)
+class Solution:
+    def maxLength(self, arr: List[str]) -> int:
+        nums = []
+        # O(n*m) where n is len(arr) and m is max len of the word in arr
+        for a in arr:
+            if len(a) == len(set(a)):
+                num = 0
+
+                for ch in a:
+                    num|=1<<ord(ch)-ord('a')
+                nums.append(num)
+        n = len(arr)
+
+
+        def helper(i, cur):
+            if i>=len(nums):
+                return bin(cur).count('1')
+            if cur|nums[i] == cur+nums[i]:
+                return max(helper(i+1,cur+nums[i]), helper(i+1, cur))
+            else:
+                return helper(i+1, cur)
+        res= 0
+        # O(n*2^n)
+        for i in range(len(nums)):
+            res = max(res, helper(i, nums[i]))
+        return res
+
+#############
 class Solution:
     def maxLength(self, arr: List[str]) -> int:
         if not arr:

@@ -100,10 +100,12 @@ def heapSort(arr):
         arr[i], arr[0] = arr[0], arr[i]  # swap
         heapify(arr, i, 0)
 
-
+# this is min Binary Heap
 class PQ:
     def __init__(self, A):
-        self.A = A
+        self.A = A # is complete binary tree
+        # The heap property:
+        # in each subtree rooted at x, the items on the left and right subtrees are greater or equal x
         self.n = len(self.A)
 
     def heapify(self):
@@ -133,24 +135,24 @@ class PQ:
         return lastelt
 
     def _siftup(self, pos):
-        endpos = len(self.A)
-        startpos = pos
+        end = len(self.A)
+        start = pos
         newitem = self.A[pos]
         # Bubble up the smaller child until hitting a leaf.
-        childpos = 2 * pos + 1  # leftmost child position
-        while childpos < endpos:
+        child = 2 * pos + 1  # leftmost child position
+        while child < end:
             # Set childpos to index of smaller child.
-            rightpos = childpos + 1
-            if rightpos < endpos and self.A[childpos] >= self.A[rightpos]:
-                childpos = rightpos
+            right_child = child + 1
+            if right_child < end and self.A[child] >= self.A[right_child]:
+                child = right_child
             # Move the smaller child up.
-            self.A[pos] = self.A[childpos]
-            pos = childpos
-            childpos = 2 * pos + 1
+            self.A[pos] = self.A[child]
+            pos = child
+            child = 2 * pos + 1
         # The leaf at pos is empty now.  Put newitem there, and bubble it up
         # to its final resting place (by sifting its parents down).
         self.A[pos] = newitem
-        self._siftdown(startpos, pos)
+        self._siftdown(start, pos)
 
     def _siftdown(self, startpos, pos):
         newitem = self.A[pos]
@@ -166,8 +168,62 @@ class PQ:
             break
         self.A[pos] = newitem
 
+# PQ checking
+class PQCH:
+    def __init__(self, A):
+        self.A = A
+
+    def heappop(self):
+        last = self.A.pop()
+        if len(self.A) > 0:
+            item_to_return = self.A[0]
+            self.A[0] = last
+            self._siftup(0)
+            return item_to_return
+        return last
+
+    def heapify(self):
+        for i in reversed(range(len(self.A)//2)):
+            self._siftup(i)
+
+    def heppush(self, x):
+        self.A.append(x)
+        self._siftdown(0, len(self.A)-1)
+
+    def _siftup(self, pos):
+        end = len(self.A)
+        start = pos
+        newitem = self.A[pos]
+        child = pos * 2 + 1
+        while child < end:
+            right_child = child + 1
+            # here we've got the smallest item among two children
+            if right_child < end and self.A[child]>=self.A[right_child]:
+                child = right_child
+            self.A[pos] = self.A[child]
+            pos = child
+            child = pos * 2 + 1
+
+        self.A[pos] = newitem
+        self._siftdown(start, pos)
+
+    def _siftdown(self, start, pos):
+        newitem = self.A[pos]
+        while pos > start:
+            parent_pos = (pos-1)>>1
+            parent = self.A[parent_pos]
+            if parent > newitem:
+                self.A[pos] = parent
+                pos = parent_pos
+                continue
+            break
+        self.A[pos] = newitem
+
+
 if __name__ == "__main__":
     a = [4,1,3,2,16,9,10,14,8,7]
+    b = [4,1,3,2,16,9,10,14,8,7]
+    heapq.heapify(b)
     s = PQ(a)
     s.heapify()
     #heapSort(a)
@@ -175,6 +231,6 @@ if __name__ == "__main__":
     #s = Heap([8,6,4,3])
     #s.build_max_heap()
     #d = [-e for e in a]
-    heapq.heapify(a)
+    #heapq.heapify(a)
     #s.heapsort()
     print('done')

@@ -126,8 +126,44 @@ insert = bisect.bisect_left(nums, target)
 left_nearest = abs(nums[max(insert - 1, 0)])
 right_nearest = abs(nums[min(insert, len(nums) - 1)])
 
+def bisect_left_learn(arr, x):
+    lo = 0
+    hi = len(arr)
+    while lo<hi:
+        mid = lo + (hi-lo)//2
+        if arr[mid] < x:
+            lo = mid + 1
+        else:
+            hi = mid
+    return lo
+
+def bisect_right_learn(arr, x):
+    lo = 0
+    hi = len(arr)
+    while lo<hi:
+        mid = lo + (hi-lo)//2
+        if x < arr[mid]:
+            hi = mid
+        else:
+            lo = mid + 1
+    return lo
+
+    # while lo < hi:
+    #     mid = (lo+hi)//2
+    #     if x < arr[mid]:
+    #         hi = mid
+    #     else:
+    #         lo = mid+1
+    # return lo
 
 if __name__ == '__main__':
+    # need to find items strictly less than target (or >= target) - use bisect_left
+    arr = [10, 20, 30, 40]
+    i = bisect_left_learn(arr, 5) # arr[:i]<target<=arr[i:]
+    # need to find items strictly greater (OR <= target) - use bisect_right
+    arr = [5, 20, 30, 40]
+    i = bisect_right_learn(arr, 5) # arr[:i]<=target<arr[i:]
+    j = bisect.bisect(arr, 5)
 
     # this returns the index where it would inser the x value
     # nums = [2,3,4,4,4,7,9]

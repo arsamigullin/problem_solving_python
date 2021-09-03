@@ -120,6 +120,7 @@ for i in range(len(matrix)):
 
 if __name__ == '__main__':
 
+    int_to_str(58)
     # this is how we find first two min values
     # having only one iteration
     first = second = 0
@@ -130,6 +131,3 @@ if __name__ == '__main__':
         elif second_min is None or i < second:
             second_min = i
     print(first,second)
-
-
-

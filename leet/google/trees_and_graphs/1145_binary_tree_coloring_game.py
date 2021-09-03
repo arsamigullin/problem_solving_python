@@ -34,3 +34,34 @@ class Solution:
         # is greater than count of nodes for the first player
         # that mean player2 will win
         return m - 1 > (top + left + right) - m
+
+
+class Solution:
+    def btreeGameWinningMove(self, root: TreeNode, n: int, x: int) -> bool:
+        left = 0
+        right = 0
+
+        def dfs(node, branch):
+            nonlocal left, right
+            if not node:
+                return
+            if node.val == x:
+                dfs(node.left, 'l')
+                dfs(node.right, 'r')
+            else:
+                if branch == 'l':
+                    left += 1
+                elif branch == 'r':
+                    right += 1
+
+                dfs(node.left, branch)
+                dfs(node.right, branch)
+
+        dfs(root, None)
+
+        count_of_nodes_above_x = n - (right + left) - 1
+
+        count_of_nodes_available_for_Y = max(count_of_nodes_above_x, left, right)
+
+        return count_of_nodes_available_for_Y - 1 > (
+                    count_of_nodes_above_x + left + right) - count_of_nodes_available_for_Y

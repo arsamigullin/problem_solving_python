@@ -1,7 +1,7 @@
 import heapq
 from typing import List
 
-class Solution:
+class Solution1:
     def reconstructQueue(self, people: List[List[int]]) -> List[List[int]]:
         # here we sort people by height (tallest persons will be first) and then by count
         # count is basically the position at which the current person will be inserted
@@ -17,7 +17,7 @@ class Solution:
 
 
 # this is still bad solution
-class Solution:
+class Solution2:
     def reconstructQueue(self, people: List[List[int]]) -> List[List[int]]:
         sorted_by_height = sorted(people, key=lambda x: x[0])
         print(sorted_by_height)
@@ -48,6 +48,6 @@ class Solution:
 
 
 if __name__ == '__main__':
-    s = Solution()
+    s = Solution1()
+    s.reconstructQueue([[7, 0], [4, 4], [7, 1], [5, 0], [6, 1], [5, 2]])
     s.reconstructQueue([[9,0],[7,0],[1,9],[3,0],[2,7],[5,3],[6,0],[3,4],[6,2],[5,2]])
-    s.reconstructQueue([[7,0], [4,4], [7,1], [5,0], [6,1], [5,2]])
