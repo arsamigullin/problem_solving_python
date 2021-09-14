@@ -46,12 +46,16 @@ if __name__ == "__main__":
     arr = [0,1,2,3,4,5,6,7]
     #arr = [-6,184,10]
     #arr = [1,9,4,6,7]
-    s.permute(arr)
+    arr = [1,2,3,4]
+    #s.permute(arr)
     n = math.factorial(len(arr))
+    res = []
     for i in range(n):
         s.permute(arr)
+        res.append(arr[:])
         print(arr)
-
+    res.sort()
+    print(res)
     # [1, 2, 3]
     # [1, 3, 2]
     # [2, 1, 3]

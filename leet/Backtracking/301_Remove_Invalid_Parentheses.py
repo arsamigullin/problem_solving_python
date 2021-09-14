@@ -20,6 +20,7 @@ class Solution1:
                 newOpen = open
                 if s[i] == '(': newOpen = open + 1
                 elif s[i] == ')': newOpen = open - 1
+                # the idea here is we have
                 brackets = dp(i + 1, newOpen)
                 for suffix in brackets: # Case 2: Include s[i]: '(', ')' or letter
                     ans.add(s[i] + suffix)
@@ -27,8 +28,43 @@ class Solution1:
             return memo[(i,open)]
 
         validAnswers = dp(0, 0)
+        print(memo)
         maxLen = max(map(len, validAnswers))
         return filter(lambda x: len(x) == maxLen, validAnswers)
+
+# the same for repetition
+class Solution:
+    def removeInvalidParentheses(self, s: str) -> List[str]:
+        memo = {}
+        n = len(s)
+
+        def dp(i, balance):
+            ans = set()
+            if balance < 0:
+                return ans
+            if i >= n:
+                if balance == 0:
+                    ans.add("")
+                return ans
+
+            if (i, balance) not in memo:
+                if s[i] == '(' or s[i] == ')':
+                    ans.update(dp(i + 1, balance))
+
+                new_balance = balance
+                if s[i] == '(':
+                    new_balance += 1
+                elif s[i] == ')':
+                    new_balance -= 1
+                for suffix in dp(i + 1, new_balance):
+                    ans.add(s[i] + suffix)
+
+                memo[(i, balance)] = ans
+            return memo[(i, balance)]
+
+        answers = dp(0, 0)
+        answers = sorted(answers, key=len, reverse=True)
+        return [ans for ans in answers if len(ans) == len(answers[0])]
 
 
 class Solution:
@@ -69,4 +105,5 @@ class Solution:
 
 if __name__ == '__main__':
     s = Solution1()
+    s.removeInvalidParentheses(")()")
     s.removeInvalidParentheses("()())()")

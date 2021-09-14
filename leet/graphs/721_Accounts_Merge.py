@@ -2,7 +2,49 @@ import collections
 from typing import List
 
 
-class Solution:
+class Solution3:
+    def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:
+
+        parent = {}
+        def find(p):
+            parent.setdefault(p, p)
+            rootP = p
+            while rootP != parent[rootP]:
+                rootP = parent[rootP]
+            while p != rootP:
+                newp = parent[p]
+                parent[p] = rootP
+                p = newp
+            return rootP
+
+        def union(p, q):
+            rootP = find(p)
+            rootQ = find(q)
+            if rootP == rootQ:
+                return
+            parent[rootQ] = rootP
+
+        email_to_name = {}
+
+        # here we create a component based on the emails of the current account
+        # NOTE: after this loop the emails from the same component can have different parents
+        # because of nature of Union-Find
+        for account in accounts:
+            for email in account[1:]:
+                email_to_name[email] = account[0]
+                union(email, account[1])
+
+        res = collections.defaultdict(list)
+        # in this loop we find the parent based on the find mehtod
+        # which will flatten the tree and assign the only parent for the current email
+        for email in email_to_name:
+            par = find(email)
+            res[par].append(email)
+
+        return [[email_to_name[name]] + sorted(emails) for name, emails in res.items()]
+
+
+class Solution2:
     def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:
         parent = {}
 
@@ -53,7 +95,7 @@ class Solution:
 # This technique ensures that all the related email will be to visited and will be added to components
 
 import collections
-class Solution2(object):
+class Solution1(object):
     def accountsMerge(self, accounts):
         graph = collections.defaultdict(set)
         email_to_name = {}
@@ -82,5 +124,8 @@ class Solution2(object):
         return ans
 
 if __name__ == "__main__":
-    s = Solution()
+    s = Solution1()
+    s.accountsMerge(
+        [["John", "john_newyork@mail.com", "johnsmith@mail.com", "johnsbarabun@mail.com"], ["John", "johnsmith@mail.com", "john00@mail.com"],
+         ["Mary", "mary@mail.com"], ["John", "johnnybravo@mail.com"]])
     s.accountsMerge([["John","john_newyork@mail.com", "johnsmith@mail.com"],["John","johnsmith@mail.com","john00@mail.com"],["Mary","mary@mail.com"],["John","johnnybravo@mail.com"]])

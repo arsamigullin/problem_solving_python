@@ -1,4 +1,44 @@
 import bisect
+
+# the same as below
+import math
+
+# the same as the right below solution
+class Solution1:
+    def minWindow(self, T: str, P: str) -> str:
+        n = len(T)
+        m = len(P)
+        memo = {}
+        # state here is i and j, the position in T where we've found the char under P[j]
+        # meaning, if we search for P[j] in T starting from index i, then in memo we saving
+        # found last index (ind) under (i,j), i.e. memo[(i,j)] = ind
+        # ind is the index in T where the last char of P found
+        #  (think of it as flatten tree where ind is root and (i,j) are children)
+        # So let's say we have T = "abbcdebdde" and P = "bde"
+        # the memo will look like this
+        # {(5, 3): 6, (4, 2): 6, (2, 1): 6, (3, 1): 6, (7, 1): inf}
+        def helper(i, j):
+            if j >= m:
+                return i
+            if (i, j) not in memo:
+                ind = T.find(P[j], i)
+                memo[(i, j)] = math.inf if ind == -1 else helper(ind + 1, j + 1)
+            return memo[(i, j)]
+
+        length = n + 1
+        result = ""
+        for start in range(n):
+            if T[start] == P[0]:
+                end = helper(start + 1, 1)
+                if end - start < length:
+                    result = T[start: end]
+                    length = end - start
+        return result
+
+if __name__ == '__main__':
+    s = Solution1()
+    s.minWindow("abbcdebdde","bde")
+
 class Solution:
     def minWindow(self, T: str, P: str) -> str:
         def dfs(i, j):
@@ -19,20 +59,20 @@ class Solution:
 
 
 class Solution1:
-    def minWindow(self, s1: str, s2: str) -> str:
+    def minWindow(self, T: str, P: str) -> str:
         start = -1
         ret = ""
         while True:
             first = start + 1
-            for c in s2:
-                start = s1.find(c, start+1)
+            for c in P:
+                start = T.find(c, start + 1)
                 if start == -1:
                     return ret
             start = end = start + 1
-            for c in reversed(s2):
-                start = s1.rfind(c, first, start)
+            for c in reversed(P):
+                start = T.rfind(c, first, start)
             if not ret or len(ret) > end - start:
-                ret = s1[start:end]
+                ret = T[start:end]
 
 
 # preprocessing needs to collect indices of the P we will return in case of mistmatch

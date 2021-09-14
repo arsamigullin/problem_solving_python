@@ -1,5 +1,5 @@
 # Definition for a binary tree node.
-
+import bisect
 # This problem
 # https://leetcode.com/problems/binary-tree-longest-consecutive-sequence-ii/
 # 549. Binary Tree Longest Consecutive Sequence II
@@ -7,6 +7,9 @@
 # Similar problem
 # https://leetcode.com/problems/binary-tree-longest-consecutive-sequence/
 #298. Binary Tree Longest Consecutive Sequence
+import math
+
+
 class TreeNode:
     def __init__(self, x):
         self.val = x
@@ -101,3 +104,30 @@ class Solution:
 
         l, r = dfs(root, float('-inf'))
         return max(res, l, r)
+
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def longestConsecutive(self, root) -> int:
+        res = 0
+        def helper(node, par):
+            nonlocal res
+            if not node:
+                return 0,0 #
+            increment = int(par + 1 == node.val)
+            decrement = int(par - 1 == node.val)
+            left_decrement, left_increment = helper(node.left, node.val)
+            rigt_decrement, right_increment = helper(node.right, node.val)
+            # U-shape check
+            res=max(res, left_decrement + right_increment + 1, left_increment + rigt_decrement + 1)
+            # check the branches
+            dec = 0 if decrement==0 else max(left_decrement, rigt_decrement) + 1
+            inc = 0 if increment==0 else max(left_increment, right_increment) + 1
+            return dec,inc
+        dec, inc = helper(root, math.inf)
+        return max(res, dec, inc)

@@ -127,5 +127,14 @@ class Solution:
                 dp[i] = dp[i//2] + 1
         return dp
 
-
 # 190. Reverse Bits
+
+class Solution:
+    def reverseBits(self, n: int) -> int:
+        ret = 0
+        power= 31
+        while n>0:
+            ret|=(n&1)<<power
+            power-=1
+            n = n>>1
+        return ret

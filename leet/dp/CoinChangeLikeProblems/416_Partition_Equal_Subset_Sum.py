@@ -6,6 +6,9 @@
 # let's consider example [1,5,5,11]
 # the sum of the arr is 22, we create array of len 23
 # in this array 1 means the sum (sum is index in this array) is found in this array
+import collections
+from typing import List
+
 
 class Solution1:
     def canPartition(self, nums: list) -> bool:
@@ -54,6 +57,10 @@ class Solution2:
 # 11) we return True, since we initialized memo with {0:True}
 
 # the goal is to find the target once
+
+# why this works?
+# if the solution exists, it will be found for a single pass, so the memo dict will be empty
+# if the solution does not exist, memo will be filled with with False value for each key
 class SolutionMemo:
     def canPartition(self, nums: list) -> bool:
         s, n, memo = sum(nums), len(nums), {0: True}
@@ -88,12 +95,47 @@ class SolutionBits:
         return (not sum_val % 2 == 1) and (bits >> (sum_val // 2)) & 1 == 1
 
 
+class Solution4:
+    def canPartition(self, nums: List[int]) -> bool:
+
+        tot_sum = sum(nums)
+        if tot_sum % 2 == 1:
+            return False
+
+        nums.sort(reverse=True)
+        n = len(nums)
+        memo = {}
+        memo_cnt = collections.defaultdict(int)
+        coll = []
+        def helper(i, left):
+            memo_cnt[i] += 1
+            if left == 0:
+                return True
+            if left < 0:
+                return False
+            if i >= n:
+                return False
+            if i not in memo:
+                for j in range(i, n):
+                    coll.append((nums[j],j))
+                    if helper(j + 1, left - nums[j]):
+                        return True
+                    coll.pop()
+                memo[i] = False
+            return memo[i]
+
+        res = helper(0, tot_sum // 2)
+        print(memo)
+        print(coll)
+        return res
+
 if __name__ == "__main__":
     #s = SolutionBits()
     #s.canPartition([1,5,5,11])
-    s = Solution1()
-    s.canPartition([1,5,5,11])
-    s = SolutionMemo()
-    s.canPartition([1,3,5,5,8])
-    s = Solution2()
-    s.canPartition([5,5,11,1])
+    s = Solution4()
+    s.canPartition([100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,99,97])
+    # s.canPartition([1,5,5,11])
+    # s = SolutionMemo()
+    # s.canPartition([1,3,5,5,8])
+    # s = Solution2()
+    # s.canPartition([5,5,11,1])
