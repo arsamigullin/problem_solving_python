@@ -42,6 +42,8 @@ class MedianFinder:
     def addNum(self, num: int) -> None:
         if len(self.hi) == len(self.lo):
             heappush(self.hi, -heappushpop(self.lo, -num))
+        # it will fall under else only if len(self.lo) < len(self.hi)
+        # there will never be case len(self.lo) > len(self.hi)
         else:
             heappush(self.lo, -heappushpop(self.hi, num))
 

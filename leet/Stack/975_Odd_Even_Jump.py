@@ -88,5 +88,6 @@ class Solution:
 
 if __name__ == '__main__':
     s = Solution()
+    s.oddEvenJumps([3,2,1,6,0,5])
     s.oddEvenJumps([5,1,3,4,2])
     s.oddEvenJumps([2,3,1,1,4])

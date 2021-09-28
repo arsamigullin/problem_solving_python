@@ -106,6 +106,30 @@ class Solution:
         return max(res, l, r)
 
 
+class Solution:
+    def longestConsecutive(self, root) -> int:
+
+        res = 0
+
+        def helper(node, par_val):
+            nonlocal res
+            if not node:
+                return 0, 0
+            lef_dec, left_inc = helper(node.left, node.val)
+            right_dec, right_inc = helper(node.right, node.val)
+            res = max(res, lef_dec + right_inc + 1, right_dec + left_inc + 1)
+            incr = 0
+            if node.val - par_val == 1:
+                incr = max(left_inc, right_inc) + 1
+            dec = 0
+            if node.val - par_val == -1:
+                dec = max(lef_dec, right_dec) + 1
+            return dec, incr
+
+        dec, incr = helper(root, root.val)
+        return max(res, dec, incr)
+
+
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):

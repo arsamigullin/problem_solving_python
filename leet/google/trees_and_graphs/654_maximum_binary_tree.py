@@ -31,9 +31,15 @@ class Solution(object):
         stack = []
         for num in arr:
             cur = TreeNode(num)
+            # since every root of subtree is going to be a max val
+            # we extract all that less than cur.val
+            # the latest item in stack is the left one
             while stack and stack[-1].val < cur.val:
+                # it is possible to rewrite cur.left multiple times
                 cur.left = stack.pop()
             if stack:
+                # it is possible to rewerite multiple times
+                # [3,2,1,6,0,5], we have 6.right = 0 and the 6.right = 5
                 stack[-1].right = cur
             stack.append(cur)
         return stack[0]

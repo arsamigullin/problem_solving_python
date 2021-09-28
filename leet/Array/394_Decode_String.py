@@ -1,3 +1,34 @@
+class Solution1:
+    def decodeString(self, s: str) -> str:
+
+        n = len(s)
+        i = 0
+        def helper():
+            nonlocal i
+            if i >= n:
+                return ''
+            j = i
+            while s[i].isnumeric():
+                i += 1
+            times = int(s[j:i])
+            cur = []
+            while i < n and s[i] != ']':
+                if s[i].isalpha():
+                    cur.append(s[i])
+                elif s[i].isnumeric():
+                    cur.append(helper())
+                i += 1
+            return ''.join(cur) * times
+
+        cur = []
+        while i < n:
+            if s[i].isalpha():
+                cur.append(s[i])
+            elif s[i].isnumeric():
+                cur.append(helper())
+            i += 1
+        return ''.join(cur)
+
 class Solution:
     def decodeString(self, s: str) -> str:
 
@@ -40,6 +71,8 @@ class Solution:
         return helper()
 
 if __name__ == '__main__':
-    s = Solution()
+    s = Solution1()
+    s.decodeString("3[a]2[bc]")
+    s.decodeString("3[a2[c]]")
     s.decodeString("2[a3[g]h]y")
     s.decodeString("2[a3[g]h]y")

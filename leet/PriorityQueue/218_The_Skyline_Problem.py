@@ -15,62 +15,62 @@ class Solution1:
         1st iteration
         x, negH, R = 2,-10, 9
         getting rid of everything in heap, that is less than x and which has max Height
-        heap = [[-10, 9]]
-        points = [[2, 10]]
+        heap = [[-10, 9], (0, math.inf)]
+        points = [[0, 0],[2, 10]]
         
         2nd iteration
-        heap = [[-15,7],[-10,9]]
-        points = [[2,10],[3,15]]
+        heap = [[-15,7],[-10,9],(0, math.inf)]
+        points = [[0, 0],[2,10],[3,15]]
         
         3rd iteration
-        heap = [[-15,7],[-12, 12],[-10,9]]
-        points = [[2,10],[3,15]]
+        heap = [[-15,7],[-12, 12],[-10,9],(0, math.inf)]
+        points = [[0, 0],[2,10],[3,15]]
         
         4th iteration
         x, negH, R = 7,0,None
         [-15,7] evicted from heap because 7>=7
         Since negH is 0, we do not add it to the max_height_heap
-        heap = [[-12, 12],[-10,9]]
+        heap = [[-12, 12],[-10,9], (0, math.inf)]
         however, -12 + 0 != 0, we add to the res [-12, 7]
-        points = [[2,10],[3,15],[7,12]]
+        points = [[0, 0],[2,10],[3,15],[7,12]]
         
         5th iteration
         x, negH, R = 9,0,None
         because 9 <12 and no hight (0)
-        heap is the same = [[-12, 12],[-10,9]]
+        heap is the same = [[-12, 12],[-10,9],(0, math.inf)]
         points are also the same because -12+12 = 0
-        points = [[2,10],[3,15],[7,12]]
+        points = [[0, 0],[2,10],[3,15],[7,12]]
         
         6th iteration
         x, negH, R = 12,0,None
-        heap = [] because x >= 12 amd 9
+        heap = [(0, math.inf)] because x >= 12 amd 9
         no height, nothing to add to the heap
         0+0 = 0, nothing to add to the points
-        res = [[2,10],[3,15],[7,12]]
+        res = [[0, 0],[2,10],[3,15],[7,12]]
         
         7th
         x, negH, R = 15,-10,20
         15 <= math.inf, nothing to evict
         There is a height here
-        heap = [[-10, 20]]
+        heap = [[-10, 20], (0, math.inf)]
         -10+12 > 0
-        res = [[2,10],[3,15],[7,12],[15,10]]
+        res = [[0, 0],[2,10],[3,15],[7,12],[15,10]]
         
         8th iteration      
         x, negH, R = 19,-8,24
         19<20, nothing to evict from heap
         there is a height here (-8), append (-8,24) to the heap
-        heap = [[-10, 20],[-8,24]]
+        heap = [[-10, 20],[-8,24],(0, math.inf)]
         since -10+10 = 0, nothing to add to the res
-        res = [[2,10],[3,15],[7,12],[15,10]]
+        res = [[0, 0],[2,10],[3,15],[7,12],[15,10]]
         
         9th iteration
         x, negH, R = 20, 0, None
         20 >=20 [-10, 20] evicted
         no height here
-        heap = [[-8, 24]]
+        heap = [[-8, 24],(0, math.inf)]
         since 10-8 > 0
-        res = [[2,10],[3,15],[7,12],[15,10],[20,8]]
+        res = [[0, 0],[2,10],[3,15],[7,12],[15,10],[20,8]]
         
         10th iteration
         x, negH, R = 24, 0, None
@@ -78,7 +78,7 @@ class Solution1:
         heap = [[0,max.inf]]
         0+max.inf > 0 current height (0) + math.inf > 0
         hence we add point [24,0], this zero was taken form heap[0][0]
-        res = [[2,10],[3,15],[7,12],[15,10],[20,8],[24,0]]
+        res = [[0, 0],[2,10],[3,15],[7,12],[15,10],[20,8],[24,0]]
         '''
         points, max_hight_heap = [[0, 0]], [(0, math.inf)]
         for x, negH, R in events:

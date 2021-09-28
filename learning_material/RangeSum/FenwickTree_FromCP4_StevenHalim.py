@@ -41,8 +41,8 @@ class FTree:
         return i + 1
 
 class RUPQ:
-    def __init__(self, f):
-        self.ftree = FTree(f)
+    def __init__(self, n):
+        self.ftree = FTree([0] * n)
 
     def query(self, i):
         return self.ftree.query(1, i)
@@ -52,9 +52,9 @@ class RUPQ:
         self.ftree.update(j + 1, -v)
 
 class RURQ:
-    def __init__(self, f):
-        self.f = FTree(f)
-        self.r = RUPQ(f)
+    def __init__(self, n):
+        self.f = FTree([0] * n)
+        self.r = RUPQ(n)
 
     def query(self, i, j):
         if i > 1:
@@ -69,29 +69,29 @@ class RURQ:
 if __name__ == '__main__':
 
     f = [0, 1, 0, 1, 2, 3, 2, 1, 1, 0]
-    # ft = FTree(f)
-    # print(ft.query(1, 6) == 7)
-    # print(ft.query(1, 3) == 1)
-    # print(ft.select(7) == 6)
-    # ft.update(5, 1)
-    # print(ft.query(1, 10) == 12)
-    #
-    # r = RUPQ(10)
-    # r.update(2, 9, 7)
-    # r.update(6, 7, 3)
-    # print(r.query(1) == 0)
-    # print(r.query(2) == 7)
-    # print(r.query(3) == 7)
-    # print(r.query(4) == 7)
-    # print(r.query(5) == 7)
-    # print(r.query(6) == 10)
-    # print(r.query(7) == 10)
-    # print(r.query(8) == 7)
-    # print(r.query(9) == 7)
-    # print(r.query(10) == 0)
-    l = [18, 17, 13, 19, 15, 11, 20]Binary Tree Longest Consecutive Sequence
-    r = RURQ(l)
-    #r.update(2, 9, 7)
-    #r.update(6, 7, 3)
-    print(r.query(3, 5))
-    #print(r.query(7, 8))
+    ft = FTree(f)
+    print(ft.query(1, 6) == 7)
+    print(ft.query(1, 3) == 1)
+    print(ft.select(7) == 6)
+    ft.update(5, 1)
+    print(ft.query(1, 10) == 12)
+
+    r = RUPQ(10)
+    r.update(2, 9, 7)
+    r.update(6, 7, 3)
+    print(r.query(1) == 0)
+    print(r.query(2) == 7)
+    print(r.query(3) == 7)
+    print(r.query(4) == 7)
+    print(r.query(5) == 7)
+    print(r.query(6) == 10)
+    print(r.query(7) == 10)
+    print(r.query(8) == 7)
+    print(r.query(9) == 7)
+    print(r.query(10) == 0)
+
+    r = RURQ(10)
+    r.update(2, 9, 7)
+    r.update(6, 7, 3)
+    print(r.query(3, 5) == 21)
+    print(r.query(7, 8) == 17)

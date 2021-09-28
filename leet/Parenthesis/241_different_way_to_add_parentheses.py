@@ -1,7 +1,11 @@
 import re
 import operator
 # similar 894
+# 95. Unique Binary Search Trees II
 # Divide and conquer
+from typing import List
+
+
 class Solution:
     def diffWaysToCompute(self, input):
         tokens = re.split('(\D)', input)
@@ -74,6 +78,44 @@ class Solution2:
             return m * n
 
 
+class Solution3:
+    def diffWaysToCompute(self, s: str) -> List[int]:
+
+        ops_map = {'+': operator.add, '-': operator.sub, '*': operator.mul}
+        ops = [] # for operations
+        nums = [] # for numbers
+        n = len(s)
+        i = 0
+        while i < n:
+            j = i
+            while j < n and s[j].isnumeric():
+                j += 1
+            if i == j:
+                ops.append(s[i])
+                i += 1
+            else:
+                nums.append(int(s[i:j]))
+                i = j
+
+        memo = {}
+
+        def helper(lo, hi):
+            if lo == hi:
+                return [nums[lo]]
+            if (lo, hi) not in memo:
+                res = []
+                # IMPORTANT: i is the index for ops array
+                # that is why it is withing [lo,hi-1] inclusive
+                for i in range(lo, hi):
+                    for left_res in helper(lo, i):
+                        for right_res in helper(i + 1, hi):
+                            res.append(ops_map[ops[i]](left_res, right_res))
+                memo[(lo, hi)] = res
+            return memo[(lo, hi)]
+
+        return helper(0, len(nums) - 1)
+
+
 if __name__ == "__main__":
-    s = Solution2()
+    s = Solution3()
     s.diffWaysToCompute("2*3-4*5")

@@ -93,10 +93,13 @@ def str_to_int(val):
 #         Given position of 1-dimensional array i, to get the position of 2-dimensional array we do the following
 #         arr[i//column_count][i%column_count]
 
-# From 2D to 1D:
-# https://stackoverflow.com/questions/16790584/converting-index-of-one-dimensional-array-into-two-dimensional-array-i-e-row-a
-# index = x + (y * width) from top to the bottom
-# index = y + (x * height) from left to right
+# given 2D array NxM
+# to convert 2D index to 1D index
+# y + (x*M) if we move row by row
+# x + (y*N) if we move column by column
+
+# Manhattan  distance
+# distance(p1,p2)=∣p2.x−p1.x∣+∣p2.y−p1.y∣
 
 #generating pyramid
 A = [[0] * k for k in range(1, 102)]
