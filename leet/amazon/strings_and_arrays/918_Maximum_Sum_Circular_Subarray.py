@@ -3,6 +3,7 @@ import math
 from typing import List
 
 
+
 class Solution:
     def maxSubarraySumCircular(self, A: List[int]) -> int:
         total = sum(A)

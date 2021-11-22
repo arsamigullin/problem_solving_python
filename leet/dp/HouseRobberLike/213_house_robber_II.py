@@ -35,3 +35,18 @@ class Solution:
             return prev_max
         return max(helper(nums[:len(nums)-1]), helper(nums[1:]))
 
+# the same as house robber 1 but we need to call the function twice
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        n = len(nums)
+        if n == 1:
+            return nums[0]
+
+        def bob(start, end) -> int:
+            curMax = 0
+            prevMax = 0
+            for i in range(start, end):
+                prevMax, curMax = curMax, max(prevMax + nums[i], curMax)
+            return curMax
+
+        return max(bob(0, n - 1), bob(1, n))

@@ -63,7 +63,7 @@ class NumArray:
 def lsone(i):
     return i&(-i)
 
-
+# without FenwickTree
 class NumArray1:
 
     def __init__(self, nums: List[int]):
@@ -76,6 +76,48 @@ class NumArray1:
 
     def sumRange(self, left: int, right: int) -> int:
         return self.sums - sum(self.nums[:left]) - sum(self.nums[right + 1:])
+
+
+class FenwickTree:
+    def __init__(self, f):
+        self.n = n = len(f)
+        self.ft = [0] * (n + 1)
+        self.f = f
+        for i in range(1, n + 1):
+            self.ft[i] += f[i - 1]
+            if i + self.lsone(i) <= n:
+                self.ft[i + self.lsone(i)] += self.ft[i]
+
+    def lsone(self, i):
+        return i & -i
+
+    def query(self, i, j):
+        if i > 1:
+            return self.query(1, j) - self.query(1, i - 1)
+        s = 0
+        while j > 0:
+            s += self.ft[j]
+            j -= self.lsone(j)
+        return s
+
+    def update(self, i, val):
+        dif = -(self.f[i - 1] - val)
+        self.f[i - 1] = val
+        while i <= self.n:
+            self.ft[i] += dif
+            i += self.lsone(i)
+
+
+class NumArray:
+
+    def __init__(self, nums: List[int]):
+        self.ft = FenwickTree(nums)
+
+    def update(self, index: int, val: int) -> None:
+        self.ft.update(index + 1, val)
+
+    def sumRange(self, left: int, right: int) -> int:
+        return self.ft.query(left + 1, right + 1)
 
 # Your NumArray object will be instantiated and called as such:
 # obj = NumArray(nums)

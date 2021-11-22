@@ -1,4 +1,6 @@
+import heapq
 class Solution:
+
     def countSubstrings(self, s: str) -> int:
         n = len(s)
         ans = 0

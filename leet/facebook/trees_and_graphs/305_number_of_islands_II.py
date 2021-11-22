@@ -105,6 +105,53 @@ class Solution:
             res.append(island_count)
         return res
 
+# the same as above but
+class Solution:
+    def numIslands2(self, n: int, m: int, positions: List[List[int]]) -> List[int]:
+        parent = {}
+        size = {}
+
+        def find(p):
+            size.setdefault(p, 1)
+            parent.setdefault(p, p)
+            rootP = p
+            while rootP != parent[rootP]:
+                rootP = parent[rootP]
+            while p != rootP:
+                next_p = parent[p]
+                parent[p] = rootP
+                p = next_p
+            return rootP
+
+        def union(p, q, count):
+            rootP = find(p)
+            rootQ = find(q)
+
+            if rootP == rootQ:
+                return count
+
+            if size[rootP] > size[rootQ]:
+                size[rootP] += size[rootQ]
+                parent[rootQ] = parent[rootP]
+            else:
+                size[rootQ] += size[rootP]
+                parent[rootP] = parent[rootQ]
+            return count - 1
+
+        grid = collections.defaultdict(int)
+        ISLAND = 1
+        island_count = 0
+        res = []
+        for i, j in positions:
+            if grid[(i, j)] != ISLAND:
+                grid[(i, j)] = ISLAND
+                island_count += 1
+            for x, y in [[i + 1, j], [i - 1, j], [i, j + 1], [i, j - 1]]:
+                if 0 <= x < n and 0 <= y < m and grid[(x, y)] == ISLAND:
+                    # if two cells have different parent that means the count of island should be decreased
+                    island_count = union(y + (x * m), j + (i * m), island_count)
+            res.append(island_count)
+        return res
 
 if __name__ == '__main__':
     s = Solution()

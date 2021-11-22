@@ -69,6 +69,42 @@ class Solution:
 
 class Solution:
     def removeInvalidParentheses(self, s: str) -> List[str]:
+        n = len(s)
+        memo = {}
+        max_len = 0
+
+        def helper(i, balance):
+            nonlocal max_len
+            ans = set()
+            if balance < 0:
+                return ans
+            if i >= n:
+                if balance == 0:
+                    ans.add("")
+                return ans
+            if (i, balance) not in memo:
+                if s[i] in ('(', ')'):
+                    ans.update(helper(i + 1, balance))
+
+                delta = 0
+                if s[i] == ')':
+                    delta = -1
+                elif s[i] == '(':
+                    delta = 1
+
+                for suffix in helper(i + 1, balance + delta):
+                    brac = s[i] + suffix
+                    max_len = max(max_len, len(brac))
+                    ans.add(brac)
+                memo[(i, balance)] = ans
+            return memo[(i, balance)]
+
+        brakets = helper(0, 0)
+        return filter(lambda x: len(x) == max_len, brakets)
+
+
+class Solution:
+    def removeInvalidParentheses(self, s: str) -> List[str]:
         result = set()
         n = len(s)
         memo = set()

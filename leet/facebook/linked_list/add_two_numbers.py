@@ -1,4 +1,7 @@
 # Definition for singly-linked list.
+from typing import Optional
+
+
 class ListNode:
     def __init__(self, x):
         self.val = x
@@ -85,6 +88,29 @@ class Solution:
         if rem > 0:
             l3.next = ListNode(rem)
         return ans.next
+
+
+class Solution:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+
+        head = ListNode()
+        node = head
+        carry = 0
+        while l1 or l2 or carry:
+            l3 = ListNode()
+            if l1:
+                l3.val += l1.val
+                l1 = l1.next
+            if l2:
+                l3.val += l2.val
+                l2 = l2.next
+            l3.val += carry
+            carry = l3.val // 10
+            l3.val %= 10
+            node.next = l3
+            node = node.next
+
+        return head.next
 
 if __name__ == "__main__":
     s = Solution()

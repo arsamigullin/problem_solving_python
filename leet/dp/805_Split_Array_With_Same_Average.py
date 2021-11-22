@@ -36,3 +36,23 @@ class Solution:
             return memo[(sum_so_far, arr_len, i)]
         # here i is the possible length of subarray with total sum (i * tot) // n
         return any(helper((i * tot) // n, i, 0) for i in range(1, 1 + n // 2) if (i * tot) % n == 0)
+
+# Brute force
+class Solution2:
+    def splitArraySameAverage(self, nums: List[int]) -> bool:
+
+        n = len(nums)
+
+        def helper(i, sumA, sumB, a, b):
+            if i >= n:
+                return a != 0 and b != 0 and sumA / a == sumB / b
+            if not helper(i + 1, sumA + nums[i], sumB, a + 1, b):
+                return helper(i + 1, sumA, sumB + nums[i], a, b + 1)
+            else:
+                return True
+
+        return helper(0, 0, 0, 0, 0)
+
+if __name__ == '__main__':
+    s = Solution2()
+    print(s.splitArraySameAverage([60,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30]))

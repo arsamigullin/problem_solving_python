@@ -45,3 +45,7 @@ class Solution:
             result.append(smaller_count)
             ft.update(num + offset, 1)
         return reversed(result)
+
+if __name__ == '__main__':
+    s= Solution()
+    s.countSmaller([5,2,6,4,1])

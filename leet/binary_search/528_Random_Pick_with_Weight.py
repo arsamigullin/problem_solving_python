@@ -1,3 +1,4 @@
+import collections
 from typing import List
 import random
 
@@ -10,19 +11,31 @@ class Solution:
         #print(self.prefix)
         self.prefix = self.prefix[1:]
         self.total = self.prefix[-1]
+        self.d = collections.defaultdict(int)
+        self.nums = collections.defaultdict(int)
 
     def pickIndex(self) -> int:
         target = self.total * random.random()
+        self.nums[int(target)]+=1
         lo = 0
         hi = len(self.prefix)
         while lo < hi:
             mid = (lo + hi)//2
-            if target > self.prefix[mid]:
+            if self.prefix[mid] < target:
                 lo = mid + 1
             else:
                 hi = mid
+        self.d[lo]+=1
         return lo
 
+    def printd(self):
+
+        print(self.d)
+        print(self.nums)
 
 if __name__ == '__main__':
-    s = Solution([1,2,3,4,5])
+    s = Solution([1,2,3,4,3])
+    for i in range(10000):
+        s.pickIndex()
+
+    s.printd()

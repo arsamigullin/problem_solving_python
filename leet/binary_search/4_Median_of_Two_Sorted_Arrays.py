@@ -1,6 +1,12 @@
 from typing import List
 
-
+# median is a mid point of result array after merging two sorted arrays
+# a = [7,8,9] b = [-2,-1,0,1,2,3,4]
+# after merging [-2,-1,0,1,2,3,4,7,8,9], the len is even so the median is (left_part[-1] + right_part[0])//2 =
+# = (2 + 3)//2 = 2.5
+# the idea is to do binary search on the smaller array and move the mid point of the smaller array
+# closer to the point of the larger array so the difference between a[mid] and b[after-mid] is minimal
+#
 class Solution:
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
         a, b = sorted((nums1, nums2), key=len)
@@ -20,4 +26,5 @@ class Solution:
 
 if __name__ == '__main__':
     s =Solution()
+    s.findMedianSortedArrays([7,8,9], [-2,-1,0,1,2,3,4])
     s.findMedianSortedArrays([0,2,3,5,6],[1,6,7,10,11])

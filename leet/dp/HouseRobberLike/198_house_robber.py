@@ -1,3 +1,4 @@
+from functools import lru_cache
 from typing import List
 
 # O(n2)
@@ -24,28 +25,24 @@ class Solution2:
     prevMax will be pointing to the a[i-2]
     curMax will be pointing to the a[i-1]
     let's consider this array
-    [1,2,5,3,4]
+    [2,7,9,3,1]
     1 iteration
-    curmax = 1
-    prevmax = 0
-    2 iteration
-    curmax = max(1, 0 + 2) = 2
-    prevmax = 1
-    3 iteration
-    curmax = max(2, 1 + 5) = 6
-    prevmax = 2
-    4 iteration
-    curmax = max(6, 3 + 2) = 6
-    prevmax = 6
+    prevMax = 0
+    curMax = 2
+    2 iter
+    NOTE: prevMax is collected money from 0 to i-2 house
+    that is why we check what is the max here
+    prevMax + num or curMax (which is money collected from 0 to i-1)
 
     '''
+    # to keep the gap of 1 house
+    # we assign to prevMax curMax
+    # curMax is m
     def rob(self, nums: List[int]) -> int:
-        prevMax = 0
         curMax = 0
+        prevMax = 0
         for num in nums:
-            temp = curMax
-            curMax = max(prevMax+num, curMax)
-            prevMax = temp
+            prevMax, curMax = curMax, max(prevMax + num, curMax)
         return curMax
 
 # O(n)
@@ -67,6 +64,30 @@ class Solution3(object):
             total = max(total, d[i])
 
         return total
+
+
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        n = len(nums)
+
+        @lru_cache(None)
+        def dp(i):
+            if i >= n:
+                return 0
+            tot = nums[i]
+            for j in range(i + 2, n):
+                tot = max(tot, dp(j) + nums[i])
+            return tot
+
+        # return max(dp(0), dp(1))
+        if n == 0:
+            return 0
+        if n == 1:
+            return nums[0]
+        first, sec = 0, 0
+        for i in range(n):
+            first, sec = max(sec + nums[i], first), first
+        return max(first, sec)
 
 if __name__ == '__main__':
     s = Solution2()

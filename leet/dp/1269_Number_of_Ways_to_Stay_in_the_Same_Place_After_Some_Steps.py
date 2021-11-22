@@ -8,7 +8,11 @@ class Solution:
         #@lru_cache(None)
         def help(s,i):
             #print(s, i)
+            # if last move left
             if s==1:
+                # check the current position on the array
+                # if it is on the position 1 or i<=min(1,arrLen-1) we got it since we just go left (if i = 1) or
+                # stay (if i=0)
                 return 1 if i<=min(1,arrLen-1) else 0
             if (s,i) not in d:
 
@@ -30,7 +34,7 @@ class Solution:
 
 if __name__ == '__main__':
     s = Solution()
-    s.numWays(4, 2)
+    s.numWays(3, 2)
 
 class Queue:
 

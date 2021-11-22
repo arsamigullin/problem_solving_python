@@ -3,7 +3,7 @@ b = [0] * 1000
 
 # preprocessing needs to collect indices of the P we will return in case of mistmatch
 # if P is sevsevsev, after preprocessing it returns [-1,0,0,0,1,2,3,4,5,6]
-def KMP_preprocessing(text, pattern):
+def KMP_preprocessing(pattern):
     m = len(pattern)
     i, j = 0, -1
     s = [0] * (m + 1)
@@ -21,8 +21,9 @@ def KMP_preprocessing(text, pattern):
     return s
 
 
+
 def KMP_search(text, pattern):
-    dp = KMP_preprocessing(text, pattern)
+    dp = KMP_preprocessing(pattern)
 
     n = len(text)
     m = len(pattern)
@@ -42,8 +43,6 @@ def KMP_search(text, pattern):
             res.append(i - m)
             freq += 1
             j = dp[j]
-
-    print(res)
     return freq
 
 
@@ -79,7 +78,25 @@ class KMP_checking:
 
         return -1
 
+class KMP_checking:
+
+    def process_pattern(self, pattern):
+        m = len(pattern)
+        i, j = 0, -1
+        s = [0] * (m+1)
+        s[0] = -1
+        while i<m:
+            while j>=0 and pattern[i]!=pattern[j]:
+                j = s[j]
+            i+=1
+            j+=1
+            s[i]=j
+        return s
+
+
 if __name__ == '__main__':
+    KMP_preprocessing('sevsevseva')
+    KMP_preprocessing('sesekl')
     s = KMP_checking()
     s.strStr("sevsevk", "pwwkew")
     s.strStr("sevsevk", "sevsek")

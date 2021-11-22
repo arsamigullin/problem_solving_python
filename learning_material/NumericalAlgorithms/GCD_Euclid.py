@@ -4,4 +4,4 @@ def euclid(a, b):
     return euclid(b, a%b)
 
 if __name__ == '__main__':
-    print(euclid(30,21))
+    print(euclid(24,2880))

@@ -2,7 +2,12 @@ import collections
 import heapq
 from typing import List
 
-
+# SSSP
+# According to Steven Halim, p.196, based on the graph representation the time complexity may be different
+# If Adjacency Matrix, then V*V
+# If Adjacency List, then V+E
+# In Dijkstra's algo we deal with AL, we do enumerate all Vertices and Edges
+# O((V+E)lgV)
 class Solution:
     def findTheCity(self, n: int, edges: List[List[int]], distanceThreshold: int) -> int:
 
