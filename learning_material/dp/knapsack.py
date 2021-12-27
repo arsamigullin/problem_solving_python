@@ -1,50 +1,72 @@
-# /**
-# #  * @return number of ways to make sum s using repeated coins
-# #  */
-# # public static int coinrep(int[] coins, int s) {
-# #     int[] dp = new int[s + 1];
-# #     dp[0] = 1;
-# #     for (int coin : coins)
-# #         for (int i = coin; i <= s; i++)
-# #             dp[i] += dp[i - coin];
-# #     return dp[s];
-# # }
+# the code below is verified in the GeeksforGeeks
+# dp top-down
+class Solution:
 
-# public int change(int amount, int[] coins) {
-#     return change(amount, 0, coins);
-# }
-# private int change(int balance, int cur, int[] coins) {
-#     if(balance == 0) return 1;
-#     if(balance<0 || cur == coins.length) return 0;
-#     return change(balance-coins[cur], cur, coins) + change(balance, cur+1, coins);
-# }
-
-def bruteForce(capacity, i, items):
-    if capacity == 0:
-        return 1
-    if capacity <0 or i == len(items):
-        return 0
-    return bruteForce(capacity - items[i], i, items) + bruteForce(capacity, i+1, items)
+    # Function to return max value that can be put in knapsack of capacity W.
+    def knapSack(self, W, weights, vals, n):
+        memo = {}
+        def recurse(i, leftCap):
+            if i >= n or leftCap <= 0:
+                return 0
+            if (i, leftCap) not in memo:
+                if weights[i] > leftCap:
+                    memo[(i, leftCap)] = recurse(i + 1, leftCap)
+                else:
+                    memo[(i, leftCap)] = max(recurse(i + 1, leftCap - weights[i]) + vals[i], recurse(i + 1, leftCap))
+            return memo[(i, leftCap)]
+        return (0,W)
 
 
-def kanpsack_repeated(items, capacity):
-    dp = [0] * (capacity+1)
-    dp[0] = 1
-    for item in items:
-        for i in range(item, capacity+1):
-            dp[i] += dp[i-item]
-    return dp[capacity]
+# One way to understand the fact that "The minimum result of cancellation = the minimum difference between the sum of two groups".
+# Say you've already found two groups with smallest difference.
+# Group A = [A1, A2, ..., An]
+# Group B = [B1, B2, ..., Bm]
+# The process we cancel two stones is to arbitrarily pick one from group A and one from Group B.
+# If Ai > Bj, then put Ai-Bj into group A.
+# If Ai < Bj, then put Ai-Bj into group B.
+# If Ai = Bj, then nothing will be put into group A and B.
+# We repeat the process until there is only one stone left. You will find the remaining stone is |sum(Group A) - sum(Group B)|.
 
-def kanpsack_non_repeated(items, capacity):
-    dp = [[0,[]] for _ in range(capacity+1)]
-    dp[0] = 1, [1]
-    for item in items:
-        for i in range(capacity, item - 1, -1):
-            dp[i][0] += dp[i-item][0]
-            #if dp[i-item][0] > 0:
-            dp[i][1].append(i-item)
-    return dp[capacity]
+# this is easy knapsack problem where
+# weight = stones
+# values = stones
 
+# dp bottom-up
+class SolutionBU:
+
+    # Function to return max value that can be put in knapsack of capacity W.
+    def knapSack(self, W, weights, vals, n):
+
+        # code here
+        memo = [[0] * (W + 1) for _ in range(n + 1)]
+
+        for i in range(1, n + 1):
+            for w in range(W, 0, -1):
+                if weights[i - 1] > w:
+                    memo[i][w] = memo[i - 1][w]
+                else:
+                    memo[i][w] = max(memo[i - 1][w], vals[i - 1] + memo[i - 1][w - weights[i - 1]])
+
+        return memo[-1][-1]
+
+# turned out we do not have to maintain the 2D-array, 1D-array is enough
+# the code is also verified on GeeksforGeeks
+class SolutionBU2:
+
+    # Function to return max value that can be put in knapsack of capacity W.
+    def knapSack(self, W, weights, vals, n):
+
+        # code here
+        memo = [0] * (W + 1)
+        for i in range(n):
+            for w in range(W, -1, -1):
+                if weights[i] <= w:
+                    memo[w] = max(memo[w], vals[i] + memo[w - weights[i]])
+        return memo[-1]
+
+if __name__ == '__main__':
+    s = SolutionBU2()
+    s.knapSack(10,[5,3,2,8],[1,6,4,2],4)
 
 from itertools import groupby
 def knapsack_full():
@@ -111,7 +133,3 @@ def knapsack_full():
     print("for a total value of %i and a total weight of %i" % (
         sum(item[2] for item in bagged), sum(item[1] for item in bagged)))
 
-if __name__ == '__main__':
-    #knapsack_full()
-    print(kanpsack_repeated([1,2,3],5))
-    print(bruteForce(5, 0, [1,2,3]))

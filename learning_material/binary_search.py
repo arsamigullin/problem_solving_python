@@ -159,11 +159,34 @@ def bisect_right_learn(arr, x):
 if __name__ == '__main__':
     # need to find items strictly less than target (or >= target) - use bisect_left
     arr = [10, 20, 30, 40]
-    i = bisect_left_learn(arr, 5) # arr[:i]<target<=arr[i:]
+    arr = [2,4,5]
+    arr = [0]
+    arr = [[-1, 0], [0, 5], [1, 6]]
+    i = bisect_right_learn(arr, [1])
+    i = bisect_left_learn(arr, 3)# arr[:i]<target<=arr[i:]
     # need to find items strictly greater (OR <= target) - use bisect_right
     arr = [5, 20, 30, 40]
-    i = bisect_right_learn(arr, 5) # arr[:i]<=target<arr[i:]
+    i = bisect_right_learn(arr, 3) # 0
+    i = bisect_right_learn(arr, 42) # 4
+    i = bisect_right_learn(arr, 5) # 1
+    i = bisect_left_learn(arr, 3) # 0
+    i = bisect_left_learn(arr, 42) # 4
+    i = bisect_left_learn(arr, 5) # 0
     j = bisect.bisect(arr, 5)
+
+    arr = [10,20]
+    i = bisect_right_learn(arr, 5) # 0
+    i = bisect_right_learn(arr, 10) # 1
+    i = bisect_right_learn(arr, 15) # 1
+    i = bisect_right_learn(arr, 20) # 2
+    i = bisect_right_learn(arr, 25) # 2
+
+    i = bisect_left_learn(arr, 5) # 0
+    i = bisect_left_learn(arr, 10) # 0
+    i = bisect_left_learn(arr, 15) # 1
+    i = bisect_left_learn(arr, 20) # 1
+    i = bisect_left_learn(arr, 25) # 2
+
 
     # this returns the index where it would inser the x value
     # nums = [2,3,4,4,4,7,9]

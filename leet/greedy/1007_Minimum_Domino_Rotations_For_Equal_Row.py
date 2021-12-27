@@ -99,7 +99,7 @@ class Solution:
                     cntB += 1
             return min(cntA, cntB)
 
-        rotations = helper(A[0])
+        rotations = helper(B[0])
         if rotations != -1 or A[0] == B[0]:
             return rotations
         else:
@@ -120,4 +120,5 @@ class Solution:
 
 if __name__ == '__main__':
     s = Solution()
-    s.minDominoRotations([2,1,2,4,2,2], [5,2,6,2,3,2])
+    s.minDominoRotations([2,1,2,4,2,2],
+                         [5,2,6,2,3,2])

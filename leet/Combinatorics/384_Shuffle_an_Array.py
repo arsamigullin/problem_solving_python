@@ -46,7 +46,9 @@ class Solution:
 # param_1 = obj.reset()
 # param_2 = obj.shuffle()
 
+# Fisher-Yates Algorithm
 
+#https://blog.codinghorror.com/the-danger-of-naivete/
 class Solution:
     def __init__(self, nums):
         self.array = nums

@@ -14,7 +14,7 @@ class Solution:
             else:
                 # for every file the length per depth in pathlen dict will be overwritten
                 # with the length of the preceding this file folder
-                # +1 here to cover
+                # +1 here to cover /
                 # "dir/subdir2/subsubdir2/file2.ext"
                 pathlen[depth + 1] = pathlen[depth] + len(name) + 1
         return maxlen

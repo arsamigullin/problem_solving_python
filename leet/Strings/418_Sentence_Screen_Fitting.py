@@ -12,11 +12,12 @@ class Solution:
             # this way we exploring the left side neighbors
             while sentence[used_cells % sentence_length] != ' ':
                 used_cells -= 1
-            used_cells += 1 # compensate the whitespace
+            used_cells += 1 #
         # used_cells are not necessarily equally divisible to sentence_length,
         # we only want to fit the full sentences
         return used_cells // sentence_length
 
 if __name__ == '__main__':
     s = Solution()
+    s.wordsTyping(["hello","world"], 2, 8)
     s.wordsTyping(["a","bcd","e"],3,6)

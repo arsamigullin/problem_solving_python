@@ -67,4 +67,4 @@ class Solution:
 
 if __name__ == '__main__':
     s = Solution()
-    s.kSmallestPairs([2,4,6], [1,7,11],5)
+    s.kSmallestPairs([2,4,6], [1,7,11],6)

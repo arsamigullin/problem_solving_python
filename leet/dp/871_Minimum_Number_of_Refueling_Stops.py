@@ -3,7 +3,7 @@ from typing import List
 import bisect
 
 
-class Solution:
+class Solution1:
     def minRefuelStops(self, target: int, startFuel: int, stations: List[List[int]]) -> int:
         stations.append((target, float('inf')))
         heap = []
@@ -15,7 +15,7 @@ class Solution:
             # Each station[i] represents a gas station that is station[i][0] miles east of the starting position, and has station[i][1] liters of gas.
             # that is why we have to subtract the current location from prev one
             tank -= location - prev_location
-            # if tank is negative, that means the fuel is not sufficient to reach the next location
+            # if tank is negative, that means the fuel is not sufficient to reach the location
             # and we refuel it until the tank is not empty
             # since this is pq, we always will refill with the max amount of fuel
             while heap and tank < 0:
@@ -47,6 +47,6 @@ class Solution:
 
 
 if __name__ == '__main__':
-    s = Solution()
+    s = Solution1()
     s.minRefuelStops(100,10,[[9,60],[20,30],[30,30],[60,40]])
     #target = 100, startFuel = 10, stations = [[10,60],[20,30],[30,30],[60,40]]

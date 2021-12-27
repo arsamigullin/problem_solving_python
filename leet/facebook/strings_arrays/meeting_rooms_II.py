@@ -22,8 +22,37 @@ class Solution(object):
             # that means we can use the room was used before (because it is free now)
             if start_timing[sp] >= end_timing[ep]:
                 room_cnt -= 1
-                ep+=1
+                ep += 1
             # otherwise we want to increase count of used rooms
             room_cnt += 1
-            sp+=1
+            sp += 1
         return room_cnt
+
+
+class Solution:
+    def minMeetingRooms(self, intervals) -> int:
+
+        # 0, 5, 15
+        # 10, 15, 30
+        starts = sorted([s for s, _ in intervals])
+        ends = sorted([e for _, e in intervals])
+        # NOTE: there is not relationship between starts and ends after sorting
+        # meaning starts[i] and ends[i] are not necessarily belong to the same meeting
+        n = len(intervals)
+        s, e = 0, 0
+        used_rooms = 0
+        for i in range(n):
+            # if srtart[s] is >= ends[e] that means one of the going meetings ended
+            if starts[s] >= ends[e]:
+                e += 1
+                used_rooms -= 1 # realease the room
+
+            # the room are taken anyway
+            used_rooms += 1
+            s += 1
+        return used_rooms
+
+
+if __name__ == '__main__':
+    s = Solution()
+    s.minMeetingRooms([[0, 30], [5, 10], [15, 20]])

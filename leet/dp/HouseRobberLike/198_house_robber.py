@@ -35,6 +35,13 @@ class Solution2:
     prevMax + num or curMax (which is money collected from 0 to i-1)
 
     '''
+    # 2 7 9 3 1
+    # p, c = 0, 0
+    # 2, 0
+    # 0+7, 2
+    # 2+9, 7
+    # 7+3, 11
+    # 11+1, 11
     # to keep the gap of 1 house
     # we assign to prevMax curMax
     # curMax is m
