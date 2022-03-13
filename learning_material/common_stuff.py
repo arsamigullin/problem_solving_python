@@ -121,6 +121,17 @@ for i in range(len(matrix)):
         # left element + top element + prev item from orig matrix - diagonal element
         dp[i + 1][j + 1] = dp[i + 1][j] + dp[i][j + 1] + matrix[i][j] - dp[i][j]
 
+# finding consecutive chars
+replacements = 0
+n = len(s)
+i = 0
+while i < n:
+    j = i + 1
+    while j < n and s[i] == s[j]:
+        j += 1
+    replacements += (j - i) // 3
+    i = j
+
 if __name__ == '__main__':
 
     int_to_str(58)

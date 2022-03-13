@@ -24,7 +24,7 @@ class Solution:
 
 
 
-class Solution:
+class Solution1:
     def minimumSwap(self, s1: str, s2: str) -> int:
         c1 = collections.Counter(s1)
         c2 = collections.Counter(s2)

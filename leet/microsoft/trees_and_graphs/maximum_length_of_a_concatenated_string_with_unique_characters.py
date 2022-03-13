@@ -102,7 +102,7 @@ class Solution:
     def maxLength(self, arr: List[str]) -> int:
         r = [set()]
         for s in arr:
-            if (len(set(s)) < len(s)):
+            if len(set(s)) < len(s):
                 continue
             s = set(s)
             for c in r:

@@ -20,27 +20,18 @@ class Solution:
             mid = end - (end - start)//2
 
             if nums[mid] == target:
-                print('found')
                 return mid
             
             elif nums[mid] >= nums[start]:
-                msg = f'start LESS or EQUAL mid | start {nums[start]} target {target} mid {nums[mid]}| lookup range [start .. mid]'
                 if nums[start] <= target < nums[mid]:
-                    msg += ' | target in [start..mid] range | end = mid - 1 '
                     end = mid - 1
                 else:
-                    msg += ' | target out of [start..mid] range | start = mid + 1 '
                     start = mid + 1
-                print(msg)
             else:
-                msg = f'start GREATER mid | start {nums[start]} target {target} mid {nums[mid]}| lookup range [mid .. end]'
                 if nums[mid] < target <=nums[end]:
-                    msg += ' | target in [mid..end] range | start = mid + 1 '
                     start = mid + 1
                 else:
-                    msg += ' | target out [mid..end] range | end = mid - 1 '
                     end = mid - 1
-                print(msg)
         return -1
 
 

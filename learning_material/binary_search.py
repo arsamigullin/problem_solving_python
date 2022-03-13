@@ -157,6 +157,10 @@ def bisect_right_learn(arr, x):
     # return lo
 
 if __name__ == '__main__':
+    arr = [2]
+    i = bisect_right_learn(arr, 3)
+    i = bisect_left_learn(arr, 3)
+
     # need to find items strictly less than target (or >= target) - use bisect_left
     arr = [10, 20, 30, 40]
     arr = [2,4,5]

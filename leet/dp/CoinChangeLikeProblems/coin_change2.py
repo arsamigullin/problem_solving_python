@@ -2,7 +2,7 @@
 def solution(amount, coins):
     d = [0]* (amount + 1)
     d[0] = 1
-    for m in range(1, amount + 1):
+    for m in range(0, amount + 1):
         for c in coins:
             if c <= m:
                 d[m] += d[m - c]
@@ -33,4 +33,7 @@ def solution2(amount, coins):
     return dp[amount]
 
 if __name__ == "__main__":
+    print(solution(5, [1, 2, 5]))
     print(solution2(5,[1,2,5]))
+
+

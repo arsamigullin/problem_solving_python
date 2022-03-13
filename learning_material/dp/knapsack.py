@@ -16,7 +16,7 @@ class Solution:
             return memo[(i, leftCap)]
         return (0,W)
 
-
+# the problem https://leetcode.com/discuss/interview-question/356433/
 # One way to understand the fact that "The minimum result of cancellation = the minimum difference between the sum of two groups".
 # Say you've already found two groups with smallest difference.
 # Group A = [A1, A2, ..., An]

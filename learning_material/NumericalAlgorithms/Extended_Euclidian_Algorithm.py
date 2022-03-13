@@ -1,6 +1,6 @@
 '''
 According to Halim (Book2 p.292), the Euclidian algo is also able to calculate the coefficients of Bezo identity
-i.e, nubers x and y such that x*a+y*b = gcd(a,b)
+i.e, numbers x and y such that x*a+y*b = gcd(a,b)
 '''
 def extEiclid(a, b):
     u, v = 0, 1

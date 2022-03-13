@@ -35,20 +35,21 @@ class Solution:
 # least amount of differenc in their summations.
 # We can reformulate this as a 0-1 Knapsack, i.e. collecting some rocks, where the weights of the rocks is maximized
 # and their total weight does not exceed half of the total weight of the rocks.
+# here weights and valuse are stones
 class Solution:
     def lastStoneWeightII(self, stones: List[int]) -> int:
         total = sum(stones)
 
         Max_weight = int(total / 2)
 
-        current = (Max_weight + 1) * [0]
+        dp = (Max_weight + 1) * [0]
 
         for v in stones:
             for w in range(Max_weight, -1, -1):
                 if w - v >= 0:
-                    current[w] = max(v + current[w - v], current[w])
+                    dp[w] = max(v + dp[w - v], dp[w])
 
-        return total - 2 * current[-1]
+        return total - 2 * dp[-1]
 
 
 

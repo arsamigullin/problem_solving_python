@@ -98,7 +98,7 @@ def isdecimal():
     s = '46572115'
     assert s.isdecimal() == True
     s = '-5'
-    assert s.isdigit() == False
+    assert s.isdecimal() == False
 
 def isdigit():
     '''
@@ -138,7 +138,7 @@ def isnumeric():
     s = '46572115'
     assert s.isnumeric() == True
     s = '-5'
-    assert s.isdigit() == False
+    assert s.isnumeric() == False
 
 def isidentifier():
     from keyword import iskeyword

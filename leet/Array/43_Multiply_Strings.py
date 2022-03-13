@@ -51,6 +51,30 @@ class Solution(object):
 
         return str(convert_to_num(num1) * convert_to_num(num2))
 
+# the most correct one
+class Solution5:
+    def multiply(self, num1: str, num2: str) -> str:
+        if num1 == "0" or num2 == "0":
+            return "0"
+        n = len(num1)
+        m = len(num2)
+        ans = [0] * (n + m) # this is collecting num in reversed order
+        for p, dig1 in enumerate(num1[::-1]):
+            dig1 = ord(dig1) - ord('0')
+            for q, dig2 in enumerate(num2[::-1]):
+                i = p + q
+                carry = ans[i]
+                dig2 = ord(dig2) - ord('0')
+                mul = dig1 * dig2 + carry
+                ans[i] = mul % 10
+                ans[i + 1] += mul // 10
+
+        # that is why we have to get rid of the zeros (otherwise, after reversing they are going to be the leading zeros)
+        while ans[-1] == 0:
+            ans.pop()
+        return ''.join(str(dig) for dig in reversed(ans))
+
 if __name__ == '__main__':
-    s = Solution()
+    s = Solution5()
+    s.multiply("9","9")
     s.multiply("123", "456")

@@ -5,6 +5,9 @@ import collections
 # The nodes with count 0 never were referenced and they are parents
 # once the graph is constructed we do dfs and decrease count from ind when traversing the child
 # we add to the answer the parent node or the child node with count is equal 0 in ind
+from typing import List
+
+
 class Solution:
     def alienOrder(self, words: list) -> str:
         # Base case
@@ -77,8 +80,56 @@ class SolutionOpt:
                     free.add(b)
         return order * (set(order) == chars)
 
+
+class SolutionDFS:
+    def alienOrder(self, words: List[str]) -> str:
+
+        n = len(words)
+        letters = list(set(''.join(words)))
+        # this contains the count the letter is being referenced from parent node
+        graph = {char: set() for char in letters}
+        for i in range(n - 1):
+            word1 = words[i]
+            word2 = words[i + 1]
+
+            for j in range(min(len(word1), len(word2))):
+                ch1 = word1[j]
+                ch2 = word2[j]
+                if ch1 != ch2:
+                    graph[ch1].add(ch2)
+                    break
+            else:
+                if len(word1) > len(word2):
+                    return ""
+
+        topsort = []
+        visited = collections.defaultdict(int)
+        UNVISITED, VISITING, VISITED = 0, 1, 2
+
+        def dfs(node):
+            if node not in visited:
+                visited[node] = VISITING
+                for child in graph[node]:
+                    if not dfs(child):
+                        return False
+                visited[node] = VISITED
+                topsort.append(node)
+                return True
+            else:
+                return visited[node] == VISITED
+
+        hasCycle = False
+        for node in graph:
+            if node not in visited:
+                if not dfs(node):
+                    hasCycle = True
+                    break
+
+        return ''.join(reversed(topsort)) if not hasCycle else ""
+
 if __name__ == "__main__":
-    s = Solution()
+    s = SolutionOpt()
+    s.alienOrder(["vlxpwiqbsg","cpwqwqcd"])
     s.alienOrder([
   "wrt",
   "wrqq",

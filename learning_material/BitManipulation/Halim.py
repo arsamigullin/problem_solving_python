@@ -8,6 +8,8 @@ N = 32 # let's assume this is 32 bit system
 a = 40
 twocomp = 2**N - a # 4294967256
 bin(twocomp) #'0b11111111111111111111111111011000'
+
+# numbering of bits starting from 0
 # --------------Multiply/Divide-------------------------
 S = 34
 # multiply by 2
@@ -34,9 +36,9 @@ S = 42  # 101010
 j = 1  # ~(1<<j) = 111101
 S &= ~(1 << j)
 
-# To toggle the j-th bit
+# -------------To toggle the j-th bit----------------------
 S = 40 # 101000
-j=2 # #1<<j = 000100
+j=2 # 1<<j = 000100
 S ^= (1 << j)
 # --------------To get the value of the first from the right bit---------
 S = 40
@@ -48,7 +50,8 @@ T = S & (-S) # 8
 
 #-----------------To turn on all bits in a set of size n---------------------
 # let's say the n is 3
-# 1<<n = 1<<3 = 8 = 1000 (note, the len is 4 now)
+# a = 1<<n = 1<<3 = 8 = 1000 (note, the len is 4 now)
+# a -1 = 7 = b'111'
 n = 3
 S = (1<<n)-1 # 7
 

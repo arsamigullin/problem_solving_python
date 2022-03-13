@@ -89,7 +89,7 @@ if __name__ == '__main__':
     # print(r.query(8) == 7)
     # print(r.query(9) == 7)
     # print(r.query(10) == 0)
-    l = [18, 17, 13, 19, 15, 11, 20]Binary Tree Longest Consecutive Sequence
+    l = [18, 17, 13, 19, 15, 11, 20]
     r = RURQ(l)
     #r.update(2, 9, 7)
     #r.update(6, 7, 3)

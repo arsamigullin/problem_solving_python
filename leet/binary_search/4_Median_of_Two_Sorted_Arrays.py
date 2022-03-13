@@ -4,7 +4,14 @@ from typing import List
 # a = [7,8,9] b = [-2,-1,0,1,2,3,4]
 # after merging [-2,-1,0,1,2,3,4,7,8,9], the len is even so the median is (left_part[-1] + right_part[0])//2 =
 # = (2 + 3)//2 = 2.5
-# the idea is to do binary search on the smaller array and move the mid point of the smaller array
+# after variable is the middle index after merging a and b arrays
+# We will only be dealing with the first "after" items of the array b
+# there could be three cases, we assume a array is always smaller or equal to the size of b array
+# 1. a[-1] < b[0], here during binary search we tend to move mid closer to b[0]
+# 2. a[0] > b[-1], here during binary search we tend to move mid closer to b[-1]
+# 3. items intersecting
+# all three cases are covered by binary search
+# so, the idea is to do binary search on the smaller array and move the mid point of the smaller array
 # closer to the point of the larger array so the difference between a[mid] and b[after-mid] is minimal
 #
 class Solution:

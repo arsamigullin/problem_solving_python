@@ -4,6 +4,7 @@ from typing import List
 
 # this one and below looks very similar
 # but this is much much faster
+# According to Halim (2020), the time complexity O((V+E)lgV)
 class Solution:
     def findTheCity(self, n: int, edges: List[List[int]], distanceThreshold: int) -> int:
         cost = [[float('inf')] * n for _ in range(n)]
@@ -13,19 +14,21 @@ class Solution:
             graph[a].append(b)
             graph[b].append(a)
 
-        def dijkstra(i):
-            dis = [float('inf')] * n
-            dis[i], pq = 0, [(0, i)]
-            heapq.heapify(pq)
-            while pq:
-                d, i = heapq.heappop(pq)
-                if d > dis[i]: continue
-                for j in graph[i]:
-                    this_cost = d + cost[i][j]
-                    if this_cost < dis[j]:
-                        dis[j] = this_cost
-                        heapq.heappush(pq, (this_cost, j))
-            return sum(d <= distanceThreshold for d in dis) - 1
+        def dijkstra(source):
+            min_dist = [float('inf')] * n # this array is for min calculated distances from source
+            # to every destination vertex in destinations array
+            min_dist[source] = 0 # the distance from i to i is 0
+            heap = [(0, source)] # heap's item is (1) distance from source to destination and (2) destination vertex
+            heapq.heapify(heap)
+            while heap:
+                d, cur_item = heapq.heappop(heap)
+                if d > min_dist[cur_item]: continue
+                for nei_item in graph[cur_item]:
+                    this_cost = d + cost[cur_item][nei_item]
+                    if this_cost < min_dist[nei_item]:
+                        min_dist[nei_item] = this_cost
+                        heapq.heappush(heap, (this_cost, nei_item))
+            return sum(d <= distanceThreshold for d in min_dist) - 1
 
         res = {dijkstra(i): i for i in range(n)}
         return res[min(res)]

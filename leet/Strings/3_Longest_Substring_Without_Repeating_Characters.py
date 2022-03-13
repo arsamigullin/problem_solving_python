@@ -36,7 +36,7 @@ class Solution:
             ch = s[j]
             if ch in mp:
                 # we use this max to cover the case when the pointer i is greater than index under ch
-                # for example, abba, when pointer j at the second a, mp[a] is 0
+                # for example, abba, when pointer i at the second a, mp[a] is 0
                 # but i is already set to the index 2, hence we cannot set it less than 2
                 i = max(mp[ch],i)
             max_len = max(max_len, j-i)

@@ -1,3 +1,6 @@
+import collections
+
+
 class Solution(object):
     def areSentencesSimilarTwo(self, words1, words2, pairs):
         if len(words1) != len(words2): return False

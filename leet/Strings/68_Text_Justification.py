@@ -7,7 +7,7 @@ class Solution:
                     cur[i % (len(cur) - 1 or 1)] += ' '
                 res.append(''.join(cur))
                 cur, num_of_letters = [], 0
-            cur += [w]
+            cur.append(w)
             num_of_letters += len(w)
         return res + [' '.join(cur).ljust(maxWidth)]
 

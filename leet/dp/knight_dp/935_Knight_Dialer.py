@@ -44,7 +44,40 @@ class Solution:
         return sum(dfs(i, N - 1) for i in range(10)) % (10 ** 9 + 7)
 
 
+class Solution4:
+    def knightDialer(self, n: int) -> int:
+
+        self.pad = [(4, 6), (8, 6), (7, 9), (4, 8), (0, 3, 9), (), (1, 7, 0), (2, 6), (1, 3), (2, 4)]
+        MOD = 10 ** 9 + 7
+        return sum(self.find(n, i) for i in range(10)) % MOD
+
+    def find(self, N, i, d={}):
+        if N == 1:
+            return 1
+        if (N, i) not in d:
+            d[(N, i)] = sum(self.find(N - 1, j, d) for j in self.pad[i])
+        return d[(N, i)]
+
+
+class Solution5:
+    def __init__(self):
+        self.memo = {}
+
+    def knightDialer(self, n: int) -> int:
+        self.pad = [(4, 6), (8, 6), (7, 9), (4, 8), (0, 3, 9), (), (1, 7, 0), (2, 6), (1, 3), (2, 4)]
+        self.count = 0
+        MOD = 10 ** 9 + 7
+        res = sum(self.find(n, i) for i in range(10)) % MOD
+        return res
+
+    def find(self, N, i):
+        if N == 1:
+            return 1
+        if (N, i) not in self.memo:
+            self.memo[(N, i)] = sum(self.find(N - 1, j) for j in self.pad[i])
+        return self.memo[(N, i)]
+
 
 if __name__ == '__main__':
-    s = Solution1()
+    s = Solution5()
     s.knightDialer(4)

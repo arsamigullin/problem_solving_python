@@ -21,6 +21,11 @@
 # (in while) 2 is > 0, pop 2, find distance between 1 and 2, and 2 and 0, stack = [0,1]
 # (in while) 1 is > 0, pop 1, find distance between 0 and 1, and 1 and 0, stack = [0,0]
 
+# the key points here
+# j is the middle item of two arrays
+# One array is of i-j length
+# another array is of j-k length
+# the length of the subbarray is also the nuber
 class Solution1:
     def sumSubarrayMins(self, A):
         res = 0
@@ -69,5 +74,6 @@ class Solution(object):
 
 if __name__ == "__main__":
     s = Solution1()
+    s.sumSubarrayMins([11,1,1,2,3,1])
     s.sumSubarrayMins([3,1,2,4])
     s.sumSubarrayMins([10, 3, 4, 5, 3, 2, 3, 10])

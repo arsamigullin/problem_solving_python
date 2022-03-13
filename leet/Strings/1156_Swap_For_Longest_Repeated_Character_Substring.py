@@ -1,11 +1,11 @@
 import collections
-
+from itertools import groupby
 
 class Solution:
     def maxRepOpt1(self, text: str) -> int:
 
         intervals = collections.defaultdict(list)
-
+        #gb = list(groupby(text))
         prev = ''
         start = 0
         # collect intervals for each letter
@@ -43,6 +43,36 @@ class Solution:
                     max_val = max(max_val, curj - curi + 1, prevj - previ + 1)
                 previ, prevj = curi, curj
         return max_val
+
+# more readable
+class Solution:
+    def maxRepOpt1(self, text: str) -> int:
+
+        intervals = collections.defaultdict(list)
+        n = len(text)
+        i = 0
+        while i < n:
+            ch = text[i]
+            j = i
+            while j < n and text[j] == ch:
+                j += 1
+            intervals[ch].append((i, j))
+            i = j
+        max_val = 0
+
+        for ch, intvals in intervals.items():
+            cur_start, cur_end = intvals[0]
+            third_interval_exists = len(intvals) > 2
+            max_val = max(max_val, cur_end - cur_start)
+            for j in range(1, len(intvals)):
+                next_start, next_end = intvals[j]
+                if next_start - cur_end == 1:
+                    max_val = max(max_val, next_end - cur_start + third_interval_exists - 1)
+                else:
+                    max_val = max(max_val, cur_end - cur_start + 1, next_end - next_start + 1)
+                cur_start, cur_end = next_start, next_end
+        return max_val
+
 
 if __name__ == '__main__':
     s = Solution()

@@ -1,3 +1,4 @@
+
 class SolutionDoesNotWork:
     def numDecodings(self, s: str) -> int:
         if not s or s[0] == '0':

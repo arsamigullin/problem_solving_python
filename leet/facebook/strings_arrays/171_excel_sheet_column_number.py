@@ -12,11 +12,10 @@ class Solution:
         # to get 20 we do 2 * 10
         # to get 3 we do 3
 
-
         # the same is here
         # ZYA
         # x is a place holder for "0"
-        # to  get Zxx we do Z(26) * 26 * 26
+        # to get Zxx we do Z(26) * 26 * 26
         # to get Yx we do Y(25) * 26
         # to get A  we do A(1)
         for i in range(count):
