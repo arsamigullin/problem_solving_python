@@ -24,4 +24,25 @@ class Solution:
         return comm[0]
 
 
+class Solution:
+    def mostVisitedPattern(self, username: List[str], timestamp: List[int], website: List[str]) -> List[str]:
+        user_visits = collections.defaultdict(list)
+        for user, time, web in zip(username, timestamp, website):
+            user_visits[user].append((time, web))
+
+        combs = collections.defaultdict(set)
+
+        max_count = 0
+        for user in user_visits:
+
+            web = [w for time, w in sorted(user_visits[user])]
+            if len(web) < 3:
+                continue
+            user_combs = itertools.combinations(web, 3)
+            for first, sec, third in user_combs:
+                combs[(first, sec, third)].add(user)
+                max_count = max(max_count, len(combs[(first, sec, third)]))
+        arr = sorted([visits for visits, users in combs.items() if len(users) == max_count])
+
+        return arr[0]
 
