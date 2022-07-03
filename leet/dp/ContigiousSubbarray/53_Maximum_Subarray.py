@@ -22,6 +22,15 @@ class Solution:
 # This is because we want to find contiguous subarray to the left starting from mid and contiguous
 # subarray to the right starting from mid. These both arrays compose contiguous subarrays at the middle
 # 3. Proceed further with an unexplored i and j, i.e helper(i, mid) and helper(mid+1, j)
+
+# Time complexity
+# The problem can be represented as the following recurrence T(n)=2T(n/2) + n^c = T(n)=2T(n/2) + O(n)
+# Which means, on each iteration we need to solve 2 problems of size n/2, i.e. a=2 and b=n/2
+# We also do additional O(1) work
+# This is the second case of the Master theorem and
+# if logba==c, logba = 1 because 2^1=2. c is also 1
+# Time Complexity O(NlogN)
+
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
 
@@ -33,10 +42,12 @@ class Solution:
             s = 0
             left = -math.inf
 
+            # this is additional work
             for k in range(mid, i - 1, -1):
                 s += A[k]
                 left = max(left, s)
 
+            # this is additional work
             s = 0
             right = -math.inf
             for k in range(mid + 1, j + 1):
