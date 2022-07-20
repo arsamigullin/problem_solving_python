@@ -9,6 +9,11 @@ class Solution1(object):
     def deleteAndEarn(self, nums):
         points, pr, prev, pprev = collections.Counter(nums), None, 0, 0
         for value in sorted(points):
+            # if we see that the neighbor num is value-1
+            # that means we should not count points from value-1 (it is supposed to be removed from the list)
+            # so the points equals value * count + pprev,
+            # whereas for pprev is max of prev and pprev because on the next iteration it is not going to be the
+            # points earned from the neighbor item
             if value-1 == pr:
                 #                               # cur
                 pprev, prev = max(pprev, prev), value * points[value] + pprev
