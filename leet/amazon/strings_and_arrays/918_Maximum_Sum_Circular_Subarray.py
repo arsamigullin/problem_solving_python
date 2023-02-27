@@ -63,12 +63,31 @@ class Solution1(object):
             leftsum += A[i]
             ans = max(ans, leftsum + maxright[i+2])
         return ans
+# Let's suppose the input array is of size N
+# this 1 <= j-i <= N means to keep window of N size because the subarray cannot be greater than N
+# here is possible values for i and j if N = 3
+# j i
+# 2 0
+# 2 1
+# 3 0
+# 3 1
+# 3 2
+# 4 1
+# 4 2
+# 4 3
+# 5 2
+# 5 3
+# 5 4
+# 6 3
+# 6 4
+# 6 5
 
 class Solution2(object):
     def maxSubarraySumCircular(self, A):
         N = len(A)
 
         # Compute P[j] = sum(B[:j]) for the fixed array B = A+A
+        # cumulative sum
         P = [0]
         for _ in range(2):
             for x in A:
@@ -80,13 +99,18 @@ class Solution2(object):
         deque = collections.deque([0]) # i's, increasing by P[i]
         for j in range(1, len(P)):
             # If the smallest i is too small, remove it.
+            # in other words if i went beyond N size window on the left side, we exclude it
+            # because that i should not be used to find P[j]-P[i]
             if deque[0] < j-N:
                 deque.popleft()
 
             # The optimal i is deque[0], for cand. answer P[j] - P[i].
             ans = max(ans, P[j] - P[deque[0]])
 
-            # Remove any i1's with P[i2] <= P[i1].
+            # Remove any i1's with P[j] <= P[i].
+            # if there P[i] that is greater or equal P[j]
+            # we do not want to keep them because those won't contribute the max subarray
+            # we want to keep smaller P[i], so the next P[j] subtracts smaller P[i]
             while deque and P[j] <= P[deque[-1]]:
                 deque.pop()
 
@@ -96,6 +120,7 @@ class Solution2(object):
 
 
 if __name__ == '__main__':
-    s = Solution()
-    s.maxSubarraySumCircular([5,-3,5])
-    s.maxSubarraySumCircular([1,-2,3,-2])
+    s = Solution2()
+    s.maxSubarraySumCircular([1, -2, 3, -2])
+    #s.maxSubarraySumCircular([5,-3,5])
+
