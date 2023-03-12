@@ -64,33 +64,35 @@ class Solution1(object):
             ans = max(ans, leftsum + maxright[i+2])
         return ans
 
-class Solution2(object):
-    def maxSubarraySumCircular(self, A):
-        N = len(A)
 
-        # Compute P[j] = sum(B[:j]) for the fixed array B = A+A
+class Solution:
+    def maxSubarraySumCircular(self, nums: List[int]) -> int:
+
+        n = len(nums)
         P = [0]
         for _ in range(2):
-            for x in A:
-                P.append(P[-1] + x)
+            for i in range(n):
+                P.append(P[-1] + nums[i])
 
-        # Want largest P[j] - P[i] with 1 <= j-i <= N
-        # For each j, want smallest P[i] with i >= j-N
-        ans = A[0]
-        deque = collections.deque([0]) # i's, increasing by P[i]
+        # here we want to find max Pj-Pi such that j-n <= i < j
+        # that means we do not want to sum subarray with the len more than n
+
+        # this is to store i
+        q = collections.deque([0])
+        ans = nums[0]
         for j in range(1, len(P)):
-            # If the smallest i is too small, remove it.
-            if deque[0] < j-N:
-                deque.popleft()
 
-            # The optimal i is deque[0], for cand. answer P[j] - P[i].
-            ans = max(ans, P[j] - P[deque[0]])
+            # q[0] is i here
+            if q[0] < j - n:
+                q.popleft()
 
-            # Remove any i1's with P[i2] <= P[i1].
-            while deque and P[j] <= P[deque[-1]]:
-                deque.pop()
+            i = q[0]
+            ans = max(ans, P[j] - P[i])
 
-            deque.append(j)
+            while q and P[j] <= P[q[-1]]:
+                q.pop()
+
+            q.append(j)
 
         return ans
 
