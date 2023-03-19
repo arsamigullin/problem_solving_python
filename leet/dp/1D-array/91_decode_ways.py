@@ -31,6 +31,35 @@ class SolutionDp:
 
         return dp[-1]
 
+class Solution:
+    '''
+    example
+    string 1 1 1 0 6
+    index  0 1 2 3 4
+    '''
+
+    def numDecodings2(self, s: str) -> int:
+        if not s:
+            return 0
+        if s[0] == '0':
+            return 0
+        n = len(s)
+        prev, cur = 1, 1
+        for i in range(1,n):
+            res = 0
+            # if the current digit within 0..9, we inherit number of ways from the
+            # closest left neighbor because this neighbor already has the number of ways calculated up to this neighbor
+            if 0 < int(s[i]) <= 9:
+                res = cur
+            # if two digit(the current digit and the left closest neighbor) number is within 10..26
+            # we add up number of ways of the left closest neighbor s[i-1]
+            if 9 < int(s[i-1:i+1]) <= 26:
+                res += prev
+            prev = cur
+            cur = res
+        return cur
+
+
 # This is actually the same but with O(1) space complexity
 #w tells the number of ways
 #v tells the previous number of ways

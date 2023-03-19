@@ -20,3 +20,22 @@ class Solution:
                 A[i][j] += _min
 
         return min(A[-1])
+
+class Solution:
+    def minFallingPathSum(self, matrix: List[List[int]]) -> int:
+
+        n = len(matrix)
+        m = len(matrix[0])
+
+        dp = [[0] * (m+1) for _ in range(n+1)]
+        print(dp)
+
+        for i in range(n):
+            for j in range(m):
+                if j == 0:
+                    dp[i+1][j+1] = min(dp[i][j+1], 0 if j+2>=m+1 else dp[i][j+2]) + matrix[i][j]
+                elif j == m - 1:
+                    dp[i+1][j+1] = min(dp[i][j], dp[i][j+1]) + matrix[i][j]
+                else:
+                    dp[i+1][j+1] = min(dp[i][j], dp[i][j+1], 0 if j+2>=m+1 else dp[i][j+2]) + matrix[i][j]
+        return min(dp[-1][1:])
