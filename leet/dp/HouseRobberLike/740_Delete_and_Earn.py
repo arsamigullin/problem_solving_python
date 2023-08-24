@@ -14,6 +14,9 @@ class Solution1(object):
             # so the points equals value * count + pprev,
             # whereas for pprev is max of prev and pprev because on the next iteration it is not going to be the
             # points earned from the neighbor item
+            # say we have array 2,3,5
+            # on the first iteration it will go to else section and prev = 2
+            # on the second iteration we have 3-1==2 and we go to if section
             if value-1 == pr:
                 #                               # cur
                 pprev, prev = max(pprev, prev), value * points[value] + pprev

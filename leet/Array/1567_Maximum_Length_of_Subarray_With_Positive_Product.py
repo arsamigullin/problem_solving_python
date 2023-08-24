@@ -1,7 +1,8 @@
 from typing import List
 
-
-class Solution:
+# the difference between 152 is that here we count positive CONTIGUOUS and negative CONTIGUOUS arrays
+# meaning if we did not met negative element, the negative CONTIGUOUS array is of length 0
+class Solution1:
     def getMaxLen(self, nums: List[int]) -> int:
 
         pos = 0
@@ -18,7 +19,7 @@ class Solution:
         return tot
 
 
-class Solution:
+class Solution2:
     def getMaxLen(self, nums: List[int]) -> int:
         ans = pos = neg = 0
         for x in nums:
@@ -32,7 +33,7 @@ class Solution:
         return ans
 
 
-class Solution:
+class Solution3:
     def getMaxLen(self, nums: List[int]) -> int:
         pos = 0
         neg = 0

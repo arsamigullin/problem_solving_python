@@ -63,35 +63,11 @@ class Solution:
     def canJump(self, nums: list) -> bool:
         lastpos = len(nums) - 1
         for i in range (len(nums) - 1, -1, -1):
+            # i+nums[i] is the farthest distance we can reach jumping from ith position
+            # latpos is the position we are to reach from ith position
             if i+nums[i] >= lastpos:
                 lastpos = i
         return lastpos == 0
 
 
-class Node:
-    def __init__(self, val: int = 0, left: 'Node' = None, right: 'Node' = None, next: 'Node' = None):
-        self.val = val
-        self.left = left
-        self.right = right
-        self.next = next
-class Solution:
-    def connect(self, root: 'Node') -> 'Node':
-        queue = collections.deque((root, 0))
-        l = -1
-        n = Node()
-
-        def find(queue, prev, l):
-            if queue:
-                node, level = queue.popleft()
-                if l == level:
-                    prev.next = node
-                else:
-                    prev.next = None
-                if node.left is not None:
-                    queue.append((node.left, level + 1))
-                if node.right is not None:
-                    queue.append((node.right, level + 1))
-                find(queue, node, level)
-        find(queue, n, -1)
-        return n.next
 

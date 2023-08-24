@@ -36,6 +36,7 @@ class Solution1(object):
     def maxSubarraySumCircular(self, A):
         N = len(A)
 
+        # we first find max subarray sum, that consists only of single intervals array
         ans = cur = 0
         for x in A:
             cur = x + max(cur, 0)
@@ -47,17 +48,40 @@ class Solution1(object):
         # the maximum of sum(A[j:]) with j >= i+2
 
         # rightsums[i] = sum(A[i:])
+
+        '''
+        explanation why we need j that is >= i+2. 
+        this is because we need to create a gap
+        finding max subarray sum on the entire array already covered in 1-interval subarrays
+        suppose we have array [0,1,2,3,4,5]
+        without having a gap it would be the same as to find max subarray sum for the 1-interval subarray        
+        '''
+
+        # here we just store cumulative sum starting from the right side
         rightsums = [None] * N
         rightsums[-1] = A[-1]
         for i in range(N-2, -1, -1):
             rightsums[i] = rightsums[i+1] + A[i]
 
         # maxright[i] = max_{j >= i} rightsums[j]
+        # here we keeping track of the max of the cumulative sum we found above
         maxright = [None] * N
         maxright[-1] = rightsums[-1]
         for i in range(N-2, -1, -1):
             maxright[i] = max(maxright[i+1], rightsums[i])
 
+        # here we do sum left side and adding with max righ sum
+        # NOTE: i+2 is what that creates a gap of 1 item
+        # Suppose original array
+        # [0, 1, -3, 1, 2, 1]
+        # rightsums
+        # [2, 2, 1, 4, 3, 1]
+        # the maxright array
+        # [4, 4, 4, 4, 3, 1]
+        # NOTE: here in the maxright array under index 2 the value is 4, whereas cumulative sum
+        # is rightsums is 1
+        # 4 under index 2 in maxright just means there is a contigious array starting from the right end
+        # with total sum equal 4
         leftsum = 0
         for i in range(N-2):
             leftsum += A[i]
@@ -79,14 +103,17 @@ class Solution2(object):
         ans = A[0]
         deque = collections.deque([0]) # i's, increasing by P[i]
         for j in range(1, len(P)):
-            # If the smallest i is too small, remove it.
-            if deque[0] < j-N:
+            # we should sum ove max N elements (the size of incoming array)
+            # extract out the items outside of range
+            # so, this is to keep the window of N elements max
+            if j - deque[0] > N:
                 deque.popleft()
 
-            # The optimal i is deque[0], for cand. answer P[j] - P[i].
+            # P is an array of prefix sums, this allows us to find sum from deque[0] to j in O(1)
             ans = max(ans, P[j] - P[deque[0]])
 
-            # Remove any i1's with P[i2] <= P[i1].
+            # There is no reason to keep items in the queue that are greater than P[j]
+            # because when we do this ans = max(ans, P[j] - P[deque[0]]) it is useless calculation
             while deque and P[j] <= P[deque[-1]]:
                 deque.pop()
 
@@ -96,6 +123,7 @@ class Solution2(object):
 
 
 if __name__ == '__main__':
-    s = Solution()
+    s = Solution2()
+    s.maxSubarraySumCircular([1, -3, 1, 2, 1])
     s.maxSubarraySumCircular([5,-3,5])
     s.maxSubarraySumCircular([1,-2,3,-2])

@@ -52,6 +52,36 @@ class Solution2:
             prevMax, curMax = curMax, max(prevMax + num, curMax)
         return curMax
 
+
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+
+        n = len(nums)
+        if n <= 2:
+            return max(nums)
+        dp = [0] * n
+        dp[0] = nums[0]
+        dp[1] = nums[1]
+        for i in range(2, n):
+            dp[i - 1], dp[i] = max(dp[i - 1], dp[i - 2]), max(dp[i - 2] + nums[i], dp[i - 1])
+        return dp[-1]
+
+
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+
+        memo = {}
+        n = len(nums)
+
+        def helper(i):
+            if i >= n:
+                return 0
+            if i not in memo:
+                memo[i] = max(helper(i + 2) + nums[i], helper(i + 1))
+            return memo[i]
+
+        return helper(0)
+
 # O(n)
 class Solution3(object):
     def rob(self, nums):

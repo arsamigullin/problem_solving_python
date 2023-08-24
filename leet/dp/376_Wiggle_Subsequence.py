@@ -18,6 +18,29 @@ class Solution:
 
         return 1 + max(down[-1], up[-1])
 
+
+class Solution:
+    def wiggleMaxLength(self, nums: List[int]) -> int:
+
+        n = len(nums)
+        if n < 2:
+            return n
+        up = [0] * n
+        down = [0] * n
+        up[0] = down[0] = 1
+
+        for i in range(1, n):
+            for j in range(i):
+                if nums[i] - nums[j] > 0:
+                    up[i] = max(up[i], down[j] + 1)
+                elif nums[i] - nums[j] < 0:
+                    down[i] = max(down[i], up[j] + 1)
+                else:
+                    up[i] = up[i - 1]
+                    down[i] = down[i - 1]
+
+        return max(up[-1], down[-1])
+
 # O(n) O(n)
 class Solution:
     def wiggleMaxLength(self, nums: List[int]) -> int:
