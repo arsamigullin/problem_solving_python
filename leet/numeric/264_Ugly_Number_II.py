@@ -1,3 +1,4 @@
+import collections
 from heapq import heappop, heappush
 
 # Approach is to precalculate the ugly numbers
@@ -76,6 +77,33 @@ class SolutionTLE:
             i += 1
         return i
 
+
+class SolutionDP:
+    def nthUglyNumber(self, n: int) -> int:
+        dp = collections.defaultdict(bool)
+        dp[0] = True
+        num = 2
+        while n>=2:
+            val = num
+            if val%2==0:
+                val//=2
+            elif val%3==0:
+                val//=3
+            elif val%5==0:
+                val//=5
+            if val!=num:
+                if dp[val-1]:
+                    dp[num-1] = True
+                    num+=1
+                    n-=1
+                else:
+                    num+=1
+            else:
+                num+=1
+        return num-1
+
 if __name__ == '__main__':
+    s = SolutionDP()
+    s.nthUglyNumber(456)
     s = Solution()
     s.nthUglyNumber(10)

@@ -2,6 +2,8 @@
 # this is dp approach
 # initially dp is filled with False except the first elemet
 # then we use a well-known approach that checks every index from the beginning till the middle
+from collections import deque
+from typing import List
 
 
 class Solution:
@@ -70,6 +72,63 @@ class SolutionDFS1:
             return dp[start]
         return helper(0)
 
+# recursion with memoization
+# O(n^3)
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+
+        wordDict = set(wordDict)
+        n = len(s)
+        memo = {}
+
+        def helper(i):
+            if i >= n:
+                return True
+            if i not in memo:
+                for j in range(i, n + 1):
+                    if s[i:j] in wordDict:
+                        if helper(j):
+                            memo[i] = True
+                            break
+                else:
+                    memo[i] = False
+            return memo[i]
+
+        return helper(0)
+
+# BFS O(n^3)
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+
+        q = deque()
+        q.append(0)
+        wordDict = set(wordDict)
+        visited = set()
+        while q:
+            start = q.popleft()
+            if start in visited:
+                continue
+            for i in range(start + 1, len(s) + 1):
+                if s[start:i] in wordDict:
+                    q.append(i)
+                    if len(s) == i:
+                        return True
+            visited.add(start)
+
+        return False
+
+# DP O(n^3)
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        n = len(s)
+        dp = [False] * (n + 1)
+        dp[0] = True
+        wordDict = set(wordDict)
+        for i in range(n + 1):
+            for j in range(i):
+                if dp[j] and s[j:i] in wordDict:
+                    dp[i] = True
+        return dp[-1]
 
 
 if __name__ == "__main__":

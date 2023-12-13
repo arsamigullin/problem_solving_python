@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Solution:
     def generate(self, numRows: int) -> list:
         result = []
@@ -24,6 +27,10 @@ class Solution:
                     current[j + 1] = triangle[-1][j] + triangle[-1][j + 1]
             triangle.append(current)
         return triangle
+
+
+
+
 
 if __name__ == "__main__":
     s = Solution()

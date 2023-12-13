@@ -108,6 +108,22 @@ class Solution:
 
         return max_square_len ** 2
 
+# no extra space
+class Solution:
+    def maximalSquare(self, matrix: List[List[str]]) -> int:
+
+        max_side = 0
+        n = len(matrix)
+        m = len(matrix[0])
+
+        for i in range(n):
+            for j in range(m):
+                matrix[i][j] = int(matrix[i][j])
+                if i-1 >= 0 and j-1>=0 and matrix[i][j]!=0:
+                    matrix[i][j]+=min(matrix[i-1][j], matrix[i][j-1], matrix[i-1][j-1])
+                max_side = max(max_side, matrix[i][j])
+        return max_side**2
+
 if __name__ == '__main__':
     s = Solution()
     s.maximalSquare(

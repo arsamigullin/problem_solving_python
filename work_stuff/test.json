@@ -1,0 +1,187 @@
+{
+    "id": "0e9edcfd-26b0-407b-b473-95610ca63b16",
+    "ExperimentContent": {
+        "Scenarios": {
+            "ClusterCreation": {
+                "ScenarioName": "AKS_Workload_Cluster_Creation",
+                "Enabled": true,
+                "K8sVersion": "1.22",
+                "InitialAgentCount": 3,
+                "NodeVmSize": "Standard_D16s_v3",
+                "NodeOsDiskType": "Ephemeral",
+                "NodePoolName": "agentpool",
+                "NodeOsDiskSize": 128,
+                "MaxPodsPerNode": 50
+            },
+            "NodePoolReadinessCheck": {
+                "ScenarioName": "AKS_Workload_Node_Pool_Readiness_Check",
+                "Enabled": true,
+                "NodePoolName": "agentpool",
+                "InitialAgentCount": 3
+            },
+            "NodeResourceCheck": {
+                "ScenarioName": "AKS_Workload_Node_Resource_Check",
+                "Enabled": true
+            },
+            "NodePoolProvision": {
+                "ScenarioName": "AKS_Workload_Node_Pool_Provision_Validation",
+                "Enabled": true,
+                "NodePoolName": "pool2",
+                "NodeOsType": "Windows",
+                "NodeVmSize": "Standard_D2s_v3",
+                "NodeOsDiskType": "Managed",
+                "NodeOsDiskSize": 128,
+                "MaxPodsPerNode": 30,
+                "InitialAgentCount": 3,
+                "AutoScalarEnabled": "False",
+                "MaxCount": 0,
+                "Priority": "Regular"
+            },
+            "SystemPoolTagging": {
+                "ScenarioName": "AKS_Workload_System_Pool_Tagging",
+                "Enabled": true,
+                "NodePoolName": "agentpool"
+            },
+            "UserPoolTagging": {
+                "ScenarioName": "AKS_Workload_User_Pool_Tagging",
+                "Enabled": true,
+                "NodePoolName": "pool2"
+            },
+            "ContainerCreation": {
+                "ScenarioName": "AKS_Workload_Container_Creation",
+                "Enabled": true,
+                "CsiDriverVersion": "v1.9.0"
+            },
+            "NodePoolScaleOut50": {
+                "ScenarioName": "AKS_NodePool_Scale_Out_50",
+                "Enabled": false
+            },
+            "LinuxNodeScaleOut": {
+                "ScenarioName": "AKS_Workload_Linux_Node_ScaleOut_Validation",
+                "Enabled": true,
+                "AgentCountScaleFactor": 101,
+                "NodePoolName": "agentpool",
+                "InitialAgentCount": 3
+            },
+            "SleepAfterLinuxScaleOut": {
+                "ScenarioName": "AKS_Workload_Sleep_After_Linux_Node_Pool_Scale_Out",
+                "Enabled": true
+            },
+            "WindowsNodeScaleOut": {
+                "ScenarioName": "AKS_Workload_Windows_Node_ScaleOut_Validation",
+                "Enabled": true,
+                "AgentCountScaleFactor": 101,
+                "NodePoolName": "pool2",
+                "InitialAgentCount": 3
+            },
+            "StatefulSetScaleOut": {
+                "ScenarioName": "AKS_Workload_StatefulSet_ScaleOut_Validation",
+                "Enabled": true,
+                "AgentCountScaleFactor": 101,
+                "NodePoolName": "agentpool",
+                "InitialAgentCount": 3,
+                "NodeOsType": "Linux"
+            },
+            "StatefulSetScaleIn": {
+                "ScenarioName": "AKS_Workload_StatefulSet_ScaleIn_Validation",
+                "Enabled": true,
+                "NodeOsType": "Linux"
+            },
+            "SleepAfterStatefulSetScaleIn": {
+                "ScenarioName": "AKS_Workload_Sleep_After_StatefulSet_Scale_In",
+                "Enabled": true
+            },
+            "WindowsNodeScaleIn": {
+                "ScenarioName": "AKS_Workload_Windows_Node_ScaleIn_Validation",
+                "Enabled": true,
+                "AgentCountScaleFactor": 41,
+                "NodePoolName": "pool2"
+            },
+            "SleepAfterWindowsNodeScaleIn": {
+                "Enabled": true,
+                "ScenarioName": "AKS_Workload_Sleep_After_Windows_Node_Pool_Scale_In"
+            },
+            "LinuxNodeScaleIn": {
+                "Enabled": true,
+                "ScenarioName": "AKS_Workload_Linux_Node_ScaleIn_Validation",
+                "NodePoolName": "agentpool",
+                "AgentCountScaleFactor": 41
+            },
+            "StatefulSetStressScaleOut": {
+                "ScenarioName": "AKS_Workload_StatefulSet_Stress_ScaleOut_Validation",
+                "Enabled": true,
+                "AgentCountScaleFactor": 41,
+                "NodeOsType": "Linux",
+                "NodePoolName": "agentpool"
+            },
+            "StatefulSetStressScaleIn": {
+                "ScenarioName": "AKS_Workload_StatefulSet_Stress_ScaleIn_Validation",
+                "Enabled": true,
+                "NodeOsType": "Linux"
+            },
+            "NodePoolDeletion": {
+                "ScenarioName": "AKS_Workload_Node_Pool_Deletion_Validation",
+                "Enabled": true,
+                "NodePoolName": "pool2"
+            },
+            "NodeResourceDeletion": {
+                "ScenarioName": "AKS_Workload_Node_Resource_Deletion",
+                "Enabled": true,
+                "UseForceDeletion": false
+            },
+            "Deletion": {
+                "ScenarioName": "AKS_Workload_Deletion",
+                "Enabled": true
+            }
+        },
+        "Workload": {
+            "Name": "AKS",
+            "Description": "AzureKubernetesService(AKS)makesitsimpletodeployamanagedKubernetesclusterinAzure.",
+            "CategoryName": "AuroraAksCT",
+            "BatchName": "AKS",
+            "TopologyTypeName": "ARM",
+            "Features": [
+                "AKS",
+                "DiskAttach/Detach",
+                "VMSS",
+                "CSI",
+                "ManualScale",
+                "NodePool",
+                "StatefulSet"
+            ],
+            "DevOwners": [
+                "mizhe"
+            ],
+            "PMOwners": [
+                "sabrinathk"
+            ],
+            "DefaultCleanUpDurationInDays": 1,
+            "ReferenceCustomers": "AKS",
+            "CreateICMs": "Yes",
+            "Experimentation": "Yes",
+            "ManagedBy": "Aurora",
+            "QualityMetrics": "Scalability:1k/5k,Reliability,Latency",
+            "ScenarioRunTypes": "Validated,Prod"
+        },
+        "Properties": {
+            "Id": "93681529-d2f6-46dc-8063-12a120eb25dc",
+            "ManifestFileName": "Aks_Peregrine_EastUS",
+            "SubscriptionId": "b784b323-cb18-4434-8ce8-1dfbd909a636",
+            "Region": "EastUS",
+            "ManifestDescription": "AKSmanifestforPeregrineatEastUS",
+            "Schedule": "9****",
+            "ExperimentationId": "0e9edcfd-26b0-407b-b473-95610ca63b16",
+            "ExperimentationName": "Test Experimentation 2",
+            "ScenarioTimeout": null,
+            "ClassName": "AKSWorkloadCertification"
+        }
+    },
+    "IsDeleted": false,
+    "CreateDate": "2022-07-01T12:05:16.5725609-07:00",
+    "AzConductorId": "b3544666-3045-4b86-9e69-c9e14428e014",
+    "_rid": "JLw8AMeDyD0EAAAAAAAAAA==",
+    "_self": "dbs/JLw8AA==/colls/JLw8AMeDyD0=/docs/JLw8AMeDyD0EAAAAAAAAAA==/",
+    "_etag": "\"1000c851-0000-0700-0000-62bf45780000\"",
+    "_attachments": "attachments/",
+    "_ts": 1656702328
+}
