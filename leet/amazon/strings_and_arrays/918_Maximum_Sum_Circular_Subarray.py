@@ -63,12 +63,27 @@ class Solution1(object):
             leftsum += A[i]
             ans = max(ans, leftsum + maxright[i+2])
         return ans
+# Let's suppose the input array is of size N
+# this 1 <= j-i <= N means to keep window of N size because the subarray cannot be greater than N
+# here is possible values for i and j if N = 3
+# j i
+# 2 0
+# 2 1
+# 3 0
+# 3 1
+# 3 2
+# 4 1
+# 4 2
+# 4 3
+# 5 2
+# 5 3
+# 5 4
+# 6 3
+# 6 4
+# 6 5
 
 
-class Solution:
-    def maxSubarraySumCircular(self, nums: List[int]) -> int:
-
-        n = len(nums)
+        # Compute P[j] = sum(B[:j]) for the fixed array B = A+A
         P = [0]
         for _ in range(2):
             for i in range(n):
@@ -81,13 +96,17 @@ class Solution:
         q = collections.deque([0])
         ans = nums[0]
         for j in range(1, len(P)):
+            # If the smallest i is too small, remove it.
+            if deque[0] < j-N:
+                deque.popleft()
 
             # q[0] is i here
             if q[0] < j - n:
                 q.popleft()
 
-            i = q[0]
-            ans = max(ans, P[j] - P[i])
+            # Remove any i1's with P[i2] <= P[i1].
+            while deque and P[j] <= P[deque[-1]]:
+                deque.pop()
 
             while q and P[j] <= P[q[-1]]:
                 q.pop()
@@ -98,6 +117,7 @@ class Solution:
 
 
 if __name__ == '__main__':
-    s = Solution()
-    s.maxSubarraySumCircular([5,-3,5])
-    s.maxSubarraySumCircular([1,-2,3,-2])
+    s = Solution2()
+    s.maxSubarraySumCircular([1, -2, 3, -2])
+    #s.maxSubarraySumCircular([5,-3,5])
+
