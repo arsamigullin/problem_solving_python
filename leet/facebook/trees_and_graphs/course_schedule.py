@@ -19,7 +19,7 @@ class Solution:
         states = [0] * numCourses
         def dfs(vertex):
             states[vertex] = 1
-            for child in graph[vertex] :
+            for child in graph[vertex]:
                 # if the child vertex is in visiting state
                 # or maybe one of its children in visiting state
                 # we caught a cycle
