@@ -14,6 +14,18 @@ class Solution:
         return res
 
 
+class Solution:
+    def numberOfArithmeticSlices(self, A: List[int]) -> int:
+        n = len(A)
+        dp = [0] * n
+
+        for i in range(2, n):
+            if A[i] - A[i - 1] == A[i - 1] - A[i - 2]:
+                dp[i] = dp[i - 1] + 1
+
+        return sum(dp)
+
+
 #wrong solution
 def solution(arr):
     n = len(arr)
