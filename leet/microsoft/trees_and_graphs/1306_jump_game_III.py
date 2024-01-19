@@ -62,6 +62,29 @@ class Solution:
 
         return helper(start)
 
+# O(n)
+class Solution:
+    def canReach(self, arr: List[int], start: int) -> bool:
+
+        q = deque([start])
+        n = len(arr)
+        visited = {start}
+        while q:
+            i = q.popleft()
+            if 0 == arr[i]:
+                return True
+            r = i + arr[i]
+            l = i - arr[i]
+            if 0 <= r < n and r not in visited:
+                q.append(r)
+                visited.add(r)
+            if 0 <= l < n and l not in visited:
+                q.append(l)
+                visited.add(l)
+        return False
+
+
 if __name__ == '__main__':
     s = Solution4()
     s.canReach([4,2,3,0,3,1,2], 5)
+

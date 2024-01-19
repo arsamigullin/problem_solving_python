@@ -1,4 +1,8 @@
 # very similar is 886
+from collections import deque
+from typing import List
+
+
 class Solution:
     # graph: List[List[int]]
     #  a graph is bipartite if the vertices can be
@@ -32,6 +36,29 @@ class Solution:
                         elif color[child] == color[n]:
                             return False
         return True
+
+
+class Solution:
+    def isBipartite(self, graph: List[List[int]]) -> bool:
+
+        n = len(graph)
+        visited = {}
+        for i in range(n):
+            if i in visited:
+                continue
+            q = deque([(i, 0)])
+            while q:
+                node, rank = q.popleft()
+                visited[node] = rank
+                for ch in graph[node]:
+                    ch_rank = rank ^ 1
+                    if ch in visited:
+                        if visited[ch] != ch_rank:
+                            return False
+                    else:
+                        q.append((ch, ch_rank))
+        return True
+
 
 if __name__ == "__main__":
     s = Solution()

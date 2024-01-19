@@ -1,7 +1,30 @@
 import collections
 from typing import List
 
+# this solution is preferred. For undirected graph we should not maintain colors array as we do in Directed Graph
+def dfs(node, parent, visited, graph):
+    visited.add(node)
 
+    for neighbor in graph[node]:
+        if neighbor not in visited:
+            if dfs(neighbor, node, visited, graph):
+                return True
+        elif neighbor != parent:
+            # A visited node that is not the parent indicates a cycle
+            return True
+
+    return False
+
+
+def detect_cycle_undirected(graph):
+    visited = set()
+
+    for node in graph:
+        if node not in visited:
+            if dfs(node, None, visited, graph):
+                return True
+
+    return False
 
 
 class Solution1:

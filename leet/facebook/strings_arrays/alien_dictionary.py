@@ -128,13 +128,12 @@ class SolutionDFS:
         return ''.join(reversed(topsort)) if not hasCycle else ""
 
 if __name__ == "__main__":
-    s = SolutionOpt()
-    s.alienOrder(["vlxpwiqbsg","cpwqwqcd"])
+    s = SolutionDFS()
+    #s.alienOrder(["vlxpwiqbsg","cpwqwqcd"])
     s.alienOrder([
   "wrt",
-  "wrqq",
-  "erqq",
+  "wrflh",
+  "er",
   "ettt",
-  "ettq",
-  "rftq"
+  "rftt"
 ])

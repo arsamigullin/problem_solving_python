@@ -3,6 +3,51 @@ from typing import List
 
 
 class Solution:
+    def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]:
+
+        n = len(heights)
+        m = len(heights[0])
+
+        result = [[0] * m for _ in range(n)]
+
+        ans = []
+
+        def helper(i, j, mark, visited):
+            q = deque()
+            q.append((i, j))
+            visited.add((i, j))
+            while q:
+                x, y = q.popleft()
+                result[x][y] += mark
+                # this means from this cell both oceans are reachable
+                if result[x][y] == 0:
+                    ans.append((x, y))
+                for dx, dy in [(0, 1), (0, -1), (1, 0), (-1, 0)]:
+                    nx = dx + x
+                    ny = dy + y
+                    if 0 <= nx < n and 0 <= ny < m and (nx, ny) not in visited and heights[nx][ny] >= heights[x][y]:
+                        visited.add((nx, ny))
+                        q.append((nx, ny))
+
+        pvisited = set()
+        avisited = set()
+
+        for j in range(m):
+            if (0, j) not in pvisited:
+                helper(0, j, 1, pvisited)
+            if (n - 1, j) not in avisited:
+                helper(n - 1, j, -1, avisited)
+
+        for i in range(n):
+            if (i, 0) not in pvisited:
+                helper(i, 0, 1, pvisited)
+            if (i, m - 1) not in avisited:
+                helper(i, m - 1, -1, avisited)
+
+        return ans
+
+
+class Solution:
     def pacificAtlantic(self, matrix: List[List[int]]) -> List[List[int]]:
         if not matrix:
             return []

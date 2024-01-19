@@ -13,6 +13,9 @@ class Solution:
         The difference is that each case of first cases includes two cases to handle
 
         Let's consider an array [4,5,6,7,0,1,2]
+        # [4,5,6,7,0,1,2]
+        # [5,6,7,0,1,2,4]
+        # [0,1,2,4,5,6,7]
         '''
         start = 0
         end = len(nums) - 1
@@ -22,13 +25,13 @@ class Solution:
             if nums[mid] == target:
                 return mid
             
-            elif nums[mid] >= nums[start]:
+            elif nums[start] <= nums[mid]:
                 if nums[start] <= target < nums[mid]:
                     end = mid - 1
                 else:
                     start = mid + 1
             else:
-                if nums[mid] < target <=nums[end]:
+                if nums[mid] < target <= nums[end]:
                     start = mid + 1
                 else:
                     end = mid - 1
@@ -38,5 +41,6 @@ class Solution:
 
 if __name__ == "__main__":
     s = Solution()
+    s.search([5,6,7,0,1,2,4],4)
     s.search([2, 4, 5, 6, 7, 0, 1], 1)
     s.search([4,5,6,7,0,1,2],6)
