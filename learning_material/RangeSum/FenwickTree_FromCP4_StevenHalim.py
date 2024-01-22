@@ -1,3 +1,20 @@
+class BinaryIndexedTree:
+    def __init__(self, n):
+        self.n = n
+        self.c = [0] * (n + 1)
+
+    def update(self, x, delta):
+        while x <= self.n:
+            self.c[x] += delta
+            x += x & -x
+
+    def query(self, x):
+        s = 0
+        while x:
+            s += self.c[x]
+            x -= x & -x
+        return s
+
 class FTree:
     def __init__(self, f):
         self.n = len(f)
@@ -67,6 +84,20 @@ class RURQ:
         self.f.update(j + 1, -1 * v * j)
 
 if __name__ == '__main__':
+    f = [2,3,6,5,2,3]
+    freq = [0] * len(f)
+    for i, num in enumerate(f):
+        freq[num-1]+=1
+    print(freq)
+    ft = FTree(freq)
+    bi = BinaryIndexedTree(len(f))
+    for num in f:
+        bi.update(num, 1)
+
+    print(ft.query(3,5))
+    print(bi.query(5) - bi.query(2))
+
+
 
     f = [0, 1, 0, 1, 2, 3, 2, 1, 1, 0]
     ft = FTree(f)
