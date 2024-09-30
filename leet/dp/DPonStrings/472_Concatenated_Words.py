@@ -4,6 +4,24 @@ from typing import List
 class Solution:
     def findAllConcatenatedWordsInADict(self, words: List[str]) -> List[str]:
 
+        @cache
+        def dfs(word, count):
+            if not word and count > 1:
+                return True
+
+            for i in range(len(word)):
+                if word[:i + 1] in dt and dfs(word[i + 1:], count + 1):
+                    return True
+
+            return False
+
+        dt = set(words)
+        return [word for word in dt if dfs(word, 0)]
+
+
+class Solution:
+    def findAllConcatenatedWordsInADict(self, words: List[str]) -> List[str]:
+
         s = set(words)
         res = []
         memo = {}

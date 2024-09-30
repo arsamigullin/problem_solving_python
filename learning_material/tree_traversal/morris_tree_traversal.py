@@ -17,10 +17,9 @@ def MorrisTraversal(root):
     # Set current to root of binary tree
     current = root
 
-    while (current is not None):
+    while current is not None:
 
         if current.left is None:
-            print()
             current.data,
             current = current.right
         else:
@@ -38,7 +37,6 @@ def MorrisTraversal(root):
             # original tree i.e., fix the right child of predecessor
             else:
                 pre.right = None
-                print
                 current.data,
                 current = current.right
 

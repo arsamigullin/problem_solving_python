@@ -6,6 +6,9 @@
 # at books[2] we expect to have books[2] >= books[4] - 2 and so on
 # in general case at book[j] we expect to have
 # books[j]>=books[i]−(i−j), for example books[1]>=books[4]-(4-1) => 4>=7-(4-1) => 4>=4 or in more generic way
+# reason for cnt-1 is because i-j is number of books to be reduced on the books[j]
+# so i-j == cnt-1
+# or i-j+1=cnt
 # books[j]>=books[i] - (cnt - 1) where cnt is number of summands, meaning
 # books[4] = books[i] - (cnt(1)-1) = books[4] - 0 = 7
 # books[3] = books[i] - (cnt(2)-1) = books[4] - 1 = 6
@@ -20,6 +23,7 @@
 
 from typing import List
 
+# Time complexity: O(n)
 
 class Solution:
     def maximumBooks(self, books: List[int]) -> int:
@@ -32,13 +36,19 @@ class Solution:
             # taking min is important here for the cases when books[r] == 0
             # also for this test case [0,3,1,5,4]
             cnt = min(books[r], r-l+1)
+            # here cnt-1 is a compensation for +1 above in cnt = min(books[r], r-l+1)
             return 0.5 * (2*books[i] - (cnt-1)) * cnt
 
         for i in range(n):
 
+            # while we have enough books on the previous shelf
+            # pop out from stack
             while stack and books[stack[-1]] - stack[-1] >= books[i] - i:
                 stack.pop()
 
+            # this means all shelves that were in stack had enough books on the previous shelves
+            # this is whe the start index is 0 here and end index is i
+            # i.e. all items from 0 to i formed arithmetic sequence
             if not stack:
                 dp[i] = get_count(0, i)
             else:
@@ -51,6 +61,8 @@ class Solution:
 
 if __name__ == '__main__':
     s = Solution()
+    s.maximumBooks([1,2,3,4,5])
+    s.maximumBooks([2, 4, 5, 6, 7])
     s.maximumBooks([0,3,1,5,4])
     s.maximumBooks([7,0,3,4,5])
     s.maximumBooks([7,8,9,10])

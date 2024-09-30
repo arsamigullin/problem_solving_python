@@ -34,31 +34,25 @@ class Solution:
         ppresum = list(accumulate(accumulate(strength, initial=0), initial=0))
         answer = 0
 
-        # to understand why we need prefix sum of prefix sum
-        # 0   1   2   3   4   5   6   7   8
-        #                     ai
-        #     L-----------------
-        #                     -------------R
-        # L-i+1(a)                        R+i-1(h)
-        #    L-i+2(b)                R+i-2(g)
-        #         L-i+3(c)        R+i-3(f)
-        #              L-i+4(d)
-        #                     (e)
-        # L is 5 and R is 4
-        # item under index 5 is the smallest item to the subarray enclosed between L and R
-        # however, the subarray between L and R includes many subarray
-        # let's suppose that we composed regular prefix sum array and each of the letters a,b,c,d,e,f,g,h denote
-        # value under appropriate index in that prefix sum array
-        # In this case, we can calculate the following total sum of all the subarrays enclosed between L and R
-        # (e-a)+(e-b)+(e-c)+(e-d)+
-        # (f-a)+(f-b)+(f-c)+(f-d)+(f-e)
-        # (g-a)+(g-b)+(g-c)+(g-d)+(g-e)
-        # (h-a)+(h-b)+(h-c)+(h-d)+(h-e) =>
-        # (e+e+e+e)-(a+b+c+d)+
-        # (f+f+f+f+f)-(a+b+c+d+e)
-        # (g+g+g+g+g)-(a+b+c+d+e)
-        # (h+h+h+h+h)-(a+b+c+d+e) =>
-        # 5f + 5g + 5h + 4e - 4a - 4b - 4c - 4d - 3e
+        # to understand why we need prefix sum of prefix sum, let's consider array [1 3 1 2] and suppose we are at index 2 (value1)
+        # its left array is [-1, 0, -1, 2]
+        # its right array is [2, 2, 4, 4]
+        # based on left and right arrays we have left = -1 and right = 4
+        # L = i - left = 2 - (-1) = 3
+        # R = right - i = 4 - 2 = 2
+        # it's prefix sum is
+        # 0   1   4   5   7
+        # a   b   c   d   e - for our convenience let's denote it using chars
+        # based on original array [1 3 1 2] we have the following subarray index ranges
+        # where value 1 under index 2 is the smallest numer
+        # (0,2),(1,2),(2,2),(2,3),(1,3),(0,3)
+        # their appropriate index ranges for prefix sum array
+        # (0,3),(1,3),(2,3),(2,4),(1,4),(0,4), or with char representation it is
+        # (d-a),(d-b),(d-c),(e-c),(e-b),(e-a)
+        # 3d+3e-2a-2b-2c OR
+        # 3(d+e) - 2(a+b+c)
+        # to find d+e and a+b+c we need prefix sum of prefix sum
+
         for i in range(n):
             left_bound = left[i]
             right_bound = right[i]

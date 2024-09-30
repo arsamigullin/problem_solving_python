@@ -3,6 +3,29 @@ import itertools
 from _ast import List
 import  bisect
 
+
+class Solution:
+    def mostVisitedPattern(self, username: List[str], timestamp: List[int], website: List[str]) -> List[str]:
+
+        data = collections.defaultdict(list)
+        for u, w, t in sorted(zip(username, website, timestamp), key=lambda x: (x[0], x[2])):
+            data[u].append(w)
+        tot = 0
+        trie = {}
+        patterns = collections.defaultdict(int)
+        res = []
+        for u in data:
+            for comb in set(itertools.combinations(data[u], 3)):
+                key = (comb[0], comb[1], comb[2])
+                patterns[key] += 1
+                if patterns[key] > tot:
+                    tot = patterns[key]
+                    res = comb
+                elif patterns[key] == tot:
+                    res = sorted([res, comb])[0]
+        return res
+
+
 class Solution:
     def mostVisitedPattern(self, username: List[str], timestamp: List[int], website: List[str]) -> List[str]:
 
